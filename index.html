@@ -113,6 +113,8 @@
       खोजें
     </a>
 
+    <a href="#" data-page="login" data-hi="परिवार लॉगिन" data-en="Family Login">लॉगिन</a>
+
   </nav>
 
 
@@ -1527,157 +1529,39 @@
      LOGIN PAGE
 ===================================================== -->
 
-<section
-  id="login"
-  class="page"
->
-
-
+<section id="login" class="page">
   <div class="login-container">
-
-
-    <div class="login-container">
-
-  <div class="login-card">
-
-    <div class="login-icon">
-      🔐
-    </div>
-
-    <h1>परिवार लॉगिन</h1>
-
-    <p>
-      Family Login
-      <br>
-      केवल परिवार के सदस्यों के लिए
-    </p>
-
-    <form id="ghar-parivar-login-form">
-
-      <label for="login-username">
-        उपयोगकर्ता नाम / Username
-      </label>
-
-      <input
-        id="login-username"
-        name="username"
-        type="text"
-        placeholder="Enter username"
-        autocomplete="username"
-        required
-      >
-
-      <label for="login-password">
-        पासवर्ड / Password
-      </label>
-
-      <input
-        id="login-password"
-        name="password"
-        type="password"
-        placeholder="Enter password"
-        autocomplete="current-password"
-        required
-      >
-
-      <button
-        type="submit"
-        class="primary-btn login-btn"
-      >
-        Login
-      </button>
-
-    </form>
-
-    <p class="login-note">
-      यह लॉगिन केवल अधिकृत परिवार के सदस्यों के लिए है।
-      <br>
-      This login is only for authorized family members.
-    </p>
-
-  </div>
-
-</div>
-
-      <h1>
-        परिवार सदस्य लॉगिन
-      </h1>
-
-
-      <p>
-        यह क्षेत्र केवल परिवार के
-        अधिकृत सदस्यों के लिए है।
-      </p>
-
-
-      <form id="family-login-form">
-
-
-        <label
-          for="login-username"
-        >
-          Username
-        </label>
-
-        <input
-          id="login-username"
-          type="text"
-          placeholder="Username"
-          required
-        >
-
-
-        <label
-          for="login-password"
-        >
-          Password
-        </label>
-
-        <input
-          id="login-password"
-          type="password"
-          placeholder="Password"
-          required
-        >
-
-
-        <button
-          class="primary-btn login-btn"
-          type="submit"
-        >
-          लॉगिन करें
-        </button>
-
-
+    <div class="login-card">
+      <div class="login-icon">🔐</div>
+      <h1>परिवार सदस्य लॉगिन</h1>
+      <p>Family Member Login<br>केवल अधिकृत परिवार के सदस्यों के लिए</p>
+      <form id="ghar-parivar-login-form">
+        <label for="login-username">उपयोगकर्ता नाम / Username</label>
+        <input id="login-username" name="username" type="text" placeholder="Username" autocomplete="username" required>
+        <label for="login-password">पासवर्ड / Password</label>
+        <input id="login-password" name="password" type="password" placeholder="Password" autocomplete="current-password" required>
+        <button type="submit" class="primary-btn login-btn">लॉगिन करें / Login</button>
       </form>
-
-
-      <p class="login-note">
-
-        Demo:
-        <strong>family</strong>
-        /
-        <strong>1234</strong>
-
-        <br>
-
-        वास्तविक वेबसाइट में
-        secure authentication लगाया जाएगा।
-
-      </p>
-
-
+      <p class="login-note">यह लॉगिन केवल अधिकृत परिवार के सदस्यों के लिए है।<br>This login is only for authorized family members.</p>
     </div>
-
   </div>
-
 </section>
 
-
-
-<!-- =====================================================
-     FAMILY DASHBOARD
-===================================================== -->
+<!-- ADMIN DASHBOARD -->
+<section id="admin-dashboard" class="page">
+  <div class="dashboard">
+    <div class="dashboard-header">
+      <div><span class="eyebrow">ADMINISTRATION • प्रशासन</span><h1>एडमिन डैशबोर्ड</h1><p>Ghar Parivar को प्रबंधित करें<br>Manage families, members and events.</p></div>
+      <button class="outline-btn" type="button" onclick="gharParivarLogout()">लॉग आउट / Logout</button>
+    </div>
+    <div class="dashboard-grid">
+      <div class="dashboard-card"><span>👨‍👩‍👧‍👦</span><h3>परिवार प्रबंधित करें</h3><p>Manage families and family trees.</p></div>
+      <div class="dashboard-card"><span>👤</span><h3>सदस्य खाते</h3><p>Create and manage authorized family-member accounts.</p></div>
+      <div class="dashboard-card"><span>🔒</span><h3>निजी जानकारी</h3><p>Manage information visible only to authorized family members.</p></div>
+      <div class="dashboard-card"><span>🎉</span><h3>कार्यक्रम</h3><p>Add and manage family events and memories.</p></div>
+    </div>
+  </div>
+</section>
 
 <section
   id="family-dashboard"
