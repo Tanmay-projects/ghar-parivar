@@ -1,1917 +1,429 @@
 <!DOCTYPE html>
 <html lang="hi">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>घर परिवार | Ghar Parivar</title>
-
-  <meta
-    name="description"
-    content="Ghar Parivar — परिवार की कहानियां, परिवार वृक्ष, उपलब्धियां और यादें।"
-  >
-
-  <!-- Google Fonts -->
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
-
-  <!-- Main CSS -->
-  <link
-    rel="stylesheet"
-    href="gharp.css?v=1"
-  >
-
+  <meta name="description" content="Ghar Parivar — परिवार, रिश्ते, यादें और विरासत।">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
-
 <body>
 
-
-<!-- =====================================================
-     NAVBAR
-===================================================== -->
-
 <header class="navbar">
-
-  <a
-    href="#"
-    class="logo"
-    data-page="home"
-  >
-
-    <div class="logo-icon">
-      🏠
-    </div>
-
-    <div>
-
-      <strong>
-        घर परिवार
-      </strong>
-
-      <small>
-        GHAR PARIVAR
-      </small>
-
-    </div>
-
+  <a href="#" class="logo" data-page="home">
+    <div class="logo-icon">🏠</div>
+    <div><strong>घर परिवार</strong><small>GHAR PARIVAR</small></div>
   </a>
-
 
   <nav class="nav-links">
-
-    <a
-      href="#"
-      data-page="home"
-      data-hi="होम"
-      data-en="Home"
-    >
-      होम
-    </a>
-
-    <a
-      href="#"
-      data-page="families"
-      data-hi="परिवार"
-      data-en="Families"
-    >
-      परिवार
-    </a>
-
-    <a
-      href="#"
-      data-page="events"
-      data-hi="कार्यक्रम"
-      data-en="Events"
-    >
-      कार्यक्रम
-    </a>
-
-    <a
-      href="#"
-      data-page="search"
-      data-hi="खोजें"
-      data-en="Search"
-    >
-      खोजें
-    </a>
-
-    <a href="#" data-page="login" data-hi="परिवार लॉगिन" data-en="Family Login">लॉगिन</a>
-
+    <a href="#" data-page="home">होम</a>
+    <a href="#" data-page="families">परिवार</a>
+    <a href="#" data-page="events">कार्यक्रम</a>
+    <a href="#" data-page="search">खोजें</a>
+    <a href="#" data-page="login" id="desktop-login">🔐 लॉगिन</a>
   </nav>
 
-
   <div class="language-switcher">
-
-    <button
-      class="active"
-      data-language="hi"
-    >
-      हिन्दी
-    </button>
-
+    <button class="active" data-language="hi">हिन्दी</button>
     <span>|</span>
-
-    <button
-      data-language="en"
-    >
-      English
-    </button>
-
+    <button data-language="en">English</button>
   </div>
 
-
-  <button
-    class="mobile-menu-btn"
-    aria-label="Menu"
-  >
-    ☰
-  </button>
-
+  <button class="mobile-menu-btn" aria-label="Menu">☰</button>
 </header>
 
-
-<!-- =====================================================
-     MOBILE MENU
-===================================================== -->
-
 <div class="mobile-menu">
-
-  <a
-    href="#"
-    data-page="home"
-    data-hi="होम"
-    data-en="Home"
-  >
-    होम
-  </a>
-
-  <a
-    href="#"
-    data-page="families"
-    data-hi="परिवार"
-    data-en="Families"
-  >
-    परिवार
-  </a>
-
-  <a
-    href="#"
-    data-page="events"
-    data-hi="कार्यक्रम"
-    data-en="Events"
-  >
-    कार्यक्रम
-  </a>
-
-  <a
-    href="#"
-    data-page="search"
-    data-hi="खोजें"
-    data-en="Search"
-  >
-    खोजें
-  </a>
-
-  <a
-    href="#"
-    data-page="login"
-    data-hi="परिवार सदस्य लॉगिन"
-    data-en="Family Member Login"
-  >
-    परिवार सदस्य लॉगिन
-  </a>
-
+  <a href="#" data-page="home">होम</a>
+  <a href="#" data-page="families">परिवार</a>
+  <a href="#" data-page="events">कार्यक्रम</a>
+  <a href="#" data-page="search">खोजें</a>
+  <a href="#" data-page="login">🔐 परिवार सदस्य लॉगिन</a>
 </div>
-
-
-
-<!-- =====================================================
-     HOME PAGE
-===================================================== -->
 
 <main>
 
-
-<section
-  id="home"
-  class="page active"
->
-
-
-  <!-- HERO / SLIDESHOW -->
-
+<section id="home" class="page active">
   <section class="hero">
-
-
     <div class="slides">
-
-
-      <!-- SLIDE 1 -->
-
       <div class="slide active-slide">
-
-        <div
-          class="slide-image sample-family-one"
-        ></div>
-
+        <div class="slide-image sample-family-one"></div>
         <div class="hero-overlay">
-
-          <span class="hero-small">
-            OUR FAMILY • हमारी कहानी
-          </span>
-
-          <h1>
-            घर परिवार
-          </h1>
-
-          <p class="hero-description">
-            हमारे परिवार की पीढ़ियों,
-            रिश्तों, उपलब्धियों और
-            खूबसूरत यादों को एक जगह
-            संजोने का डिजिटल घर।
-          </p>
-
-          <button
-            class="primary-btn"
-            data-page="families"
-          >
-            हमारे परिवार देखें →
-          </button>
-
+          <span class="hero-small">OUR FAMILY • हमारी कहानी</span>
+          <h1>घर परिवार</h1>
+          <p class="hero-description">एक डिजिटल घर जहाँ परिवार की कहानियां, रिश्ते, उपलब्धियां और यादें एक साथ सुरक्षित रहें।</p>
+          <button class="primary-btn" data-page="families">परिवार देखें →</button>
         </div>
-
       </div>
-
-
-      <!-- SLIDE 2 -->
-
       <div class="slide">
-
-        <div
-          class="slide-image sample-family-two"
-        ></div>
-
+        <div class="slide-image sample-family-two"></div>
         <div class="hero-overlay">
-
-          <span class="hero-small">
-            TOGETHER • साथ-साथ
-          </span>
-
-          <h1>
-            रिश्ते
-          </h1>
-
-          <p class="hero-description">
-            परिवार सिर्फ नामों का समूह नहीं,
-            बल्कि पीढ़ियों से जुड़ी कहानियों
-            और रिश्तों की पहचान है।
-          </p>
-
-          <button
-            class="primary-btn"
-            data-page="families"
-          >
-            परिवार वृक्ष देखें →
-          </button>
-
+          <span class="hero-small">RELATIONSHIPS • रिश्ते</span>
+          <h1>हमारे रिश्ते</h1>
+          <p class="hero-description">परिवार वृक्ष के माध्यम से पीढ़ियों और रिश्तों को आसानी से समझें।</p>
+          <button class="primary-btn" data-page="families">परिवार वृक्ष →</button>
         </div>
-
       </div>
-
-
-      <!-- SLIDE 3 -->
-
       <div class="slide">
-
-        <div
-          class="slide-image sample-family-three"
-        ></div>
-
+        <div class="slide-image sample-family-three"></div>
         <div class="hero-overlay">
-
-          <span class="hero-small">
-            MEMORIES • यादें
-          </span>
-
-          <h1>
-            हमारी यादें
-          </h1>
-
-          <p class="hero-description">
-            खास अवसरों, त्योहारों,
-            यात्राओं और परिवार के
-            यादगार पलों को हमेशा के लिए
-            सुरक्षित रखें।
-          </p>
-
-          <button
-            class="primary-btn"
-            data-page="events"
-          >
-            कार्यक्रम देखें →
-          </button>
-
+          <span class="hero-small">MEMORIES • यादें</span>
+          <h1>हमारी यादें</h1>
+          <p class="hero-description">खास अवसरों, यात्राओं और परिवार के यादगार पलों को सुरक्षित रखें।</p>
+          <button class="primary-btn" data-page="events">कार्यक्रम देखें →</button>
         </div>
-
       </div>
-
-
     </div>
-
-
-    <!-- PREVIOUS -->
-
-    <button
-      class="slide-arrow previous"
-      aria-label="Previous"
-    >
-      ‹
-    </button>
-
-
-    <!-- NEXT -->
-
-    <button
-      class="slide-arrow next"
-      aria-label="Next"
-    >
-      ›
-    </button>
-
-
-    <!-- DOTS -->
-
+    <button class="slide-arrow previous" aria-label="Previous">‹</button>
+    <button class="slide-arrow next" aria-label="Next">›</button>
     <div class="slide-dots">
-
-      <button
-        class="dot active-dot"
-        aria-label="Slide 1"
-      ></button>
-
-      <button
-        class="dot"
-        aria-label="Slide 2"
-      ></button>
-
-      <button
-        class="dot"
-        aria-label="Slide 3"
-      ></button>
-
+      <button class="dot active-dot" aria-label="Slide 1"></button>
+      <button class="dot" aria-label="Slide 2"></button>
+      <button class="dot" aria-label="Slide 3"></button>
     </div>
-
-
   </section>
-
-
-
-  <!-- WELCOME -->
 
   <section class="content-section welcome-section">
-
     <div class="section-heading">
-
-      <span class="eyebrow">
-        GHAR PARIVAR
-      </span>
-
-      <h2
-        data-hi="हमारे परिवार में आपका स्वागत है"
-        data-en="Welcome to Our Family"
-      >
-        हमारे परिवार में आपका स्वागत है
-      </h2>
-
-      <p>
-        एक डिजिटल जगह जहाँ हमारी
-        पारिवारिक विरासत और यादें
-        आने वाली पीढ़ियों तक जीवित रहें।
-      </p>
-
+      <span class="eyebrow">GHAR PARIVAR</span>
+      <h2>हमारे परिवार में आपका स्वागत है</h2>
+      <p>एक डिजिटल जगह जहाँ हमारी पारिवारिक विरासत और यादें आने वाली पीढ़ियों तक जीवित रहें।</p>
     </div>
-
-
-    <p class="intro-text">
-
-      यहाँ आप परिवारों को देख सकते हैं,
-      परिवार वृक्ष में रिश्तों को समझ सकते हैं,
-      सदस्यों की उपलब्धियों के बारे में जान सकते हैं
-      और परिवार के खास कार्यक्रमों की यादें देख सकते हैं।
-
-    </p>
-
-
-
-    <!-- TWO MAIN BOXES -->
+    <p class="intro-text">यहाँ आप परिवारों को देख सकते हैं, परिवार वृक्ष में रिश्तों को समझ सकते हैं, सदस्यों की सार्वजनिक उपलब्धियां देख सकते हैं और परिवार के खास कार्यक्रमों की यादें देख सकते हैं।</p>
 
     <div class="main-cards">
-
-
-      <!-- FAMILY -->
-
-      <div
-        class="main-card"
-        data-page="families"
-      >
-
-        <div class="card-icon">
-          👨‍👩‍👧‍👦
-        </div>
-
-        <h3
-          data-hi="परिवार"
-          data-en="Families"
-        >
-          परिवार
-        </h3>
-
-        <p
-          data-hi="हमारे परिवारों, रिश्तों और परिवार वृक्ष को देखें।"
-          data-en="Explore our families, relationships and family trees."
-        >
-          हमारे परिवारों, रिश्तों और परिवार वृक्ष को देखें।
-        </p>
-
-        <span>
-          देखें →
-        </span>
-
+      <div class="main-card" data-page="families">
+        <div class="card-icon">👨‍👩‍👧‍👦</div>
+        <h3>परिवार</h3>
+        <p>परिवारों, रिश्तों और परिवार वृक्ष को देखें।</p>
+        <span>परिवार देखें →</span>
       </div>
-
-
-
-      <!-- EVENTS -->
-
-      <div
-        class="main-card"
-        data-page="events"
-      >
-
-        <div class="card-icon">
-          🎉
-        </div>
-
-        <h3
-          data-hi="कार्यक्रम"
-          data-en="Events"
-        >
-          कार्यक्रम
-        </h3>
-
-        <p
-          data-hi="शादी, जन्मदिन, त्योहार, यात्राएं और पारिवारिक मिलन देखें।"
-          data-en="Explore weddings, birthdays, festivals, trips and family gatherings."
-        >
-          शादी, जन्मदिन, त्योहार, यात्राएं और पारिवारिक मिलन देखें।
-        </p>
-
-        <span>
-          देखें →
-        </span>
-
+      <div class="main-card" data-page="events">
+        <div class="card-icon">🎉</div>
+        <h3>कार्यक्रम</h3>
+        <p>परिवार के खास अवसर और यादगार पल देखें।</p>
+        <span>कार्यक्रम देखें →</span>
       </div>
-
-
     </div>
-
   </section>
-
-
-
-  <!-- OUR STORY -->
-
-  <section class="story-section">
-
-
-    <div
-      class="story-image sample-story-image"
-    ></div>
-
-
-    <div class="story-content">
-
-      <span class="eyebrow">
-        OUR STORY • हमारी कहानी
-      </span>
-
-      <h2>
-        एक परिवार,
-        अनेक कहानियां।
-      </h2>
-
-      <p>
-
-        घर परिवार का उद्देश्य परिवार की
-        जानकारी को सुंदर, व्यवस्थित और
-        सुरक्षित तरीके से आने वाली पीढ़ियों
-        तक पहुँचाना है।
-
-      </p>
-
-      <p>
-
-        सार्वजनिक रूप से केवल ऐसी जानकारी
-        दिखाई जाएगी जिसे परिवार साझा करना
-        चाहता है — जैसे नाम, designation,
-        achievements और family relationships।
-
-      </p>
-
-      <button
-        class="primary-btn"
-        data-page="families"
-      >
-        परिवार देखें →
-      </button>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- EVENTS PREVIEW -->
-
-  <section class="content-section">
-
-    <div class="section-heading">
-
-      <span class="eyebrow">
-        MEMORIES
-      </span>
-
-      <h2>
-        हाल के कार्यक्रम
-      </h2>
-
-      <p>
-        परिवार के कुछ खास अवसर।
-      </p>
-
-    </div>
-
-
-    <div class="event-preview-grid">
-
-
-      <div
-        class="event-preview"
-        data-page="event-detail"
-        onclick="openEvent(1)"
-      >
-
-        <div
-          class="event-preview-image wedding-image"
-        ></div>
-
-        <div class="event-preview-content">
-
-          <span class="eyebrow">
-            CELEBRATION
-          </span>
-
-          <h3>
-            शर्मा परिवार विवाह समारोह
-          </h3>
-
-          <p>
-            15 December 2026 • Indore
-          </p>
-
-        </div>
-
-      </div>
-
-
-
-      <div
-        class="event-preview"
-        onclick="openEvent(2)"
-      >
-
-        <div
-          class="event-preview-image trip-image"
-        ></div>
-
-        <div class="event-preview-content">
-
-          <span class="eyebrow">
-            TRAVEL
-          </span>
-
-          <h3>
-            परिवार यात्रा
-          </h3>
-
-          <p>
-            20 January 2027 • Goa
-          </p>
-
-        </div>
-
-      </div>
-
-
-
-      <div
-        class="event-preview"
-        onclick="openEvent(3)"
-      >
-
-        <div
-          class="event-preview-image festival-image"
-        ></div>
-
-        <div class="event-preview-content">
-
-          <span class="eyebrow">
-            FESTIVAL
-          </span>
-
-          <h3>
-            दीपावली मिलन
-          </h3>
-
-          <p>
-            8 November 2026
-          </p>
-
-        </div>
-
-      </div>
-
-
-    </div>
-
-
-    <div class="center-button">
-
-      <button
-        class="outline-btn"
-        data-page="events"
-      >
-        सभी कार्यक्रम देखें →
-
-      </button>
-
-    </div>
-
-  </section>
-
-
 </section>
 
-
-
-<!-- =====================================================
-     FAMILIES PAGE
-===================================================== -->
-
-<section
-  id="families"
-  class="page"
->
-
-
+<section id="families" class="page">
   <div class="inner-page-header">
-
-    <span class="eyebrow">
-      FAMILIES • परिवार
-    </span>
-
-    <h1>
-      हमारे परिवार
-    </h1>
-
-    <p>
-      किसी परिवार को चुनें और उसकी
-      पारिवारिक कहानी और family tree देखें।
-    </p>
-
+    <span class="eyebrow">FAMILIES • परिवार</span>
+    <h1>हमारे परिवार</h1>
+    <p>सार्वजनिक जानकारी सभी के लिए उपलब्ध है। निजी जानकारी केवल अधिकृत लॉगिन के बाद दिखाई जानी चाहिए।</p>
   </div>
-
-
-
   <div class="family-grid">
-
-
-    <!-- FAMILY 1 -->
-
-    <div
-      class="family-card"
-      onclick="openFamily('family1')"
-    >
-
-      <div
-        class="family-card-image family-image-one"
-      ></div>
-
-      <div class="family-card-content">
-
-        <span class="family-number">
-          FAMILY 01
-        </span>
-
-        <h2>
-          शर्मा परिवार
-        </h2>
-
-        <p>
-          Sharma Family
-        </p>
-
-        <button>
-          परिवार देखें →
-        </button>
-
-      </div>
-
-    </div>
-
-
-
-    <!-- FAMILY 2 -->
-
-    <div
-      class="family-card"
-      onclick="openFamily('family2')"
-    >
-
-      <div
-        class="family-card-image family-image-two"
-      ></div>
-
-      <div class="family-card-content">
-
-        <span class="family-number">
-          FAMILY 02
-        </span>
-
-        <h2>
-          वर्मा परिवार
-        </h2>
-
-        <p>
-          Verma Family
-        </p>
-
-        <button>
-          परिवार देखें →
-        </button>
-
-      </div>
-
-    </div>
-
-
-
-    <!-- FAMILY 3 -->
-
-    <div
-      class="family-card"
-      onclick="openFamily('family3')"
-    >
-
-      <div
-        class="family-card-image family-image-three"
-      ></div>
-
-      <div class="family-card-content">
-
-        <span class="family-number">
-          FAMILY 03
-        </span>
-
-        <h2>
-          गुप्ता परिवार
-        </h2>
-
-        <p>
-          Gupta Family
-        </p>
-
-        <button>
-          परिवार देखें →
-        </button>
-
-      </div>
-
-    </div>
-
-
-
-    <!-- FUTURE FAMILY -->
-
     <div class="family-card">
-
-      <div
-        class="family-card-image family-image-four"
-      ></div>
-
+      <div class="family-card-image family-image-one"></div>
       <div class="family-card-content">
-
-        <span class="family-number">
-          FAMILY 04
-        </span>
-
-        <h2>
-          नया परिवार
-        </h2>
-
-        <p>
-          New Family
-        </p>
-
-        <button>
-          जल्द उपलब्ध होगा
-        </button>
-
+        <span class="family-number">01</span>
+        <h2>शर्मा परिवार</h2>
+        <p>एक स्नेही और एकजुट परिवार की कहानी।</p>
+        <button onclick="showPublicFamily('sharma')">परिवार देखें →</button>
       </div>
-
     </div>
-
-
+    <div class="family-card">
+      <div class="family-card-image family-image-two"></div>
+      <div class="family-card-content">
+        <span class="family-number">02</span>
+        <h2>वर्मा परिवार</h2>
+        <p>परंपराओं और आधुनिक सोच का सुंदर मेल।</p>
+        <button onclick="showPublicFamily('verma')">परिवार देखें →</button>
+      </div>
+    </div>
+    <div class="family-card">
+      <div class="family-card-image family-image-three"></div>
+      <div class="family-card-content">
+        <span class="family-number">03</span>
+        <h2>गुप्ता परिवार</h2>
+        <p>शिक्षा, संस्कृति और सेवा को महत्व देने वाला परिवार।</p>
+        <button onclick="showPublicFamily('gupta')">परिवार देखें →</button>
+      </div>
+    </div>
   </div>
-
+  <div id="public-family-result" class="public-family-result"></div>
 </section>
 
-
-
-<!-- =====================================================
-     FAMILY DETAIL / TREE
-===================================================== -->
-
-<section
-  id="family-detail"
-  class="page"
->
-
-
+<section id="events" class="page">
   <div class="inner-page-header">
-
-    <button
-      class="back-btn"
-      data-back="families"
-    >
-      ← वापस परिवारों पर
-    </button>
-
-    <span class="eyebrow">
-      FAMILY TREE
-    </span>
-
-    <h1 id="family-detail-title">
-      शर्मा परिवार
-    </h1>
-
-    <p id="family-detail-description">
-      परिवार की कहानी
-    </p>
-
+    <span class="eyebrow">EVENTS • कार्यक्रम</span>
+    <h1>पारिवारिक कार्यक्रम</h1>
+    <p>परिवार के खास अवसर, यात्राएं और यादें।</p>
   </div>
-
-
-
-  <div class="tree-wrapper">
-
-    <div id="family-tree-members">
-
-      <!-- JavaScript creates members here -->
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     MEMBER PROFILE
-===================================================== -->
-
-<section
-  id="member-profile"
-  class="page"
->
-
-
-  <div class="profile-header">
-
-    <button
-      class="back-btn"
-      data-back="family-detail"
-    >
-      ← वापस परिवार वृक्ष पर
-    </button>
-
-
-    <div class="profile-main">
-
-
-      <div
-        class="profile-photo"
-      ></div>
-
-
-      <div class="profile-heading">
-
-        <span class="eyebrow">
-          FAMILY MEMBER
-        </span>
-
-        <h1 id="profile-name">
-          सदस्य का नाम
-        </h1>
-
-        <h3 id="profile-designation">
-          Designation
-        </h3>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-
-
-  <div class="profile-content">
-
-
-    <!-- BIOGRAPHY -->
-
-    <div class="profile-section">
-
-      <span class="eyebrow">
-        BIOGRAPHY
-      </span>
-
-      <h2>
-        परिचय
-      </h2>
-
-      <p>
-        यह सदस्य परिवार का एक महत्वपूर्ण
-        हिस्सा है। यहां उनके जीवन,
-        शिक्षा, कार्य और परिवार में योगदान
-        के बारे में जानकारी दिखाई जाएगी।
-      </p>
-
-    </div>
-
-
-
-    <!-- ACHIEVEMENTS -->
-
-    <div class="profile-section">
-
-      <span class="eyebrow">
-        ACHIEVEMENTS
-      </span>
-
-      <h2>
-        उपलब्धियां
-      </h2>
-
-      <p id="profile-achievement">
-        उपलब्धि की जानकारी
-      </p>
-
-
-      <div class="achievement-grid">
-
-
-        <div class="achievement-card">
-
-          <span>
-            🏆
-          </span>
-
-          <h3>
-            प्रमुख उपलब्धि
-          </h3>
-
-          <p>
-            परिवार के लिए एक महत्वपूर्ण
-            उपलब्धि का उदाहरण।
-          </p>
-
-        </div>
-
-
-        <div class="achievement-card">
-
-          <span>
-            🎓
-          </span>
-
-          <h3>
-            शिक्षा
-          </h3>
-
-          <p>
-            शैक्षणिक उपलब्धियों की जानकारी।
-          </p>
-
-        </div>
-
-
-        <div class="achievement-card">
-
-          <span>
-            ⭐
-          </span>
-
-          <h3>
-            विशेष योगदान
-          </h3>
-
-          <p>
-            समाज या परिवार में योगदान।
-          </p>
-
-        </div>
-
-
-      </div>
-
-    </div>
-
-
-
-    <!-- FAMILY RELATION -->
-
-    <div class="profile-section">
-
-      <span class="eyebrow">
-        FAMILY
-      </span>
-
-      <h2>
-        पारिवारिक संबंध
-      </h2>
-
-      <p>
-        परिवार वृक्ष के माध्यम से इस सदस्य
-        के रिश्तों को देखा जा सकता है।
-      </p>
-
-    </div>
-
-
-
-    <!-- MEMORIES -->
-
-    <div class="profile-section">
-
-      <span class="eyebrow">
-        MEMORIES
-      </span>
-
-      <h2>
-        यादें
-      </h2>
-
-      <div class="memory-placeholder">
-
-        📷
-
-        <p>
-          परिवार द्वारा साझा की गई तस्वीरें
-          यहां दिखाई जाएंगी।
-        </p>
-
-      </div>
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     EVENTS PAGE
-===================================================== -->
-
-<section
-  id="events"
-  class="page"
->
-
-
-  <div class="inner-page-header">
-
-    <span class="eyebrow">
-      EVENTS • कार्यक्रम
-    </span>
-
-    <h1>
-      परिवार के कार्यक्रम
-    </h1>
-
-    <p>
-      परिवार के खास अवसरों और
-      यादगार पलों को देखें।
-    </p>
-
-  </div>
-
-
-
-  <!-- FILTERS -->
-
-  <div class="event-filters">
-
-    <button
-      class="filter-btn active-filter"
-      data-category="all"
-    >
-      सभी
-    </button>
-
-    <button
-      class="filter-btn"
-      data-category="celebration"
-    >
-      समारोह
-    </button>
-
-    <button
-      class="filter-btn"
-      data-category="travel"
-    >
-      यात्राएं
-    </button>
-
-    <button
-      class="filter-btn"
-      data-category="festival"
-    >
-      त्योहार
-    </button>
-
-    <button
-      class="filter-btn"
-      data-category="birthday"
-    >
-      जन्मदिन
-    </button>
-
-  </div>
-
-
-
   <div class="events-grid">
-
-
-    <!-- EVENT 1 -->
-
-    <div
-      class="large-event-card"
-      data-category="celebration"
-      onclick="openEvent(1)"
-    >
-
-      <div
-        class="large-event-image wedding-image"
-      ></div>
-
-      <div class="large-event-content">
-
-        <span>
-          समारोह
-        </span>
-
-        <h2>
-          शर्मा परिवार विवाह समारोह
-        </h2>
-
-        <p>
-          15 December 2026 • Indore
-        </p>
-
-        <button>
-          कार्यक्रम देखें →
-        </button>
-
-      </div>
-
+    <div class="large-event-card">
+      <div class="large-event-image wedding-image"></div>
+      <div class="large-event-content"><span>CELEBRATION</span><h2>शर्मा परिवार विवाह समारोह</h2><p>15 December 2026 • Indore</p></div>
     </div>
-
-
-
-    <!-- EVENT 2 -->
-
-    <div
-      class="large-event-card"
-      data-category="travel"
-      onclick="openEvent(2)"
-    >
-
-      <div
-        class="large-event-image trip-image"
-      ></div>
-
-      <div class="large-event-content">
-
-        <span>
-          यात्रा
-        </span>
-
-        <h2>
-          परिवार यात्रा
-        </h2>
-
-        <p>
-          20 January 2027 • Goa
-        </p>
-
-        <button>
-          कार्यक्रम देखें →
-        </button>
-
-      </div>
-
+    <div class="large-event-card">
+      <div class="large-event-image trip-image"></div>
+      <div class="large-event-content"><span>TRAVEL</span><h2>परिवार यात्रा</h2><p>एक साथ बिताए यादगार दिन।</p></div>
     </div>
-
-
-
-    <!-- EVENT 3 -->
-
-    <div
-      class="large-event-card"
-      data-category="festival"
-      onclick="openEvent(3)"
-    >
-
-      <div
-        class="large-event-image festival-image"
-      ></div>
-
-      <div class="large-event-content">
-
-        <span>
-          त्योहार
-        </span>
-
-        <h2>
-          दीपावली मिलन
-        </h2>
-
-        <p>
-          8 November 2026
-        </p>
-
-        <button>
-          कार्यक्रम देखें →
-        </button>
-
-      </div>
-
+    <div class="large-event-card">
+      <div class="large-event-image birthday-image"></div>
+      <div class="large-event-content"><span>BIRTHDAY</span><h2>पारिवारिक जन्मदिन</h2><p>परिवार के साथ एक खास दिन।</p></div>
     </div>
-
-
-
-    <!-- EVENT 4 -->
-
-    <div
-      class="large-event-card"
-      data-category="birthday"
-      onclick="openEvent(4)"
-    >
-
-      <div
-        class="large-event-image birthday-image"
-      ></div>
-
-      <div class="large-event-content">
-
-        <span>
-          जन्मदिन
-        </span>
-
-        <h2>
-          दादाजी का जन्मदिन
-        </h2>
-
-        <p>
-          5 March 2027 • Bhopal
-        </p>
-
-        <button>
-          कार्यक्रम देखें →
-        </button>
-
-      </div>
-
+    <div class="large-event-card">
+      <div class="large-event-image gathering-image"></div>
+      <div class="large-event-content"><span>GATHERING</span><h2>परिवार मिलन</h2><p>सभी के साथ एक यादगार मुलाकात।</p></div>
     </div>
-
-
   </div>
-
 </section>
 
-
-
-<!-- =====================================================
-     EVENT DETAIL
-===================================================== -->
-
-<section
-  id="event-detail"
-  class="page"
->
-
-
-  <div class="event-detail-hero">
-
-    <button
-      class="back-btn"
-      data-back="events"
-    >
-      ← वापस कार्यक्रमों पर
-    </button>
-
-
-    <div
-      id="event-detail-image"
-      class="event-detail-image"
-    ></div>
-
-
-    <div class="event-detail-heading">
-
-      <span>
-        FAMILY EVENT
-      </span>
-
-      <h1 id="event-detail-title">
-        कार्यक्रम
-      </h1>
-
-      <p id="event-detail-location">
-        Date • Location
-      </p>
-
-    </div>
-
-  </div>
-
-
-
-  <div class="event-detail-content">
-
-
-    <div class="profile-section">
-
-      <span class="eyebrow">
-        STORY
-      </span>
-
-      <h2>
-        इस कार्यक्रम के बारे में
-      </h2>
-
-      <p id="event-detail-description">
-        कार्यक्रम की जानकारी यहां दिखाई जाएगी।
-      </p>
-
-    </div>
-
-
-
-    <div class="profile-section">
-
-      <span class="eyebrow">
-        FAMILY MEMBERS
-      </span>
-
-      <h2>
-        शामिल परिवार सदस्य
-      </h2>
-
-      <div class="event-members">
-
-        <span>
-          👤 शर्मा परिवार
-        </span>
-
-        <span>
-          👤 वर्मा परिवार
-        </span>
-
-        <span>
-          👤 गुप्ता परिवार
-        </span>
-
-      </div>
-
-    </div>
-
-
-
-    <div class="profile-section">
-
-      <span class="eyebrow">
-        PHOTOS
-      </span>
-
-      <h2>
-        तस्वीरें
-      </h2>
-
-      <div class="event-gallery">
-
-        <div class="gallery-placeholder">
-          📷
-        </div>
-
-        <div class="gallery-placeholder">
-          📷
-        </div>
-
-        <div class="gallery-placeholder">
-          📷
-        </div>
-
-      </div>
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     SEARCH PAGE
-===================================================== -->
-
-<section
-  id="search"
-  class="page"
->
-
-
+<section id="search" class="page">
   <div class="inner-page-header">
-
-    <span class="eyebrow">
-      SEARCH • खोजें
-    </span>
-
-    <h1>
-      परिवार में खोजें
-    </h1>
-
-    <p>
-      किसी सदस्य का नाम या designation खोजें।
-    </p>
-
+    <span class="eyebrow">SEARCH • खोजें</span>
+    <h1>परिवार में खोजें</h1>
+    <p>किसी सार्वजनिक सदस्य का नाम खोजें।</p>
   </div>
-
-
-
   <div class="search-box-wrapper">
-
-    <div class="search-box">
-
-      🔎
-
-      <input
-        id="search-input"
-        type="search"
-        placeholder="नाम या designation खोजें..."
-        autocomplete="off"
-      >
-
-    </div>
-
+    <div class="search-box">🔎 <input id="search-input" type="search" placeholder="नाम या designation खोजें..." autocomplete="off"></div>
   </div>
-
-
-
-  <div
-    id="search-results"
-    class="search-results"
-  ></div>
-
-
+  <div id="search-results" class="search-results"></div>
 </section>
-
-
-
-<!-- =====================================================
-     LOGIN PAGE
-===================================================== -->
 
 <section id="login" class="page">
   <div class="login-container">
     <div class="login-card">
       <div class="login-icon">🔐</div>
+      <span class="eyebrow">PRIVATE FAMILY AREA</span>
       <h1>परिवार सदस्य लॉगिन</h1>
-      <p>Family Member Login<br>केवल अधिकृत परिवार के सदस्यों के लिए</p>
-      <form id="ghar-parivar-login-form">
+      <p>यह क्षेत्र केवल अधिकृत परिवार सदस्यों के लिए है।</p>
+      <form id="family-login-form">
         <label for="login-username">उपयोगकर्ता नाम / Username</label>
-        <input id="login-username" name="username" type="text" placeholder="Username" autocomplete="username" required>
+        <input id="login-username" type="text" autocomplete="username" placeholder="Username" required>
         <label for="login-password">पासवर्ड / Password</label>
-        <input id="login-password" name="password" type="password" placeholder="Password" autocomplete="current-password" required>
-        <button type="submit" class="primary-btn login-btn">लॉगिन करें / Login</button>
+        <input id="login-password" type="password" autocomplete="current-password" placeholder="Password" required>
+        <button id="login-submit" class="primary-btn login-btn" type="submit">लॉगिन करें</button>
+        <p id="login-message" class="login-message"></p>
       </form>
-      <p class="login-note">यह लॉगिन केवल अधिकृत परिवार के सदस्यों के लिए है।<br>This login is only for authorized family members.</p>
     </div>
   </div>
 </section>
 
-<!-- ADMIN DASHBOARD -->
-<section id="admin-dashboard" class="page">
-  <div class="dashboard">
-    <div class="dashboard-header">
-      <div><span class="eyebrow">ADMINISTRATION • प्रशासन</span><h1>एडमिन डैशबोर्ड</h1><p>Ghar Parivar को प्रबंधित करें<br>Manage families, members and events.</p></div>
-      <button class="outline-btn" type="button" onclick="gharParivarLogout()">लॉग आउट / Logout</button>
-    </div>
-    <div class="dashboard-grid">
-      <div class="dashboard-card"><span>👨‍👩‍👧‍👦</span><h3>परिवार प्रबंधित करें</h3><p>Manage families and family trees.</p></div>
-      <div class="dashboard-card"><span>👤</span><h3>सदस्य खाते</h3><p>Create and manage authorized family-member accounts.</p></div>
-      <div class="dashboard-card"><span>🔒</span><h3>निजी जानकारी</h3><p>Manage information visible only to authorized family members.</p></div>
-      <div class="dashboard-card"><span>🎉</span><h3>कार्यक्रम</h3><p>Add and manage family events and memories.</p></div>
-    </div>
-  </div>
-</section>
-
-<section
-  id="member-dashboard"
-  class="page"
->
-
-
-  <div class="dashboard">
-
-
-    <div class="dashboard-header">
-
+<section id="family-dashboard" class="page">
+  <div class="private-portal">
+    <div class="private-portal-header">
       <div>
-
-        <span class="eyebrow">
-          PRIVATE AREA
-        </span>
-
-        <h1 id="member-welcome-title">
-          परिवार डैशबोर्ड
-        </h1>
-
-        <p id="member-welcome-subtitle" style="color:var(--muted); margin-top:8px;">
-          लॉगिन सफल रहा। Welcome to your family area.
-        </p>
-
+        <span class="eyebrow">PRIVATE FAMILY PORTAL • निजी परिवार पोर्टल</span>
+        <h1>संपूर्ण परिवार</h1>
+        <p>यहाँ अधिकृत परिवार सदस्य परिवार की विस्तृत जानकारी देख सकते हैं।</p>
       </div>
-
-
-      <button
-        id="logout-button"
-        class="outline-btn"
-      >
-        लॉग आउट
-      </button>
-
+      <button class="outline-btn" id="logout-button">लॉग आउट / Logout</button>
     </div>
 
-
-
-    <div class="dashboard-grid">
-
-
-      <div class="dashboard-card">
-
-        <span>
-          👤
-        </span>
-
-        <h3>
-          मेरी प्रोफ़ाइल
-        </h3>
-
-        <p>
-          अपनी सार्वजनिक प्रोफ़ाइल
-          और उपलब्धियों को प्रबंधित करें।
-        </p>
-
-      </div>
-
-
-      <div class="dashboard-card">
-
-        <span>
-          🌳
-        </span>
-
-        <h3>
-          परिवार वृक्ष
-        </h3>
-
-        <p>
-          परिवार के रिश्तों और सदस्यों
-          की जानकारी देखें।
-        </p>
-
-      </div>
-
-
-      <div class="dashboard-card">
-
-        <span>
-          🏆
-        </span>
-
-        <h3>
-          उपलब्धियां
-        </h3>
-
-        <p>
-          परिवार के सदस्यों की उपलब्धियां
-          जोड़ने का स्थान।
-        </p>
-
-      </div>
-
-
-      <div class="dashboard-card">
-
-        <span>
-          📷
-        </span>
-
-        <h3>
-          पारिवारिक तस्वीरें
-        </h3>
-
-        <p>
-          भविष्य में परिवार की निजी
-          तस्वीरें सुरक्षित रूप से जोड़ें।
-        </p>
-
-      </div>
-
-
-      <div class="dashboard-card">
-
-        <span>
-          🎉
-        </span>
-
-        <h3>
-          कार्यक्रम जोड़ें
-        </h3>
-
-        <p>
-          नए पारिवारिक कार्यक्रम और
-          उनकी यादें जोड़ें।
-        </p>
-
-      </div>
-
-
-      <div class="dashboard-card">
-
-        <span>
-          🔒
-        </span>
-
-        <h3>
-          Privacy
-        </h3>
-
-        <p>
-          निजी जानकारी केवल अधिकृत
-          परिवार सदस्यों के लिए रखी जाएगी।
-        </p>
-
-      </div>
-
-
+    <div class="private-welcome-card">
+      <div class="private-welcome-icon">👋</div>
+      <div><span>स्वागत है / Welcome</span><h2 id="private-username">परिवार सदस्य</h2><p id="private-family-name">शर्मा परिवार</p></div>
     </div>
 
+    <div class="private-section-heading">
+      <div><span class="eyebrow">FAMILY MEMBERS • परिवार के सदस्य</span><h2>परिवार के सभी सदस्य</h2></div>
+      <span class="private-badge">🔒 PRIVATE</span>
+    </div>
+
+    <div id="private-family-members" class="private-family-grid"></div>
+
+    <div id="private-member-detail" class="private-member-detail" hidden>
+      <button class="back-btn" id="close-member">← वापस परिवार पर</button>
+      <div class="private-profile-card">
+        <div class="private-profile-top">
+          <div id="private-member-photo" class="private-member-photo">👤</div>
+          <div><span class="eyebrow">PRIVATE PROFILE • निजी प्रोफ़ाइल</span><h2 id="private-member-name"></h2><p id="private-member-designation"></p></div>
+        </div>
+        <div class="private-info-grid">
+          <div class="private-info-card"><span>📞</span><h3>संपर्क</h3><p id="private-member-phone">—</p></div>
+          <div class="private-info-card"><span>📧</span><h3>ईमेल</h3><p id="private-member-email">—</p></div>
+          <div class="private-info-card"><span>🎂</span><h3>जन्मदिन</h3><p id="private-member-birthday">—</p></div>
+          <div class="private-info-card"><span>🏠</span><h3>पता</h3><p id="private-member-address">—</p></div>
+          <div class="private-info-card"><span>🎓</span><h3>शिक्षा</h3><p id="private-member-education">—</p></div>
+          <div class="private-info-card"><span>💼</span><h3>व्यवसाय</h3><p id="private-member-profession">—</p></div>
+        </div>
+        <div class="private-long-section"><span class="eyebrow">BIOGRAPHY • परिचय</span><h3>विस्तृत परिचय</h3><p id="private-member-biography">—</p></div>
+        <div class="private-long-section"><span class="eyebrow">ACHIEVEMENTS • उपलब्धियां</span><h3>उपलब्धियां</h3><div id="private-member-achievements" class="private-achievements">—</div></div>
+        <div class="private-long-section"><span class="eyebrow">MEMORIES • यादें</span><h3>निजी पारिवारिक यादें</h3><div class="private-memories">📷<p>Private family memories will appear here.</p></div></div>
+      </div>
+    </div>
+
+    <div class="security-note">
+      <strong>🔒 Privacy note:</strong> यह अभी testing interface है। असली निजी family data को frontend code में नहीं रखा जाना चाहिए; उसे authenticated Render backend से लाना होगा।
+    </div>
   </div>
-
 </section>
-
 
 </main>
 
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
 <footer class="footer">
-
-
-  <div class="footer-brand">
-
-    <div class="footer-logo">
-      🏠
-    </div>
-
-    <h2>
-      घर परिवार
-    </h2>
-
-    <p>
-      GHAR PARIVAR
-    </p>
-
-    <span>
-      रिश्ते • यादें • विरासत
-    </span>
-
-  </div>
-
-
-
-  <div class="footer-links">
-
-    <h3>
-      Explore
-    </h3>
-
-    <a
-      href="#"
-      data-page="home"
-    >
-      होम
-    </a>
-
-    <a
-      href="#"
-      data-page="families"
-    >
-      परिवार
-    </a>
-
-    <a
-      href="#"
-      data-page="events"
-    >
-      कार्यक्रम
-    </a>
-
-    <a
-      href="#"
-      data-page="search"
-    >
-      खोजें
-    </a>
-
-  </div>
-
-
-
-  <div class="footer-note">
-
-    <h3>
-      हमारी गोपनीयता
-    </h3>
-
-    <p>
-      सार्वजनिक वेबसाइट पर मोबाइल नंबर
-      जैसी निजी जानकारी प्रदर्शित नहीं की जाएगी।
-    </p>
-
-  </div>
-
-
+  <div class="footer-brand"><div class="footer-logo">🏠</div><h2>GHAR PARIVAR</h2><p>रिश्ते • यादें • विरासत</p><span>एक डिजिटल परिवार घर।</span></div>
+  <div class="footer-links"><h3>Explore</h3><a href="#" data-page="home">होम</a><a href="#" data-page="families">परिवार</a><a href="#" data-page="events">कार्यक्रम</a><a href="#" data-page="search">खोजें</a></div>
+  <div class="footer-note"><h3>गोपनीयता</h3><p>सार्वजनिक वेबसाइट पर निजी संपर्क जानकारी प्रदर्शित नहीं की जाती।</p></div>
 </footer>
 
-
-
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
-<script
-  src="script.js"
-></script>
-
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const title = document.getElementById("member-welcome-title");
-    const subtitle = document.getElementById("member-welcome-subtitle");
+const API_BASE = "https://ghar-parivar-backend.onrender.com";
 
-    window.updateMemberDashboard = function(user) {
-      if (!user) return;
-      if (title) title.textContent = `नमस्ते, ${user.username} 👋`;
-      if (subtitle) {
-        subtitle.textContent = user.family_id
-          ? `Family: ${user.family_id} • Family Member / परिवार सदस्य`
-          : "Family Member / परिवार सदस्य";
-      }
-    };
+const publicMembers = [
+  {name:"श्री राजेंद्र शर्मा", designation:"परिवार के वरिष्ठ सदस्य", family:"शर्मा परिवार"},
+  {name:"श्रीमती सुनीता शर्मा", designation:"परिवार की वरिष्ठ सदस्य", family:"शर्मा परिवार"},
+  {name:"श्री अमित शर्मा", designation:"व्यवसायी", family:"शर्मा परिवार"},
+  {name:"श्रीमती नेहा शर्मा", designation:"शिक्षिका", family:"शर्मा परिवार"},
+  {name:"राहुल वर्मा", designation:"इंजीनियर", family:"वर्मा परिवार"},
+  {name:"पूजा वर्मा", designation:"डॉक्टर", family:"वर्मा परिवार"},
+  {name:"रोहित गुप्ता", designation:"चार्टर्ड अकाउंटेंट", family:"गुप्ता परिवार"},
+  {name:"रिया गुप्ता", designation:"विद्यार्थी", family:"गुप्ता परिवार"}
+];
+
+const testPrivateMembers = [
+  {name:"श्री राजेंद्र शर्मा", designation:"परिवार के वरिष्ठ सदस्य", phone:"Private test contact", email:"rajendra@example.test", birthday:"12 March", address:"Private family address", education:"स्नातक", profession:"समाज सेवा", biography:"यह testing profile है। वास्तविक जानकारी backend से आएगी।", achievements:"समाज सेवा में 30 वर्षों का योगदान।", icon:"👴"},
+  {name:"श्रीमती सुनीता शर्मा", designation:"परिवार की वरिष्ठ सदस्य", phone:"Private test contact", email:"sunita@example.test", birthday:"8 July", address:"Private family address", education:"स्नातक", profession:"सामाजिक गतिविधियां", biography:"यह testing profile है। वास्तविक जानकारी backend से आएगी।", achievements:"परिवार और सामाजिक गतिविधियों में सक्रिय योगदान।", icon:"👵"},
+  {name:"श्री अमित शर्मा", designation:"व्यवसायी", phone:"Private test contact", email:"amit@example.test", birthday:"21 January", address:"Private family address", education:"MBA", profession:"Business Professional", biography:"यह testing profile है। वास्तविक जानकारी backend से आएगी।", achievements:"सफल व्यवसाय और सामाजिक कार्यों में योगदान।", icon:"👨"},
+  {name:"श्रीमती नेहा शर्मा", designation:"शिक्षिका", phone:"Private test contact", email:"neha@example.test", birthday:"4 November", address:"Private family address", education:"M.Ed.", profession:"Teacher", biography:"यह testing profile है। वास्तविक जानकारी backend से आएगी।", achievements:"शिक्षा के क्षेत्र में उत्कृष्ट योगदान।", icon:"👩"},
+  {name:"आरव शर्मा", designation:"विद्यार्थी", phone:"Private test contact", email:"aarav@example.test", birthday:"18 May", address:"Private family address", education:"School", profession:"Student", biography:"यह testing profile है। वास्तविक जानकारी backend से आएगी।", achievements:"विद्यालय स्तर की विभिन्न प्रतियोगिताओं में भागीदारी।", icon:"👦"},
+  {name:"अनाया शर्मा", designation:"विद्यार्थी", phone:"Private test contact", email:"anaya@example.test", birthday:"29 September", address:"Private family address", education:"School", profession:"Student", biography:"यह testing profile है। वास्तविक जानकारी backend से आएगी।", achievements:"कला और रचनात्मक गतिविधियों में रुचि।", icon:"👧"}
+];
+
+const pages = document.querySelectorAll(".page");
+function showPage(id){
+  pages.forEach(p=>p.classList.remove("active"));
+  const target=document.getElementById(id);
+  if(target) target.classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
+  document.querySelector(".mobile-menu")?.classList.remove("open");
+  if(id==="family-dashboard") renderPrivateMembers();
+}
+window.showPage=showPage;
+
+document.querySelectorAll("[data-page]").forEach(el=>{
+  el.addEventListener("click",e=>{
+    e.preventDefault();
+    showPage(el.dataset.page);
   });
-</script>
-
-
-<!-- =====================================================
-     EXTRA NAVIGATION CONNECTION
-===================================================== -->
-
-<script>
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  /*
-    Connect every element with data-page
-    to the page navigation system.
-  */
-
-  document
-    .querySelectorAll("[data-page]")
-    .forEach(element => {
-
-      element.addEventListener(
-        "click",
-        event => {
-
-          event.preventDefault();
-
-          const page =
-            element.getAttribute("data-page");
-
-          if (
-            typeof window.showPage ===
-            "function"
-          ) {
-
-            window.showPage(page);
-
-          }
-
-        }
-      );
-
-    });
-
-
-  /*
-    Family login link is intentionally
-    available from the mobile menu.
-  */
-
-  document
-    .querySelectorAll(
-      '[data-page="login"]'
-    )
-    .forEach(element => {
-
-      element.addEventListener(
-        "click",
-        event => {
-
-          event.preventDefault();
-
-          if (
-            typeof window.showPage ===
-            "function"
-          ) {
-
-            window.showPage("login");
-
-          }
-
-        }
-      );
-
-    });
-
 });
 
+document.querySelector(".mobile-menu-btn")?.addEventListener("click",()=>{
+  document.querySelector(".mobile-menu").classList.toggle("open");
+});
+
+let currentSlide=0;
+const slides=document.querySelectorAll(".slide");
+const dots=document.querySelectorAll(".dot");
+function displaySlide(i){
+  currentSlide=(i+slides.length)%slides.length;
+  slides.forEach(s=>s.classList.remove("active-slide"));
+  dots.forEach(d=>d.classList.remove("active-dot"));
+  slides[currentSlide].classList.add("active-slide");
+  dots[currentSlide]?.classList.add("active-dot");
+}
+document.querySelector(".slide-arrow.previous")?.addEventListener("click",()=>displaySlide(currentSlide-1));
+document.querySelector(".slide-arrow.next")?.addEventListener("click",()=>displaySlide(currentSlide+1));
+dots.forEach((d,i)=>d.addEventListener("click",()=>displaySlide(i)));
+setInterval(()=>displaySlide(currentSlide+1),6000);
+
+function showPublicFamily(name){
+  const box=document.getElementById("public-family-result");
+  const familyName=name==="sharma"?"शर्मा परिवार":name==="verma"?"वर्मा परिवार":"गुप्ता परिवार";
+  box.innerHTML=`<div class="public-family-card"><span class="eyebrow">PUBLIC PROFILE</span><h2>${familyName}</h2><p>सार्वजनिक जानकारी यहाँ दिखाई जाती है। निजी जानकारी के लिए अधिकृत परिवार लॉगिन आवश्यक है।</p><button class="primary-btn" onclick="showPage('login')">🔐 निजी परिवार क्षेत्र खोलें</button></div>`;
+  box.scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+document.getElementById("search-input")?.addEventListener("input",e=>{
+  const q=e.target.value.trim().toLowerCase();
+  const box=document.getElementById("search-results");
+  if(!q){box.innerHTML="";return;}
+  const results=publicMembers.filter(m=>(m.name+" "+m.designation+" "+m.family).toLowerCase().includes(q));
+  box.innerHTML=results.length?results.map(m=>`<div class="search-result"><div class="search-result-avatar">👤</div><div><h3>${m.name}</h3><p>${m.designation} • ${m.family}</p></div></div>`).join(""):`<p class="no-results">कोई सदस्य नहीं मिला।</p>`;
+});
+
+function renderPrivateMembers(){
+  const box=document.getElementById("private-family-members");
+  box.innerHTML=testPrivateMembers.map((m,i)=>`
+    <button class="private-family-card" onclick="openPrivateMember(${i})">
+      <div class="private-family-card-top"><div class="private-family-avatar">${m.icon}</div><div><h3>${m.name}</h3><p>${m.designation}</p></div></div>
+      <div class="private-family-card-footer"><span>🔒 PRIVATE PROFILE</span><span>→</span></div>
+    </button>`).join("");
+}
+function openPrivateMember(i){
+  const m=testPrivateMembers[i];
+  document.getElementById("private-member-detail").hidden=false;
+  document.getElementById("private-family-members").style.display="none";
+  document.getElementById("private-member-name").textContent=m.name;
+  document.getElementById("private-member-designation").textContent=m.designation;
+  document.getElementById("private-member-photo").textContent=m.icon;
+  document.getElementById("private-member-phone").textContent=m.phone;
+  document.getElementById("private-member-email").textContent=m.email;
+  document.getElementById("private-member-birthday").textContent=m.birthday;
+  document.getElementById("private-member-address").textContent=m.address;
+  document.getElementById("private-member-education").textContent=m.education;
+  document.getElementById("private-member-profession").textContent=m.profession;
+  document.getElementById("private-member-biography").textContent=m.biography;
+  document.getElementById("private-member-achievements").textContent=m.achievements;
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+document.getElementById("close-member")?.addEventListener("click",()=>{
+  document.getElementById("private-member-detail").hidden=true;
+  document.getElementById("private-family-members").style.display="";
+});
+
+function setLoginMessage(text,ok=false){
+  const el=document.getElementById("login-message");
+  el.textContent=text;
+  el.className="login-message "+(ok?"success":"error");
+}
+
+document.getElementById("family-login-form").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const username=document.getElementById("login-username").value.trim();
+  const password=document.getElementById("login-password").value;
+  const btn=document.getElementById("login-submit");
+  btn.disabled=true;
+  btn.textContent="लॉगिन हो रहा है...";
+  setLoginMessage("");
+
+  try{
+    const response=await fetch(API_BASE+"/login",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({username,password})
+    });
+    let data={};
+    try{data=await response.json();}catch(_){}
+    if(!response.ok){
+      throw new Error(data.detail||data.message||"Invalid username or password");
+    }
+
+    sessionStorage.setItem("gharParivarUsername",username);
+    sessionStorage.setItem("gharParivarLoggedIn","true");
+
+    document.getElementById("private-username").textContent=username;
+    document.getElementById("private-family-name").textContent="शर्मा परिवार • Authorized Family Member";
+    setLoginMessage("Login successful. निजी परिवार क्षेत्र खुल रहा है...",true);
+    setTimeout(()=>showPage("family-dashboard"),350);
+  }catch(err){
+    setLoginMessage(err.message||"Invalid username or password");
+  }finally{
+    btn.disabled=false;
+    btn.textContent="लॉगिन करें";
+  }
+});
+
+document.getElementById("logout-button").addEventListener("click",()=>{
+  sessionStorage.removeItem("gharParivarUsername");
+  sessionStorage.removeItem("gharParivarLoggedIn");
+  document.getElementById("private-member-detail").hidden=true;
+  document.getElementById("private-family-members").style.display="";
+  showPage("home");
+});
+
+window.addEventListener("DOMContentLoaded",()=>{
+  const u=sessionStorage.getItem("gharParivarUsername");
+  if(u){
+    document.getElementById("private-username").textContent=u;
+  }
+});
 </script>
-
-
 </body>
-
 </html>
