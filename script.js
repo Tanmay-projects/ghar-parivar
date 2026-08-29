@@ -1,24 +1,21 @@
-/* =========================================================
-   GHAR PARIVAR — WEBSITE FUNCTIONALITY
-   ========================================================= */
+document.addEventListener("DOMContentLoaded", function () {
 
-document.addEventListener("DOMContentLoaded", () => {
-
-  /* =======================================================
+  /* =========================
      PAGE NAVIGATION
-     ======================================================= */
+  ========================= */
 
   const pages = document.querySelectorAll(".page");
 
-  function showPage(pageId) {
-    pages.forEach(page => {
+  window.showPage = function (pageId) {
+
+    pages.forEach(function (page) {
       page.classList.remove("active");
     });
 
-    const target = document.getElementById(pageId);
+    const page = document.getElementById(pageId);
 
-    if (target) {
-      target.classList.add("active");
+    if (page) {
+      page.classList.add("active");
     }
 
     window.scrollTo({
@@ -27,197 +24,112 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     closeMobileMenu();
-  }
-
-  window.showPage = showPage;
+  };
 
 
-  /* =======================================================
-     NAVIGATION LINKS
-     ======================================================= */
+  /* =========================
+     ALL PAGE BUTTONS / LINKS
+  ========================= */
 
-  document.querySelectorAll("[data-page]").forEach(link => {
+  document.querySelectorAll("[data-page]").forEach(function (element) {
 
-    link.addEventListener("click", event => {
+    element.addEventListener("click", function (event) {
 
       event.preventDefault();
 
-      const page = link.getAttribute("data-page");
+      const pageId = element.getAttribute("data-page");
 
-      showPage(page);
+      if (pageId) {
+        window.showPage(pageId);
+      }
 
     });
 
   });
 
 
-  /* =======================================================
+  /* =========================
      MOBILE MENU
-     ======================================================= */
+  ========================= */
 
-  const mobileMenuButton =
+  const menuButton =
     document.querySelector(".mobile-menu-btn");
 
   const mobileMenu =
     document.querySelector(".mobile-menu");
 
   function closeMobileMenu() {
-
     if (mobileMenu) {
       mobileMenu.classList.remove("open");
     }
-
   }
 
-  if (mobileMenuButton) {
+  if (menuButton && mobileMenu) {
 
-    mobileMenuButton.addEventListener("click", () => {
-
+    menuButton.addEventListener("click", function () {
       mobileMenu.classList.toggle("open");
-
     });
 
   }
 
 
-  /* =======================================================
-     LANGUAGE SYSTEM
-     ======================================================= */
+  /* =========================
+     LANGUAGE
+  ========================= */
 
   let currentLanguage = "hi";
-
-  const translations = {
-
-    hi: {
-
-      home: "होम",
-      families: "परिवार",
-      events: "कार्यक्रम",
-      search: "खोजें",
-
-      welcome: "हमारे परिवार में आपका स्वागत है",
-
-      familyTitle: "परिवार",
-      familyDescription:
-        "हमारे परिवारों की कहानियां, रिश्ते और यादें एक जगह।",
-
-      eventsTitle: "कार्यक्रम",
-      eventsDescription:
-        "परिवार के खास अवसरों और यादगार पलों को देखें।",
-
-      explore: "देखें",
-
-      login: "परिवार सदस्य लॉगिन",
-
-      achievements: "उपलब्धियां",
-
-      familyTree: "परिवार वृक्ष",
-
-      biography: "परिचय",
-
-      memories: "यादें",
-
-      logout: "लॉग आउट"
-
-    },
-
-    en: {
-
-      home: "Home",
-      families: "Families",
-      events: "Events",
-      search: "Search",
-
-      welcome: "Welcome to Our Family",
-
-      familyTitle: "Families",
-      familyDescription:
-        "Discover our family stories, relationships and memories in one place.",
-
-      eventsTitle: "Events",
-      eventsDescription:
-        "Explore special occasions and memorable family moments.",
-
-      explore: "Explore",
-
-      login: "Family Member Login",
-
-      achievements: "Achievements",
-
-      familyTree: "Family Tree",
-
-      biography: "Biography",
-
-      memories: "Memories",
-
-      logout: "Logout"
-
-    }
-
-  };
-
 
   function updateLanguage(language) {
 
     currentLanguage = language;
 
-    document.documentElement.lang =
-      language === "hi" ? "hi" : "en";
+    document.querySelectorAll("[data-hi]").forEach(function (element) {
 
-    document
-      .querySelectorAll("[data-hi]")
-      .forEach(element => {
+      const hindi = element.getAttribute("data-hi");
+      const english = element.getAttribute("data-en");
 
-        const hindi =
-          element.getAttribute("data-hi");
+      element.textContent =
+        language === "hi" ? hindi : english;
 
-        const english =
-          element.getAttribute("data-en");
+    });
 
-        element.textContent =
-          language === "hi"
-            ? hindi
-            : english;
-
-      });
-
-    document
-      .querySelectorAll(".language-switcher button")
-      .forEach(button => {
+    document.querySelectorAll(".language-switcher button")
+      .forEach(function (button) {
 
         button.classList.remove("active");
 
-        if (
-          button.dataset.language === language
-        ) {
-
+        if (button.dataset.language === language) {
           button.classList.add("active");
-
         }
 
       });
 
+    if (selectedFamily) {
+      renderFamily();
+    }
+
+    if (selectedMember) {
+      renderMember();
+    }
+
   }
 
+  document.querySelectorAll(
+    ".language-switcher button"
+  ).forEach(function (button) {
 
-  document
-    .querySelectorAll(".language-switcher button")
-    .forEach(button => {
+    button.addEventListener("click", function () {
 
-      button.addEventListener("click", () => {
-
-        updateLanguage(
-          button.dataset.language
-        );
-
-      });
+      updateLanguage(button.dataset.language);
 
     });
 
+  });
 
-  /* =======================================================
-     HERO SLIDER
-     ======================================================= */
+
+  /* =========================
+     SLIDESHOW
+  ========================= */
 
   const slides =
     document.querySelectorAll(".slide");
@@ -225,104 +137,82 @@ document.addEventListener("DOMContentLoaded", () => {
   const dots =
     document.querySelectorAll(".dot");
 
-  let currentSlide = 0;
+  const previous =
+    document.querySelector(".slide-arrow.previous");
 
-  function displaySlide(index) {
+  const next =
+    document.querySelector(".slide-arrow.next");
+
+  let slideIndex = 0;
+
+  function showSlide(index) {
 
     if (!slides.length) return;
 
-    currentSlide =
-      (index + slides.length) %
-      slides.length;
+    slideIndex =
+      (index + slides.length) % slides.length;
 
-    slides.forEach(slide => {
-
-      slide.classList.remove(
-        "active-slide"
-      );
-
+    slides.forEach(function (slide) {
+      slide.classList.remove("active-slide");
     });
 
-    dots.forEach(dot => {
-
-      dot.classList.remove(
-        "active-dot"
-      );
-
+    dots.forEach(function (dot) {
+      dot.classList.remove("active-dot");
     });
 
-    slides[currentSlide]
+    slides[slideIndex]
       .classList.add("active-slide");
 
-    if (dots[currentSlide]) {
-
-      dots[currentSlide]
+    if (dots[slideIndex]) {
+      dots[slideIndex]
         .classList.add("active-dot");
-
     }
 
   }
 
+  if (previous) {
 
-  const previousButton =
-    document.querySelector(".slide-arrow.previous");
-
-  const nextButton =
-    document.querySelector(".slide-arrow.next");
-
-
-  if (previousButton) {
-
-    previousButton.addEventListener(
-      "click",
-      () => displaySlide(currentSlide - 1)
-    );
+    previous.addEventListener("click", function () {
+      showSlide(slideIndex - 1);
+    });
 
   }
 
+  if (next) {
 
-  if (nextButton) {
-
-    nextButton.addEventListener(
-      "click",
-      () => displaySlide(currentSlide + 1)
-    );
+    next.addEventListener("click", function () {
+      showSlide(slideIndex + 1);
+    });
 
   }
 
+  dots.forEach(function (dot, index) {
 
-  dots.forEach((dot, index) => {
-
-    dot.addEventListener("click", () => {
-
-      displaySlide(index);
-
+    dot.addEventListener("click", function () {
+      showSlide(index);
     });
 
   });
 
+  showSlide(0);
 
   if (slides.length > 1) {
 
-    setInterval(() => {
-
-      displaySlide(currentSlide + 1);
-
-    }, 6000);
+    setInterval(function () {
+      showSlide(slideIndex + 1);
+    }, 5000);
 
   }
 
 
-  /* =======================================================
+  /* =========================
      FAMILY DATA
-     ======================================================= */
+  ========================= */
 
   const families = {
 
     family1: {
-
       nameHi: "शर्मा परिवार",
-
       nameEn: "Sharma Family",
 
       descriptionHi:
@@ -334,14 +224,11 @@ document.addEventListener("DOMContentLoaded", () => {
       members: [
 
         {
-          id: "rajendra-sharma",
-
+          id: "rajendra",
           nameHi: "श्री राजेंद्र शर्मा",
-
           nameEn: "Mr. Rajendra Sharma",
 
           designationHi: "परिवार के वरिष्ठ सदस्य",
-
           designationEn: "Senior Family Member",
 
           generation: "grandparent",
@@ -351,18 +238,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
           achievementEn:
             "30 years of contribution to social service."
-
         },
 
         {
-          id: "sunita-sharma",
-
+          id: "sunita",
           nameHi: "श्रीमती सुनीता शर्मा",
-
           nameEn: "Mrs. Sunita Sharma",
 
           designationHi: "परिवार की वरिष्ठ सदस्य",
-
           designationEn: "Senior Family Member",
 
           generation: "grandparent",
@@ -372,18 +255,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
           achievementEn:
             "Active contribution to family and social activities."
-
         },
 
         {
-          id: "amit-sharma",
-
+          id: "amit",
           nameHi: "श्री अमित शर्मा",
-
           nameEn: "Mr. Amit Sharma",
 
           designationHi: "व्यवसायी",
-
           designationEn: "Business Professional",
 
           generation: "parent",
@@ -393,18 +272,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
           achievementEn:
             "Runs a successful business and contributes to social initiatives."
-
         },
 
         {
-          id: "neha-sharma",
-
+          id: "neha",
           nameHi: "श्रीमती नेहा शर्मा",
-
           nameEn: "Mrs. Neha Sharma",
 
           designationHi: "शिक्षिका",
-
           designationEn: "Teacher",
 
           generation: "parent",
@@ -414,18 +289,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
           achievementEn:
             "Outstanding contribution to education."
-
         },
 
         {
-          id: "aarav-sharma",
-
+          id: "aarav",
           nameHi: "आरव शर्मा",
-
           nameEn: "Aarav Sharma",
 
           designationHi: "विद्यार्थी",
-
           designationEn: "Student",
 
           generation: "child",
@@ -435,18 +306,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
           achievementEn:
             "Participation in several school-level competitions."
-
         },
 
         {
-          id: "anaya-sharma",
-
+          id: "anaya",
           nameHi: "अनाया शर्मा",
-
           nameEn: "Anaya Sharma",
 
           designationHi: "विद्यार्थी",
-
           designationEn: "Student",
 
           generation: "child",
@@ -456,18 +323,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
           achievementEn:
             "Interested in art and creative activities."
-
         }
 
       ]
-
     },
 
 
     family2: {
 
       nameHi: "वर्मा परिवार",
-
       nameEn: "Verma Family",
 
       descriptionHi:
@@ -479,14 +343,11 @@ document.addEventListener("DOMContentLoaded", () => {
       members: [
 
         {
-          id: "mohan-verma",
-
+          id: "mohan",
           nameHi: "श्री मोहन वर्मा",
-
           nameEn: "Mr. Mohan Verma",
 
           designationHi: "सेवानिवृत्त अधिकारी",
-
           designationEn: "Retired Officer",
 
           generation: "grandparent",
@@ -496,18 +357,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
           achievementEn:
             "Extensive experience in public service."
-
         },
 
         {
-          id: "kavita-verma",
-
+          id: "kavita",
           nameHi: "श्रीमती कविता वर्मा",
-
           nameEn: "Mrs. Kavita Verma",
 
           designationHi: "सामाजिक कार्यकर्ता",
-
           designationEn: "Social Worker",
 
           generation: "grandparent",
@@ -517,18 +374,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
           achievementEn:
             "Active contribution to community programs."
-
         },
 
         {
-          id: "rahul-verma",
-
+          id: "rahul",
           nameHi: "राहुल वर्मा",
-
           nameEn: "Rahul Verma",
 
           designationHi: "इंजीनियर",
-
           designationEn: "Engineer",
 
           generation: "parent",
@@ -538,18 +391,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
           achievementEn:
             "Excellent work in the technology sector."
-
         },
 
         {
-          id: "pooja-verma",
-
+          id: "pooja",
           nameHi: "पूजा वर्मा",
-
           nameEn: "Pooja Verma",
 
           designationHi: "डॉक्टर",
-
           designationEn: "Doctor",
 
           generation: "parent",
@@ -559,18 +408,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
           achievementEn:
             "Contribution to healthcare."
-
         },
 
         {
-          id: "vivaan-verma",
-
+          id: "vivaan",
           nameHi: "विवान वर्मा",
-
           nameEn: "Vivaan Verma",
 
           designationHi: "विद्यार्थी",
-
           designationEn: "Student",
 
           generation: "child",
@@ -580,18 +425,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
           achievementEn:
             "Achievements in sports competitions."
-
         }
 
       ]
-
     },
 
 
     family3: {
 
       nameHi: "गुप्ता परिवार",
-
       nameEn: "Gupta Family",
 
       descriptionHi:
@@ -603,14 +445,11 @@ document.addEventListener("DOMContentLoaded", () => {
       members: [
 
         {
-          id: "suresh-gupta",
-
+          id: "suresh",
           nameHi: "श्री सुरेश गुप्ता",
-
           nameEn: "Mr. Suresh Gupta",
 
           designationHi: "व्यवसायी",
-
           designationEn: "Business Owner",
 
           generation: "grandparent",
@@ -620,18 +459,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
           achievementEn:
             "Contribution to business and social service."
-
         },
 
         {
-          id: "meena-gupta",
-
+          id: "meena",
           nameHi: "श्रीमती मीना गुप्ता",
-
           nameEn: "Mrs. Meena Gupta",
 
           designationHi: "गृहिणी एवं सामाजिक कार्यकर्ता",
-
           designationEn: "Homemaker & Social Worker",
 
           generation: "grandparent",
@@ -641,18 +476,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
           achievementEn:
             "Contribution to local social programs."
-
         },
 
         {
-          id: "rohit-gupta",
-
+          id: "rohit",
           nameHi: "रोहित गुप्ता",
-
           nameEn: "Rohit Gupta",
 
           designationHi: "चार्टर्ड अकाउंटेंट",
-
           designationEn: "Chartered Accountant",
 
           generation: "parent",
@@ -662,18 +493,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
           achievementEn:
             "Professional achievements in finance."
-
         },
 
         {
-          id: "riya-gupta",
-
+          id: "riya",
           nameHi: "रिया गुप्ता",
-
           nameEn: "Riya Gupta",
 
           designationHi: "विद्यार्थी",
-
           designationEn: "Student",
 
           generation: "child",
@@ -683,249 +510,208 @@ document.addEventListener("DOMContentLoaded", () => {
 
           achievementEn:
             "Participation in academic and cultural activities."
-
         }
 
       ]
-
     }
 
   };
 
 
-  /* =======================================================
-     CURRENT FAMILY
-     ======================================================= */
-
   let selectedFamily = null;
-
   let selectedMember = null;
 
 
-  /* =======================================================
-     OPEN FAMILY
-     ======================================================= */
+  /* =========================
+     FAMILY PAGE
+  ========================= */
 
-  window.openFamily = function(familyId) {
+  window.openFamily = function (familyId) {
 
-    selectedFamily =
-      families[familyId];
+    const family = families[familyId];
 
-    if (!selectedFamily) return;
+    if (!family) return;
 
-    renderFamilyPage();
+    selectedFamily = family;
 
-    showPage("family-detail");
+    renderFamily();
+
+    window.showPage("family-detail");
 
   };
 
 
-  function renderFamilyPage() {
+  function renderFamily() {
 
-    const family =
-      selectedFamily;
+    if (!selectedFamily) return;
 
     const title =
-      document.getElementById("family-detail-title");
+      document.getElementById(
+        "family-detail-title"
+      );
 
     const description =
       document.getElementById(
         "family-detail-description"
       );
 
-    if (!title || !description) return;
+    if (title) {
 
-    title.textContent =
-      currentLanguage === "hi"
-        ? family.nameHi
-        : family.nameEn;
+      title.textContent =
+        currentLanguage === "hi"
+          ? selectedFamily.nameHi
+          : selectedFamily.nameEn;
 
-    description.textContent =
-      currentLanguage === "hi"
-        ? family.descriptionHi
-        : family.descriptionEn;
+    }
 
+    if (description) {
 
-    renderMembers(
-      family.members
-    );
+      description.textContent =
+        currentLanguage === "hi"
+          ? selectedFamily.descriptionHi
+          : selectedFamily.descriptionEn;
+
+    }
+
+    renderMembers();
 
   }
 
 
-  function renderMembers(members) {
+  /* =========================
+     FAMILY TREE
+  ========================= */
+
+  function renderMembers() {
 
     const container =
       document.getElementById(
         "family-tree-members"
       );
 
-    if (!container) return;
+    if (!container || !selectedFamily)
+      return;
 
     container.innerHTML = "";
 
     const generations = [
-
       "grandparent",
       "parent",
       "child"
-
     ];
 
+    generations.forEach(function (generation) {
 
-    generations.forEach(
-      generation => {
-
-        const membersInGeneration =
-          members.filter(
-            member =>
-              member.generation === generation
-          );
-
-        if (!membersInGeneration.length)
-          return;
-
-
-        const generationContainer =
-          document.createElement("div");
-
-        generationContainer.className =
-          "tree-generation";
-
-
-        membersInGeneration.forEach(
-          member => {
-
-            const card =
-              document.createElement("div");
-
-            card.className =
-              "member-card";
-
-
-            const name =
-              currentLanguage === "hi"
-                ? member.nameHi
-                : member.nameEn;
-
-            const designation =
-              currentLanguage === "hi"
-                ? member.designationHi
-                : member.designationEn;
-
-
-            card.innerHTML = `
-
-              <div class="member-photo"></div>
-
-              <h3>${name}</h3>
-
-              <span>${designation}</span>
-
-            `;
-
-
-            card.addEventListener(
-              "click",
-              () => {
-
-                openMember(
-                  member.id
-                );
-
-              }
-            );
-
-
-            generationContainer.appendChild(
-              card
-            );
-
+      const members =
+        selectedFamily.members.filter(
+          function (member) {
+            return member.generation === generation;
           }
         );
 
+      if (!members.length) return;
 
-        container.appendChild(
-          generationContainer
-        );
+      const row =
+        document.createElement("div");
 
+      row.className = "tree-generation";
 
-        if (
-          generation !==
-          "child"
-        ) {
+      members.forEach(function (member) {
 
-          const connector =
-            document.createElement("div");
+        const card =
+          document.createElement("div");
 
-          connector.className =
-            "tree-connector";
+        card.className = "member-card";
 
-          container.appendChild(
-            connector
-          );
+        const name =
+          currentLanguage === "hi"
+            ? member.nameHi
+            : member.nameEn;
 
-        }
+        const designation =
+          currentLanguage === "hi"
+            ? member.designationHi
+            : member.designationEn;
+
+        card.innerHTML = `
+          <div class="member-photo"></div>
+          <h3>${name}</h3>
+          <span>${designation}</span>
+        `;
+
+        card.addEventListener("click", function () {
+          openMember(member.id);
+        });
+
+        row.appendChild(card);
+
+      });
+
+      container.appendChild(row);
+
+      if (generation !== "child") {
+
+        const connector =
+          document.createElement("div");
+
+        connector.className = "tree-connector";
+
+        container.appendChild(connector);
 
       }
-    );
+
+    });
 
   }
 
 
-  /* =======================================================
-     OPEN MEMBER PROFILE
-     ======================================================= */
+  /* =========================
+     MEMBER PROFILE
+  ========================= */
 
-  window.openMember = function(memberId) {
+  window.openMember = function (memberId) {
 
-    if (!selectedFamily)
-      return;
+    if (!selectedFamily) return;
 
-
-    selectedMember =
+    const member =
       selectedFamily.members.find(
-        member =>
-          member.id === memberId
+        function (item) {
+          return item.id === memberId;
+        }
       );
 
+    if (!member) return;
 
-    if (!selectedMember)
-      return;
+    selectedMember = member;
 
+    renderMember();
 
-    renderMemberProfile();
-
-    showPage("member-profile");
+    window.showPage("member-profile");
 
   };
 
 
-  function renderMemberProfile() {
+  function renderMember() {
 
-    const member =
-      selectedMember;
+    if (!selectedMember) return;
 
     const name =
       currentLanguage === "hi"
-        ? member.nameHi
-        : member.nameEn;
+        ? selectedMember.nameHi
+        : selectedMember.nameEn;
 
     const designation =
       currentLanguage === "hi"
-        ? member.designationHi
-        : member.designationEn;
+        ? selectedMember.designationHi
+        : selectedMember.designationEn;
 
     const achievement =
       currentLanguage === "hi"
-        ? member.achievementHi
-        : member.achievementEn;
-
+        ? selectedMember.achievementHi
+        : selectedMember.achievementEn;
 
     const profileName =
-      document.getElementById(
-        "profile-name"
-      );
+      document.getElementById("profile-name");
 
     const profileDesignation =
       document.getElementById(
@@ -937,10 +723,8 @@ document.addEventListener("DOMContentLoaded", () => {
         "profile-achievement"
       );
 
-
     if (profileName)
-      profileName.textContent =
-        name;
+      profileName.textContent = name;
 
     if (profileDesignation)
       profileDesignation.textContent =
@@ -953,48 +737,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* =======================================================
-     BACK BUTTONS
-     ======================================================= */
-
-  document
-    .querySelectorAll("[data-back]")
-    .forEach(button => {
-
-      button.addEventListener(
-        "click",
-        () => {
-
-          const destination =
-            button.dataset.back;
-
-          showPage(destination);
-
-        }
-      );
-
-    });
-
-
-  /* =======================================================
+  /* =========================
      EVENTS
-     ======================================================= */
+  ========================= */
 
   const events = [
 
     {
       id: 1,
-
       category: "celebration",
 
       titleHi: "शर्मा परिवार विवाह समारोह",
-
       titleEn: "Sharma Family Wedding",
 
       date: "15 December 2026",
 
       locationHi: "इंदौर",
-
       locationEn: "Indore",
 
       descriptionHi:
@@ -1005,22 +763,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
       image:
         "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85"
-
     },
 
     {
       id: 2,
-
       category: "travel",
 
       titleHi: "परिवार यात्रा",
-
       titleEn: "Family Trip",
 
       date: "20 January 2027",
 
       locationHi: "गोवा",
-
       locationEn: "Goa",
 
       descriptionHi:
@@ -1031,22 +785,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
       image:
         "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=85"
-
     },
 
     {
       id: 3,
-
       category: "festival",
 
       titleHi: "दीपावली मिलन",
-
       titleEn: "Diwali Family Gathering",
 
       date: "8 November 2026",
 
       locationHi: "परिवार निवास",
-
       locationEn: "Family Residence",
 
       descriptionHi:
@@ -1057,22 +807,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
       image:
         "https://images.unsplash.com/photo-1604608672516-f1b9d0a3f5ef?auto=format&fit=crop&w=1200&q=85"
-
     },
 
     {
       id: 4,
-
       category: "birthday",
 
       titleHi: "दादाजी का जन्मदिन",
-
       titleEn: "Grandfather's Birthday",
 
       date: "5 March 2027",
 
       locationHi: "भोपाल",
-
       locationEn: "Bhopal",
 
       descriptionHi:
@@ -1083,22 +829,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
       image:
         "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=1200&q=85"
-
     }
 
   ];
 
 
-  window.openEvent = function(eventId) {
+  window.openEvent = function (eventId) {
 
     const event =
-      events.find(
-        item => item.id === eventId
-      );
+      events.find(function (item) {
+        return item.id === eventId;
+      });
 
-    if (!event)
-      return;
-
+    if (!event) return;
 
     const title =
       currentLanguage === "hi"
@@ -1115,172 +858,157 @@ document.addEventListener("DOMContentLoaded", () => {
         ? event.descriptionHi
         : event.descriptionEn;
 
-
-    const eventTitle =
+    const titleElement =
       document.getElementById(
         "event-detail-title"
       );
 
-    const eventLocation =
+    const locationElement =
       document.getElementById(
         "event-detail-location"
       );
 
-    const eventDescription =
+    const descriptionElement =
       document.getElementById(
         "event-detail-description"
       );
 
-    const eventImage =
+    const imageElement =
       document.getElementById(
         "event-detail-image"
       );
 
+    if (titleElement)
+      titleElement.textContent = title;
 
-    if (eventTitle)
-      eventTitle.textContent =
-        title;
-
-    if (eventLocation)
-      eventLocation.textContent =
+    if (locationElement)
+      locationElement.textContent =
         `${event.date} • ${location}`;
 
-    if (eventDescription)
-      eventDescription.textContent =
+    if (descriptionElement)
+      descriptionElement.textContent =
         description;
 
-    if (eventImage)
-      eventImage.style.backgroundImage =
+    if (imageElement)
+      imageElement.style.backgroundImage =
         `url("${event.image}")`;
 
-
-    showPage("event-detail");
+    window.showPage("event-detail");
 
   };
 
 
-  /* =======================================================
+  /* =========================
      EVENT FILTERS
-     ======================================================= */
+  ========================= */
 
-  document
-    .querySelectorAll(".filter-btn")
-    .forEach(button => {
+  document.querySelectorAll(".filter-btn")
+    .forEach(function (button) {
 
-      button.addEventListener(
-        "click",
-        () => {
+      button.addEventListener("click", function () {
 
-          document
-            .querySelectorAll(
-              ".filter-btn"
-            )
-            .forEach(btn =>
-              btn.classList.remove(
-                "active-filter"
-              )
-            );
+        document.querySelectorAll(".filter-btn")
+          .forEach(function (btn) {
+            btn.classList.remove("active-filter");
+          });
 
-          button.classList.add(
-            "active-filter"
-          );
+        button.classList.add("active-filter");
 
+        const category =
+          button.dataset.category;
 
-          const category =
-            button.dataset.category;
+        document.querySelectorAll(
+          ".large-event-card"
+        ).forEach(function (card) {
 
-          document
-            .querySelectorAll(
-              ".large-event-card"
-            )
-            .forEach(card => {
+          if (
+            category === "all" ||
+            card.dataset.category === category
+          ) {
 
-              if (
-                category === "all" ||
-                card.dataset.category ===
-                  category
-              ) {
+            card.style.display = "block";
 
-                card.style.display =
-                  "block";
+          } else {
 
-              } else {
+            card.style.display = "none";
 
-                card.style.display =
-                  "none";
+          }
 
-              }
+        });
 
-            });
-
-        }
-      );
+      });
 
     });
 
 
-  /* =======================================================
+  /* =========================
+     BACK BUTTONS
+  ========================= */
+
+  document.querySelectorAll("[data-back]")
+    .forEach(function (button) {
+
+      button.addEventListener("click", function () {
+
+        const page =
+          button.getAttribute("data-back");
+
+        window.showPage(page);
+
+      });
+
+    });
+
+
+  /* =========================
      SEARCH
-     ======================================================= */
+  ========================= */
 
   const searchInput =
-    document.getElementById(
-      "search-input"
-    );
+    document.getElementById("search-input");
 
   const searchResults =
-    document.getElementById(
-      "search-results"
-    );
+    document.getElementById("search-results");
 
-
-  if (searchInput) {
+  if (searchInput && searchResults) {
 
     searchInput.addEventListener(
       "input",
-      () => {
+      function () {
 
         const query =
           searchInput.value
             .trim()
             .toLowerCase();
 
+        searchResults.innerHTML = "";
 
-        if (!query) {
-
-          searchResults.innerHTML = "";
-
-          return;
-
-        }
-
+        if (!query) return;
 
         const results = [];
 
-
-        Object.values(families)
-          .forEach(family => {
+        Object.values(families).forEach(
+          function (family) {
 
             family.members.forEach(
-              member => {
+              function (member) {
 
-                const name =
-                  `${member.nameHi} ${member.nameEn}`
-                    .toLowerCase();
+                const searchable =
+                  (
+                    member.nameHi +
+                    " " +
+                    member.nameEn +
+                    " " +
+                    member.designationHi +
+                    " " +
+                    member.designationEn
+                  ).toLowerCase();
 
-                const designation =
-                  `${member.designationHi} ${member.designationEn}`
-                    .toLowerCase();
-
-
-                if (
-                  name.includes(query) ||
-                  designation.includes(query)
-                ) {
+                if (searchable.includes(query)) {
 
                   results.push({
-                    member,
-                    family
+                    family: family,
+                    member: member
                   });
 
                 }
@@ -1288,41 +1016,26 @@ document.addEventListener("DOMContentLoaded", () => {
               }
             );
 
-          });
-
-
-        searchResults.innerHTML = "";
-
+          }
+        );
 
         if (!results.length) {
 
           searchResults.innerHTML =
-            `<p style="color:#77736b">
-              No family member found.
-            </p>`;
+            "<p style='color:#77736b'>कोई सदस्य नहीं मिला।</p>";
 
           return;
 
         }
 
+        results.forEach(function (result) {
 
-        results.forEach(result => {
-
-          const member =
-            result.member;
-
-          const family =
-            result.family;
-
+          const member = result.member;
 
           const card =
-            document.createElement(
-              "div"
-            );
+            document.createElement("div");
 
-          card.className =
-            "search-result";
-
+          card.className = "search-result";
 
           const name =
             currentLanguage === "hi"
@@ -1334,73 +1047,53 @@ document.addEventListener("DOMContentLoaded", () => {
               ? member.designationHi
               : member.designationEn;
 
-
           card.innerHTML = `
-
-            <div class="search-result-avatar">
-              👤
-            </div>
-
+            <div class="search-result-avatar">👤</div>
             <div>
               <h3>${name}</h3>
               <p>${designation}</p>
             </div>
-
-            <button>→</button>
-
+            <button type="button">→</button>
           `;
 
+          card.querySelector("button")
+            .addEventListener("click", function () {
 
-          card
-            .querySelector("button")
-            .addEventListener(
-              "click",
-              () => {
+              selectedFamily = result.family;
+              selectedMember = member;
 
-                selectedFamily =
-                  family;
+              renderMember();
 
-                selectedMember =
-                  member;
+              window.showPage("member-profile");
 
-                renderMemberProfile();
+            });
 
-                showPage(
-                  "member-profile"
-                );
-
-              }
-            );
-
-
-          searchResults.appendChild(
-            card
-          );
+          searchResults.appendChild(card);
 
         });
 
       }
     );
 
+  }
 
-  /* =======================================================
-     FAMILY LOGIN
-     ======================================================= */
+
+  /* =========================
+     LOGIN DEMO
+  ========================= */
 
   const loginForm =
     document.getElementById(
       "family-login-form"
     );
 
-
   if (loginForm) {
 
     loginForm.addEventListener(
       "submit",
-      event => {
+      function (event) {
 
         event.preventDefault();
-
 
         const username =
           document.getElementById(
@@ -1412,29 +1105,19 @@ document.addEventListener("DOMContentLoaded", () => {
             "login-password"
           ).value.trim();
 
-
-        /*
-          DEMO LOGIN ONLY.
-
-          Real authentication should be
-          connected to a secure backend later.
-        */
-
         if (
           username === "family" &&
           password === "1234"
         ) {
 
-          showPage(
+          window.showPage(
             "family-dashboard"
           );
 
         } else {
 
           alert(
-            currentLanguage === "hi"
-              ? "गलत लॉगिन विवरण। डेमो के लिए family / 1234 का उपयोग करें।"
-              : "Incorrect login. For the demo use family / 1234."
+            "डेमो लॉगिन के लिए Username: family और Password: 1234 इस्तेमाल करें।"
           );
 
         }
@@ -1445,23 +1128,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* =======================================================
+  /* =========================
      LOGOUT
-     ======================================================= */
+  ========================= */
 
-  const logoutButton =
+  const logout =
     document.getElementById(
       "logout-button"
     );
 
+  if (logout) {
 
-  if (logoutButton) {
-
-    logoutButton.addEventListener(
+    logout.addEventListener(
       "click",
-      () => {
+      function () {
 
-        showPage("home");
+        window.showPage("home");
 
       }
     );
@@ -1469,12 +1151,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* =======================================================
-     INITIAL STATE
-     ======================================================= */
+  /* =========================
+     START WEBSITE
+  ========================= */
 
   updateLanguage("hi");
 
-  showPage("home");
+  window.showPage("home");
 
 });
