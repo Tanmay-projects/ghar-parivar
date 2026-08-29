@@ -1,14 +1,23 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-  /* =========================
-     PAGE NAVIGATION
-  ========================= */
+  /* =====================================================
+     GHAR PARIVAR — FAMILY SYSTEM
+     ===================================================== */
 
   const pages = document.querySelectorAll(".page");
 
+  let selectedFamily = null;
+  let selectedMember = null;
+  let currentLanguage = "hi";
+
+
+  /* =====================================================
+     PAGE NAVIGATION
+     ===================================================== */
+
   window.showPage = function (pageId) {
 
-    pages.forEach(function (page) {
+    pages.forEach(page => {
       page.classList.remove("active");
     });
 
@@ -22,25 +31,19 @@ document.addEventListener("DOMContentLoaded", function () {
       top: 0,
       behavior: "smooth"
     });
-
-    closeMobileMenu();
   };
 
 
-  /* =========================
-     ALL PAGE BUTTONS / LINKS
-  ========================= */
+  document.querySelectorAll("[data-page]").forEach(element => {
 
-  document.querySelectorAll("[data-page]").forEach(function (element) {
-
-    element.addEventListener("click", function (event) {
+    element.addEventListener("click", event => {
 
       event.preventDefault();
 
-      const pageId = element.getAttribute("data-page");
+      const page = element.dataset.page;
 
-      if (pageId) {
-        window.showPage(pageId);
+      if (page) {
+        window.showPage(page);
       }
 
     });
@@ -48,9 +51,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  /* =========================
+  /* =====================================================
      MOBILE MENU
-  ========================= */
+     ===================================================== */
 
   const menuButton =
     document.querySelector(".mobile-menu-btn");
@@ -58,51 +61,43 @@ document.addEventListener("DOMContentLoaded", function () {
   const mobileMenu =
     document.querySelector(".mobile-menu");
 
-  function closeMobileMenu() {
-    if (mobileMenu) {
-      mobileMenu.classList.remove("open");
-    }
-  }
-
   if (menuButton && mobileMenu) {
 
-    menuButton.addEventListener("click", function () {
+    menuButton.addEventListener("click", () => {
       mobileMenu.classList.toggle("open");
     });
 
   }
 
 
-  /* =========================
+  /* =====================================================
      LANGUAGE
-  ========================= */
-
-  let currentLanguage = "hi";
+     ===================================================== */
 
   function updateLanguage(language) {
 
     currentLanguage = language;
 
-    document.querySelectorAll("[data-hi]").forEach(function (element) {
+    document.querySelectorAll("[data-hi]").forEach(element => {
 
-      const hindi = element.getAttribute("data-hi");
-      const english = element.getAttribute("data-en");
+      const hindi = element.dataset.hi;
+      const english = element.dataset.en;
 
       element.textContent =
         language === "hi" ? hindi : english;
 
     });
 
-    document.querySelectorAll(".language-switcher button")
-      .forEach(function (button) {
+    document.querySelectorAll(
+      ".language-switcher button"
+    ).forEach(button => {
 
-        button.classList.remove("active");
+      button.classList.toggle(
+        "active",
+        button.dataset.language === language
+      );
 
-        if (button.dataset.language === language) {
-          button.classList.add("active");
-        }
-
-      });
+    });
 
     if (selectedFamily) {
       renderFamily();
@@ -114,22 +109,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
+
   document.querySelectorAll(
     ".language-switcher button"
-  ).forEach(function (button) {
+  ).forEach(button => {
 
-    button.addEventListener("click", function () {
-
+    button.addEventListener("click", () => {
       updateLanguage(button.dataset.language);
-
     });
 
   });
 
 
-  /* =========================
+  /* =====================================================
      SLIDESHOW
-  ========================= */
+     ===================================================== */
 
   const slides =
     document.querySelectorAll(".slide");
@@ -152,180 +146,293 @@ document.addEventListener("DOMContentLoaded", function () {
     slideIndex =
       (index + slides.length) % slides.length;
 
-    slides.forEach(function (slide) {
+    slides.forEach(slide => {
       slide.classList.remove("active-slide");
     });
 
-    dots.forEach(function (dot) {
+    dots.forEach(dot => {
       dot.classList.remove("active-dot");
     });
 
     slides[slideIndex]
-      .classList.add("active-slide");
+      ?.classList.add("active-slide");
 
-    if (dots[slideIndex]) {
-      dots[slideIndex]
-        .classList.add("active-dot");
-    }
-
+    dots[slideIndex]
+      ?.classList.add("active-dot");
   }
 
-  if (previous) {
 
-    previous.addEventListener("click", function () {
-      showSlide(slideIndex - 1);
-    });
+  previous?.addEventListener("click", () => {
+    showSlide(slideIndex - 1);
+  });
 
-  }
+  next?.addEventListener("click", () => {
+    showSlide(slideIndex + 1);
+  });
 
-  if (next) {
 
-    next.addEventListener("click", function () {
-      showSlide(slideIndex + 1);
-    });
+  dots.forEach((dot, index) => {
 
-  }
-
-  dots.forEach(function (dot, index) {
-
-    dot.addEventListener("click", function () {
+    dot.addEventListener("click", () => {
       showSlide(index);
     });
 
   });
 
+
   showSlide(0);
 
   if (slides.length > 1) {
 
-    setInterval(function () {
+    setInterval(() => {
       showSlide(slideIndex + 1);
     }, 5000);
 
   }
 
 
-  /* =========================
+  /* =====================================================
      FAMILY DATA
-  ========================= */
+     ===================================================== */
 
   const families = {
 
     family1: {
+
       nameHi: "शर्मा परिवार",
       nameEn: "Sharma Family",
 
       descriptionHi:
-        "एक स्नेही और एकजुट परिवार की कहानी।",
+        "एक स्नेही और एकजुट परिवार।",
 
       descriptionEn:
-        "The story of a loving and close-knit family.",
+        "A loving and close-knit family.",
 
       members: [
 
         {
           id: "rajendra",
+
           nameHi: "श्री राजेंद्र शर्मा",
           nameEn: "Mr. Rajendra Sharma",
 
-          designationHi: "परिवार के वरिष्ठ सदस्य",
-          designationEn: "Senior Family Member",
+          designationHi: "दादाजी • परिवार के वरिष्ठ सदस्य",
+          designationEn: "Grandfather • Senior Family Member",
 
           generation: "grandparent",
 
-          achievementHi:
-            "समाज सेवा में 30 वर्षों का योगदान।",
+          photo: "grandfather-photo",
 
-          achievementEn:
-            "30 years of contribution to social service."
+          relationHi: "परिवार के वरिष्ठ सदस्य",
+          relationEn: "Senior member of the family",
+
+          biographyHi:
+            "राजेंद्र शर्मा परिवार के मार्गदर्शक और वरिष्ठ सदस्य हैं। उन्होंने अपना जीवन परिवार और समाज की सेवा में समर्पित किया है।",
+
+          biographyEn:
+            "Rajendra Sharma is the guiding senior member of the family. He has devoted his life to his family and community.",
+
+          achievementsHi: [
+            "समाज सेवा में 30 वर्षों का योगदान",
+            "परिवार के लिए निरंतर मार्गदर्शन",
+            "सामुदायिक कार्यक्रमों में सक्रिय भूमिका"
+          ],
+
+          achievementsEn: [
+            "30 years of contribution to social service",
+            "Continuous guidance to the family",
+            "Active role in community programs"
+          ]
+
         },
+
 
         {
           id: "sunita",
+
           nameHi: "श्रीमती सुनीता शर्मा",
           nameEn: "Mrs. Sunita Sharma",
 
-          designationHi: "परिवार की वरिष्ठ सदस्य",
-          designationEn: "Senior Family Member",
+          designationHi: "दादीजी • परिवार की वरिष्ठ सदस्य",
+          designationEn: "Grandmother • Senior Family Member",
 
           generation: "grandparent",
 
-          achievementHi:
-            "परिवार और सामाजिक गतिविधियों में सक्रिय योगदान।",
+          photo: "grandmother-photo",
 
-          achievementEn:
-            "Active contribution to family and social activities."
+          relationHi: "परिवार की वरिष्ठ सदस्य",
+          relationEn: "Senior member of the family",
+
+          biographyHi:
+            "सुनीता शर्मा परिवार की स्नेही और मार्गदर्शक वरिष्ठ सदस्य हैं।",
+
+          biographyEn:
+            "Sunita Sharma is a loving and guiding senior member of the family.",
+
+          achievementsHi: [
+            "परिवार को एकजुट रखने में महत्वपूर्ण भूमिका",
+            "सामाजिक गतिविधियों में योगदान",
+            "परिवार की परंपराओं को आगे बढ़ाना"
+          ],
+
+          achievementsEn: [
+            "Important role in keeping the family connected",
+            "Contribution to social activities",
+            "Preserving family traditions"
+          ]
+
         },
+
 
         {
           id: "amit",
+
           nameHi: "श्री अमित शर्मा",
           nameEn: "Mr. Amit Sharma",
 
-          designationHi: "व्यवसायी",
-          designationEn: "Business Professional",
+          designationHi: "पिताजी • व्यवसायी",
+          designationEn: "Father • Business Professional",
 
           generation: "parent",
 
-          achievementHi:
-            "सफल व्यवसाय का संचालन और सामाजिक कार्यों में योगदान।",
+          photo: "father-photo",
 
-          achievementEn:
-            "Runs a successful business and contributes to social initiatives."
+          relationHi: "राजेंद्र और सुनीता शर्मा के पुत्र",
+          relationEn: "Son of Rajendra and Sunita Sharma",
+
+          biographyHi:
+            "अमित शर्मा परिवार की अगली पीढ़ी का प्रतिनिधित्व करते हैं और व्यवसाय के क्षेत्र में कार्यरत हैं।",
+
+          biographyEn:
+            "Amit Sharma represents the next generation of the family and works in the business sector.",
+
+          achievementsHi: [
+            "सफल व्यवसाय का संचालन",
+            "सामाजिक कार्यों में योगदान",
+            "युवा पीढ़ी को मार्गदर्शन"
+          ],
+
+          achievementsEn: [
+            "Runs a successful business",
+            "Contribution to social initiatives",
+            "Guidance to the younger generation"
+          ]
+
         },
+
 
         {
           id: "neha",
+
           nameHi: "श्रीमती नेहा शर्मा",
           nameEn: "Mrs. Neha Sharma",
 
-          designationHi: "शिक्षिका",
-          designationEn: "Teacher",
+          designationHi: "माताजी • शिक्षिका",
+          designationEn: "Mother • Teacher",
 
           generation: "parent",
 
-          achievementHi:
-            "शिक्षा के क्षेत्र में उत्कृष्ट योगदान।",
+          photo: "mother-photo",
 
-          achievementEn:
-            "Outstanding contribution to education."
+          relationHi: "अमित शर्मा की जीवनसाथी",
+          relationEn: "Spouse of Amit Sharma",
+
+          biographyHi:
+            "नेहा शर्मा शिक्षा के क्षेत्र में कार्यरत हैं और परिवार में शिक्षा एवं संस्कारों को महत्व देती हैं।",
+
+          biographyEn:
+            "Neha Sharma works in education and values learning and family traditions.",
+
+          achievementsHi: [
+            "शिक्षा के क्षेत्र में योगदान",
+            "विद्यार्थियों का मार्गदर्शन",
+            "परिवार में शिक्षा को प्रोत्साहन"
+          ],
+
+          achievementsEn: [
+            "Contribution to education",
+            "Guidance to students",
+            "Encouraging education within the family"
+          ]
+
         },
+
 
         {
           id: "aarav",
+
           nameHi: "आरव शर्मा",
           nameEn: "Aarav Sharma",
 
-          designationHi: "विद्यार्थी",
-          designationEn: "Student",
+          designationHi: "पुत्र • विद्यार्थी",
+          designationEn: "Son • Student",
 
           generation: "child",
 
-          achievementHi:
-            "विद्यालय स्तर पर विभिन्न प्रतियोगिताओं में भागीदारी।",
+          photo: "child-one-photo",
 
-          achievementEn:
-            "Participation in several school-level competitions."
+          relationHi: "अमित और नेहा शर्मा के पुत्र",
+          relationEn: "Son of Amit and Neha Sharma",
+
+          biographyHi:
+            "आरव परिवार की युवा पीढ़ी का हिस्सा हैं और शिक्षा तथा रचनात्मक गतिविधियों में रुचि रखते हैं।",
+
+          biographyEn:
+            "Aarav is part of the younger generation and is interested in education and creative activities.",
+
+          achievementsHi: [
+            "विद्यालय प्रतियोगिताओं में भागीदारी",
+            "रचनात्मक गतिविधियों में रुचि",
+            "शैक्षणिक उपलब्धियां"
+          ],
+
+          achievementsEn: [
+            "Participation in school competitions",
+            "Interest in creative activities",
+            "Academic achievements"
+          ]
+
         },
+
 
         {
           id: "anaya",
+
           nameHi: "अनाया शर्मा",
           nameEn: "Anaya Sharma",
 
-          designationHi: "विद्यार्थी",
-          designationEn: "Student",
+          designationHi: "पुत्री • विद्यार्थी",
+          designationEn: "Daughter • Student",
 
           generation: "child",
 
-          achievementHi:
-            "कला और रचनात्मक गतिविधियों में रुचि।",
+          photo: "child-two-photo",
 
-          achievementEn:
-            "Interested in art and creative activities."
+          relationHi: "अमित और नेहा शर्मा की पुत्री",
+          relationEn: "Daughter of Amit and Neha Sharma",
+
+          biographyHi:
+            "अनाया कला, रचनात्मकता और सीखने में रुचि रखने वाली परिवार की युवा सदस्य हैं।",
+
+          biographyEn:
+            "Anaya is a young family member interested in art, creativity and learning.",
+
+          achievementsHi: [
+            "कला प्रतियोगिताओं में भागीदारी",
+            "रचनात्मक गतिविधियों में रुचि",
+            "विद्यालय कार्यक्रमों में सहभागिता"
+          ],
+
+          achievementsEn: [
+            "Participation in art competitions",
+            "Interest in creative activities",
+            "Participation in school programs"
+          ]
+
         }
 
       ]
+
     },
 
 
@@ -344,90 +451,112 @@ document.addEventListener("DOMContentLoaded", function () {
 
         {
           id: "mohan",
+
           nameHi: "श्री मोहन वर्मा",
           nameEn: "Mr. Mohan Verma",
 
-          designationHi: "सेवानिवृत्त अधिकारी",
-          designationEn: "Retired Officer",
+          designationHi: "दादाजी • सेवानिवृत्त अधिकारी",
+          designationEn: "Grandfather • Retired Officer",
 
           generation: "grandparent",
 
-          achievementHi:
-            "सार्वजनिक सेवा में दीर्घ अनुभव।",
+          photo: "grandfather-photo",
 
-          achievementEn:
-            "Extensive experience in public service."
-        },
+          relationHi: "परिवार के वरिष्ठ सदस्य",
+          relationEn: "Senior family member",
 
-        {
-          id: "kavita",
-          nameHi: "श्रीमती कविता वर्मा",
-          nameEn: "Mrs. Kavita Verma",
+          biographyHi:
+            "मोहन वर्मा सार्वजनिक सेवा में लंबे अनुभव वाले परिवार के वरिष्ठ सदस्य हैं।",
 
-          designationHi: "सामाजिक कार्यकर्ता",
-          designationEn: "Social Worker",
+          biographyEn:
+            "Mohan Verma is a senior family member with extensive experience in public service.",
 
-          generation: "grandparent",
+          achievementsHi: [
+            "सार्वजनिक सेवा में दीर्घ अनुभव",
+            "परिवार का मार्गदर्शन",
+            "सामुदायिक योगदान"
+          ],
 
-          achievementHi:
-            "सामुदायिक कार्यक्रमों में सक्रिय योगदान।",
+          achievementsEn: [
+            "Extensive public service experience",
+            "Family guidance",
+            "Community contribution"
+          ]
 
-          achievementEn:
-            "Active contribution to community programs."
         },
 
         {
           id: "rahul",
+
           nameHi: "राहुल वर्मा",
           nameEn: "Rahul Verma",
 
-          designationHi: "इंजीनियर",
-          designationEn: "Engineer",
+          designationHi: "पुत्र • इंजीनियर",
+          designationEn: "Son • Engineer",
 
           generation: "parent",
 
-          achievementHi:
-            "तकनीकी क्षेत्र में उत्कृष्ट कार्य।",
+          photo: "father-photo",
 
-          achievementEn:
-            "Excellent work in the technology sector."
-        },
+          relationHi: "मोहन वर्मा के पुत्र",
+          relationEn: "Son of Mohan Verma",
 
-        {
-          id: "pooja",
-          nameHi: "पूजा वर्मा",
-          nameEn: "Pooja Verma",
+          biographyHi:
+            "राहुल तकनीकी क्षेत्र में कार्यरत हैं।",
 
-          designationHi: "डॉक्टर",
-          designationEn: "Doctor",
+          biographyEn:
+            "Rahul works in the technology sector.",
 
-          generation: "parent",
+          achievementsHi: [
+            "तकनीकी क्षेत्र में उत्कृष्ट कार्य",
+            "नई तकनीकों में रुचि",
+            "व्यावसायिक उपलब्धियां"
+          ],
 
-          achievementHi:
-            "स्वास्थ्य सेवा में योगदान।",
+          achievementsEn: [
+            "Excellent work in technology",
+            "Interest in new technologies",
+            "Professional achievements"
+          ]
 
-          achievementEn:
-            "Contribution to healthcare."
         },
 
         {
           id: "vivaan",
+
           nameHi: "विवान वर्मा",
           nameEn: "Vivaan Verma",
 
-          designationHi: "विद्यार्थी",
-          designationEn: "Student",
+          designationHi: "पुत्र • विद्यार्थी",
+          designationEn: "Son • Student",
 
           generation: "child",
 
-          achievementHi:
-            "खेल प्रतियोगिताओं में उपलब्धियां।",
+          photo: "child-one-photo",
 
-          achievementEn:
-            "Achievements in sports competitions."
+          relationHi: "राहुल वर्मा के पुत्र",
+          relationEn: "Son of Rahul Verma",
+
+          biographyHi:
+            "विवान खेल और शिक्षा में रुचि रखते हैं।",
+
+          biographyEn:
+            "Vivaan is interested in sports and education.",
+
+          achievementsHi: [
+            "खेल प्रतियोगिताओं में उपलब्धियां",
+            "विद्यालय गतिविधियों में भागीदारी"
+          ],
+
+          achievementsEn: [
+            "Achievements in sports",
+            "Participation in school activities"
+          ]
+
         }
 
       ]
+
     },
 
 
@@ -437,7 +566,7 @@ document.addEventListener("DOMContentLoaded", function () {
       nameEn: "Gupta Family",
 
       descriptionHi:
-        "एक परिवार जो शिक्षा, संस्कृति और सेवा को महत्व देता है।",
+        "शिक्षा, संस्कृति और सेवा को महत्व देने वाला परिवार।",
 
       descriptionEn:
         "A family that values education, culture and service.",
@@ -446,109 +575,141 @@ document.addEventListener("DOMContentLoaded", function () {
 
         {
           id: "suresh",
+
           nameHi: "श्री सुरेश गुप्ता",
           nameEn: "Mr. Suresh Gupta",
 
-          designationHi: "व्यवसायी",
-          designationEn: "Business Owner",
+          designationHi: "दादाजी • व्यवसायी",
+          designationEn: "Grandfather • Business Owner",
 
           generation: "grandparent",
 
-          achievementHi:
-            "व्यवसाय और सामाजिक सेवा में योगदान।",
+          photo: "grandfather-photo",
 
-          achievementEn:
-            "Contribution to business and social service."
-        },
+          relationHi: "परिवार के वरिष्ठ सदस्य",
+          relationEn: "Senior family member",
 
-        {
-          id: "meena",
-          nameHi: "श्रीमती मीना गुप्ता",
-          nameEn: "Mrs. Meena Gupta",
+          biographyHi:
+            "सुरेश गुप्ता व्यवसाय और सामाजिक सेवा में योगदान देने वाले परिवार के वरिष्ठ सदस्य हैं।",
 
-          designationHi: "गृहिणी एवं सामाजिक कार्यकर्ता",
-          designationEn: "Homemaker & Social Worker",
+          biographyEn:
+            "Suresh Gupta is a senior family member who contributes to business and social service.",
 
-          generation: "grandparent",
+          achievementsHi: [
+            "व्यवसाय में अनुभव",
+            "सामाजिक सेवा में योगदान",
+            "परिवार का मार्गदर्शन"
+          ],
 
-          achievementHi:
-            "स्थानीय सामाजिक कार्यक्रमों में योगदान।",
+          achievementsEn: [
+            "Business experience",
+            "Contribution to social service",
+            "Family guidance"
+          ]
 
-          achievementEn:
-            "Contribution to local social programs."
         },
 
         {
           id: "rohit",
+
           nameHi: "रोहित गुप्ता",
           nameEn: "Rohit Gupta",
 
-          designationHi: "चार्टर्ड अकाउंटेंट",
-          designationEn: "Chartered Accountant",
+          designationHi: "पुत्र • चार्टर्ड अकाउंटेंट",
+          designationEn: "Son • Chartered Accountant",
 
           generation: "parent",
 
-          achievementHi:
-            "वित्तीय क्षेत्र में पेशेवर उपलब्धियां।",
+          photo: "father-photo",
 
-          achievementEn:
-            "Professional achievements in finance."
+          relationHi: "सुरेश गुप्ता के पुत्र",
+          relationEn: "Son of Suresh Gupta",
+
+          biographyHi:
+            "रोहित वित्तीय क्षेत्र में कार्यरत हैं।",
+
+          biographyEn:
+            "Rohit works in the financial sector.",
+
+          achievementsHi: [
+            "वित्तीय क्षेत्र में पेशेवर उपलब्धियां",
+            "परिवार के व्यवसाय में योगदान"
+          ],
+
+          achievementsEn: [
+            "Professional achievements in finance",
+            "Contribution to the family business"
+          ]
+
         },
 
         {
           id: "riya",
+
           nameHi: "रिया गुप्ता",
           nameEn: "Riya Gupta",
 
-          designationHi: "विद्यार्थी",
-          designationEn: "Student",
+          designationHi: "पुत्री • विद्यार्थी",
+          designationEn: "Daughter • Student",
 
           generation: "child",
 
-          achievementHi:
-            "शैक्षणिक और सांस्कृतिक गतिविधियों में भागीदारी।",
+          photo: "child-two-photo",
 
-          achievementEn:
-            "Participation in academic and cultural activities."
+          relationHi: "रोहित गुप्ता की पुत्री",
+          relationEn: "Daughter of Rohit Gupta",
+
+          biographyHi:
+            "रिया शिक्षा और सांस्कृतिक गतिविधियों में रुचि रखती हैं।",
+
+          biographyEn:
+            "Riya is interested in education and cultural activities.",
+
+          achievementsHi: [
+            "शैक्षणिक उपलब्धियां",
+            "सांस्कृतिक कार्यक्रमों में भागीदारी"
+          ],
+
+          achievementsEn: [
+            "Academic achievements",
+            "Participation in cultural programs"
+          ]
+
         }
 
       ]
+
     }
 
   };
 
 
-  let selectedFamily = null;
-  let selectedMember = null;
-
-
-  /* =========================
-     FAMILY PAGE
-  ========================= */
+  /* =====================================================
+     OPEN FAMILY
+     ===================================================== */
 
   window.openFamily = function (familyId) {
 
-    const family = families[familyId];
+    selectedFamily = families[familyId];
 
-    if (!family) return;
-
-    selectedFamily = family;
+    if (!selectedFamily) return;
 
     renderFamily();
 
     window.showPage("family-detail");
-
   };
 
+
+  /* =====================================================
+     RENDER FAMILY
+     ===================================================== */
 
   function renderFamily() {
 
     if (!selectedFamily) return;
 
     const title =
-      document.getElementById(
-        "family-detail-title"
-      );
+      document.getElementById("family-detail-title");
 
     const description =
       document.getElementById(
@@ -573,24 +734,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    renderMembers();
+    renderTree();
 
   }
 
 
-  /* =========================
-     FAMILY TREE
-  ========================= */
+  /* =====================================================
+     RENDER FAMILY TREE
+     ===================================================== */
 
-  function renderMembers() {
+  function renderTree() {
 
     const container =
       document.getElementById(
         "family-tree-members"
       );
 
-    if (!container || !selectedFamily)
-      return;
+    if (!container || !selectedFamily) return;
 
     container.innerHTML = "";
 
@@ -600,13 +760,12 @@ document.addEventListener("DOMContentLoaded", function () {
       "child"
     ];
 
-    generations.forEach(function (generation) {
+    generations.forEach((generation, index) => {
 
       const members =
         selectedFamily.members.filter(
-          function (member) {
-            return member.generation === generation;
-          }
+          member =>
+            member.generation === generation
         );
 
       if (!members.length) return;
@@ -614,14 +773,16 @@ document.addEventListener("DOMContentLoaded", function () {
       const row =
         document.createElement("div");
 
-      row.className = "tree-generation";
+      row.className =
+        "tree-generation";
 
-      members.forEach(function (member) {
+      members.forEach(member => {
 
         const card =
           document.createElement("div");
 
-        card.className = "member-card";
+        card.className =
+          "member-card";
 
         const name =
           currentLanguage === "hi"
@@ -634,13 +795,32 @@ document.addEventListener("DOMContentLoaded", function () {
             : member.designationEn;
 
         card.innerHTML = `
-          <div class="member-photo"></div>
+          <div class="member-photo ${member.photo}"></div>
+
           <h3>${name}</h3>
+
           <span>${designation}</span>
+
+          <div style="
+            margin-top:12px;
+            color:#8a5a32;
+            font-size:12px;
+            font-weight:800;
+          ">
+            ${currentLanguage === "hi"
+              ? "प्रोफ़ाइल देखें →"
+              : "View Profile →"}
+          </div>
         `;
 
-        card.addEventListener("click", function () {
-          openMember(member.id);
+        card.addEventListener("click", () => {
+
+          selectedMember = member;
+
+          renderMember();
+
+          window.showPage("member-profile");
+
         });
 
         row.appendChild(card);
@@ -649,12 +829,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
       container.appendChild(row);
 
-      if (generation !== "child") {
+      if (index < generations.length - 1) {
 
         const connector =
           document.createElement("div");
 
-        connector.className = "tree-connector";
+        connector.className =
+          "tree-connector";
 
         container.appendChild(connector);
 
@@ -665,31 +846,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-  /* =========================
+  /* =====================================================
      MEMBER PROFILE
-  ========================= */
-
-  window.openMember = function (memberId) {
-
-    if (!selectedFamily) return;
-
-    const member =
-      selectedFamily.members.find(
-        function (item) {
-          return item.id === memberId;
-        }
-      );
-
-    if (!member) return;
-
-    selectedMember = member;
-
-    renderMember();
-
-    window.showPage("member-profile");
-
-  };
-
+     ===================================================== */
 
   function renderMember() {
 
@@ -705,455 +864,110 @@ document.addEventListener("DOMContentLoaded", function () {
         ? selectedMember.designationHi
         : selectedMember.designationEn;
 
-    const achievement =
+    const biography =
       currentLanguage === "hi"
-        ? selectedMember.achievementHi
-        : selectedMember.achievementEn;
+        ? selectedMember.biographyHi
+        : selectedMember.biographyEn;
 
-    const profileName =
+    const relation =
+      currentLanguage === "hi"
+        ? selectedMember.relationHi
+        : selectedMember.relationEn;
+
+    const achievements =
+      currentLanguage === "hi"
+        ? selectedMember.achievementsHi
+        : selectedMember.achievementsEn;
+
+
+    const nameElement =
       document.getElementById("profile-name");
 
-    const profileDesignation =
+    const designationElement =
       document.getElementById(
         "profile-designation"
       );
 
-    const profileAchievement =
+    const biographyElement =
+      document.getElementById(
+        "profile-biography"
+      );
+
+    const achievementElement =
       document.getElementById(
         "profile-achievement"
       );
 
-    if (profileName)
-      profileName.textContent = name;
+    const relationElement =
+      document.getElementById(
+        "profile-relation"
+      );
 
-    if (profileDesignation)
-      profileDesignation.textContent =
+
+    if (nameElement)
+      nameElement.textContent = name;
+
+    if (designationElement)
+      designationElement.textContent =
         designation;
 
-    if (profileAchievement)
-      profileAchievement.textContent =
-        achievement;
+    if (biographyElement)
+      biographyElement.textContent =
+        biography;
 
-  }
+    if (relationElement)
+      relationElement.textContent =
+        relation;
 
 
-  /* =========================
-     EVENTS
-  ========================= */
+    if (achievementElement) {
 
-  const events = [
+      achievementElement.innerHTML = "";
 
-    {
-      id: 1,
-      category: "celebration",
+      achievements.forEach(achievement => {
 
-      titleHi: "शर्मा परिवार विवाह समारोह",
-      titleEn: "Sharma Family Wedding",
+        const item =
+          document.createElement("div");
 
-      date: "15 December 2026",
+        item.className =
+          "achievement-card";
 
-      locationHi: "इंदौर",
-      locationEn: "Indore",
+        item.innerHTML = `
+          <span>🏆</span>
+          <p>${achievement}</p>
+        `;
 
-      descriptionHi:
-        "परिवार के सभी सदस्यों के साथ एक विशेष विवाह समारोह।",
+        achievementElement.appendChild(item);
 
-      descriptionEn:
-        "A special wedding celebration with the entire family.",
+      });
 
-      image:
-        "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85"
-    },
-
-    {
-      id: 2,
-      category: "travel",
-
-      titleHi: "परिवार यात्रा",
-      titleEn: "Family Trip",
-
-      date: "20 January 2027",
-
-      locationHi: "गोवा",
-      locationEn: "Goa",
-
-      descriptionHi:
-        "परिवार के साथ यादगार छुट्टियां।",
-
-      descriptionEn:
-        "A memorable vacation with the family.",
-
-      image:
-        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=85"
-    },
-
-    {
-      id: 3,
-      category: "festival",
-
-      titleHi: "दीपावली मिलन",
-      titleEn: "Diwali Family Gathering",
-
-      date: "8 November 2026",
-
-      locationHi: "परिवार निवास",
-      locationEn: "Family Residence",
-
-      descriptionHi:
-        "दीपावली के अवसर पर परिवार का विशेष मिलन।",
-
-      descriptionEn:
-        "A special family gathering for Diwali.",
-
-      image:
-        "https://images.unsplash.com/photo-1604608672516-f1b9d0a3f5ef?auto=format&fit=crop&w=1200&q=85"
-    },
-
-    {
-      id: 4,
-      category: "birthday",
-
-      titleHi: "दादाजी का जन्मदिन",
-      titleEn: "Grandfather's Birthday",
-
-      date: "5 March 2027",
-
-      locationHi: "भोपाल",
-      locationEn: "Bhopal",
-
-      descriptionHi:
-        "परिवार के वरिष्ठ सदस्य का विशेष जन्मदिन समारोह।",
-
-      descriptionEn:
-        "A special birthday celebration for a senior family member.",
-
-      image:
-        "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=1200&q=85"
     }
 
-  ];
+  }
 
 
-  window.openEvent = function (eventId) {
-
-    const event =
-      events.find(function (item) {
-        return item.id === eventId;
-      });
-
-    if (!event) return;
-
-    const title =
-      currentLanguage === "hi"
-        ? event.titleHi
-        : event.titleEn;
-
-    const location =
-      currentLanguage === "hi"
-        ? event.locationHi
-        : event.locationEn;
-
-    const description =
-      currentLanguage === "hi"
-        ? event.descriptionHi
-        : event.descriptionEn;
-
-    const titleElement =
-      document.getElementById(
-        "event-detail-title"
-      );
-
-    const locationElement =
-      document.getElementById(
-        "event-detail-location"
-      );
-
-    const descriptionElement =
-      document.getElementById(
-        "event-detail-description"
-      );
-
-    const imageElement =
-      document.getElementById(
-        "event-detail-image"
-      );
-
-    if (titleElement)
-      titleElement.textContent = title;
-
-    if (locationElement)
-      locationElement.textContent =
-        `${event.date} • ${location}`;
-
-    if (descriptionElement)
-      descriptionElement.textContent =
-        description;
-
-    if (imageElement)
-      imageElement.style.backgroundImage =
-        `url("${event.image}")`;
-
-    window.showPage("event-detail");
-
-  };
-
-
-  /* =========================
-     EVENT FILTERS
-  ========================= */
-
-  document.querySelectorAll(".filter-btn")
-    .forEach(function (button) {
-
-      button.addEventListener("click", function () {
-
-        document.querySelectorAll(".filter-btn")
-          .forEach(function (btn) {
-            btn.classList.remove("active-filter");
-          });
-
-        button.classList.add("active-filter");
-
-        const category =
-          button.dataset.category;
-
-        document.querySelectorAll(
-          ".large-event-card"
-        ).forEach(function (card) {
-
-          if (
-            category === "all" ||
-            card.dataset.category === category
-          ) {
-
-            card.style.display = "block";
-
-          } else {
-
-            card.style.display = "none";
-
-          }
-
-        });
-
-      });
-
-    });
-
-
-  /* =========================
+  /* =====================================================
      BACK BUTTONS
-  ========================= */
+     ===================================================== */
 
   document.querySelectorAll("[data-back]")
-    .forEach(function (button) {
+    .forEach(button => {
 
-      button.addEventListener("click", function () {
+      button.addEventListener("click", () => {
 
-        const page =
-          button.getAttribute("data-back");
+        const destination =
+          button.dataset.back;
 
-        window.showPage(page);
+        window.showPage(destination);
 
       });
 
     });
 
 
-  /* =========================
-     SEARCH
-  ========================= */
-
-  const searchInput =
-    document.getElementById("search-input");
-
-  const searchResults =
-    document.getElementById("search-results");
-
-  if (searchInput && searchResults) {
-
-    searchInput.addEventListener(
-      "input",
-      function () {
-
-        const query =
-          searchInput.value
-            .trim()
-            .toLowerCase();
-
-        searchResults.innerHTML = "";
-
-        if (!query) return;
-
-        const results = [];
-
-        Object.values(families).forEach(
-          function (family) {
-
-            family.members.forEach(
-              function (member) {
-
-                const searchable =
-                  (
-                    member.nameHi +
-                    " " +
-                    member.nameEn +
-                    " " +
-                    member.designationHi +
-                    " " +
-                    member.designationEn
-                  ).toLowerCase();
-
-                if (searchable.includes(query)) {
-
-                  results.push({
-                    family: family,
-                    member: member
-                  });
-
-                }
-
-              }
-            );
-
-          }
-        );
-
-        if (!results.length) {
-
-          searchResults.innerHTML =
-            "<p style='color:#77736b'>कोई सदस्य नहीं मिला।</p>";
-
-          return;
-
-        }
-
-        results.forEach(function (result) {
-
-          const member = result.member;
-
-          const card =
-            document.createElement("div");
-
-          card.className = "search-result";
-
-          const name =
-            currentLanguage === "hi"
-              ? member.nameHi
-              : member.nameEn;
-
-          const designation =
-            currentLanguage === "hi"
-              ? member.designationHi
-              : member.designationEn;
-
-          card.innerHTML = `
-            <div class="search-result-avatar">👤</div>
-            <div>
-              <h3>${name}</h3>
-              <p>${designation}</p>
-            </div>
-            <button type="button">→</button>
-          `;
-
-          card.querySelector("button")
-            .addEventListener("click", function () {
-
-              selectedFamily = result.family;
-              selectedMember = member;
-
-              renderMember();
-
-              window.showPage("member-profile");
-
-            });
-
-          searchResults.appendChild(card);
-
-        });
-
-      }
-    );
-
-  }
-
-
-  /* =========================
-     LOGIN DEMO
-  ========================= */
-
-  const loginForm =
-    document.getElementById(
-      "family-login-form"
-    );
-
-  if (loginForm) {
-
-    loginForm.addEventListener(
-      "submit",
-      function (event) {
-
-        event.preventDefault();
-
-        const username =
-          document.getElementById(
-            "login-username"
-          ).value.trim();
-
-        const password =
-          document.getElementById(
-            "login-password"
-          ).value.trim();
-
-        if (
-          username === "family" &&
-          password === "1234"
-        ) {
-
-          window.showPage(
-            "family-dashboard"
-          );
-
-        } else {
-
-          alert(
-            "डेमो लॉगिन के लिए Username: family और Password: 1234 इस्तेमाल करें।"
-          );
-
-        }
-
-      }
-    );
-
-  }
-
-
-  /* =========================
-     LOGOUT
-  ========================= */
-
-  const logout =
-    document.getElementById(
-      "logout-button"
-    );
-
-  if (logout) {
-
-    logout.addEventListener(
-      "click",
-      function () {
-
-        window.showPage("home");
-
-      }
-    );
-
-  }
-
-
-  /* =========================
-     START WEBSITE
-  ========================= */
+  /* =====================================================
+     START
+     ===================================================== */
 
   updateLanguage("hi");
 
