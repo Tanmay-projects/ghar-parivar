@@ -974,3 +974,239 @@ document.addEventListener("DOMContentLoaded", () => {
   window.showPage("home");
 
 });
+/* =====================================================
+   GHAR PARIVAR — REAL BACKEND LOGIN
+   ===================================================== */
+
+const API_URL = "https://ghar-parivar-backend.onrender.com";
+
+
+async function gharParivarLogin(username, password) {
+
+  try {
+
+    const response = await fetch(
+      `${API_URL}/login`,
+      {
+        method: "POST",
+
+        credentials: "include",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          username: username,
+          password: password
+        })
+      }
+    );
+
+
+    const data = await response.json();
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        data.detail || "Login failed"
+      );
+
+    }
+
+
+    localStorage.setItem(
+      "gp_role",
+      data.role
+    );
+
+    localStorage.setItem(
+      "gp_family",
+      data.family_id || ""
+    );
+
+
+    return data;
+
+  } catch (error) {
+
+    console.error(
+      "Ghar Parivar login error:",
+      error
+    );
+
+    throw error;
+
+  }
+
+}
+
+
+/* =====================================================
+   LOGIN FORM
+   ===================================================== */
+
+const loginForm =
+  document.querySelector(".login-card form");
+
+
+if (loginForm) {
+
+  loginForm.addEventListener(
+    "submit",
+    async function(event) {
+
+      event.preventDefault();
+
+
+      const usernameInput =
+        loginForm.querySelector(
+          'input[name="username"], input[type="text"]'
+        );
+
+
+      const passwordInput =
+        loginForm.querySelector(
+          'input[name="password"], input[type="password"]'
+        );
+
+
+      if (!usernameInput || !passwordInput) {
+
+        alert(
+          "Login form fields could not be found."
+        );
+
+        return;
+
+      }
+
+
+      const username =
+        usernameInput.value.trim();
+
+      const password =
+        passwordInput.value;
+
+
+      if (!username || !password) {
+
+        alert(
+          "Please enter username and password."
+        );
+
+        return;
+
+      }
+
+
+      const button =
+        loginForm.querySelector(
+          'button[type="submit"]'
+        );
+
+
+      if (button) {
+
+        button.disabled = true;
+
+        button.textContent =
+          "Logging in...";
+
+      }
+
+
+      try {
+
+        const result =
+          await gharParivarLogin(
+            username,
+            password
+          );
+
+
+        if (result.role === "admin") {
+
+          window.showPage(
+            "admin-dashboard"
+          );
+
+        } else {
+
+          window.showPage(
+            "member-dashboard"
+          );
+
+        }
+
+
+      } catch (error) {
+
+        alert(
+          error.message ||
+          "Invalid username or password."
+        );
+
+
+      } finally {
+
+        if (button) {
+
+          button.disabled = false;
+
+          button.textContent =
+            "Login";
+
+        }
+
+      }
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   LOGOUT
+   ===================================================== */
+
+async function gharParivarLogout() {
+
+  try {
+
+    await fetch(
+      `${API_URL}/logout`,
+      {
+        method: "POST",
+        credentials: "include"
+      }
+    );
+
+  } catch (error) {
+
+    console.error(
+      "Logout error:",
+      error
+    );
+
+  }
+
+
+  localStorage.removeItem(
+    "gp_role"
+  );
+
+  localStorage.removeItem(
+    "gp_family"
+  );
+
+
+  window.showPage("home");
+
+}
+
+
+window.gharParivarLogout =
+  gharParivarLogout;
