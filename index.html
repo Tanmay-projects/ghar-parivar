@@ -1,1 +1,1924 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>घर परिवार | Ghar Parivar</title>
+
+  <meta
+    name="description"
+    content="घर परिवार — हमारा परिवार, हमारी कहानी, हमारी विरासत | Our Family, Our Story, Our Legacy"
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ================= NAVIGATION ================= -->
+
+  <header class="navbar">
+
+    <a href="#" class="logo" onclick="showPage('home')">
+      <span class="logo-icon">🏡</span>
+      <span>
+        <strong>घर परिवार</strong>
+        <small>GHAR PARIVAR</small>
+      </span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#" onclick="showPage('home')">
+        🏠 <span data-hi="होम" data-en="Home">होम</span>
+      </a>
+
+      <a href="#" onclick="showPage('family')">
+        👨‍👩‍👧‍👦 <span data-hi="परिवार" data-en="Family">परिवार</span>
+      </a>
+
+      <a href="#" onclick="showPage('events')">
+        🎉 <span data-hi="कार्यक्रम" data-en="Events">कार्यक्रम</span>
+      </a>
+
+      <a href="#" onclick="showPage('search')">
+        🔎 <span data-hi="खोज" data-en="Search">खोज</span>
+      </a>
+
+      <a href="#" onclick="showPage('login')">
+        🔐 <span data-hi="सदस्य लॉगिन" data-en="Member Login">सदस्य लॉगिन</span>
+      </a>
+    </nav>
+
+    <div class="language-switcher">
+      <button id="hindiBtn" class="active" onclick="setLanguage('hi')">
+        हिन्दी
+      </button>
+
+      <span>|</span>
+
+      <button id="englishBtn" onclick="setLanguage('en')">
+        English
+      </button>
+    </div>
+
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+      ☰
+    </button>
+
+  </header>
+
+
+  <!-- ================= MOBILE MENU ================= -->
+
+  <div id="mobileMenu" class="mobile-menu">
+
+    <a href="#" onclick="showPage('home'); closeMobileMenu()">
+      🏠 <span data-hi="होम" data-en="Home">होम</span>
+    </a>
+
+    <a href="#" onclick="showPage('family'); closeMobileMenu()">
+      👨‍👩‍👧‍👦 <span data-hi="परिवार" data-en="Family">परिवार</span>
+    </a>
+
+    <a href="#" onclick="showPage('events'); closeMobileMenu()">
+      🎉 <span data-hi="कार्यक्रम" data-en="Events">कार्यक्रम</span>
+    </a>
+
+    <a href="#" onclick="showPage('search'); closeMobileMenu()">
+      🔎 <span data-hi="खोज" data-en="Search">खोज</span>
+    </a>
+
+    <a href="#" onclick="showPage('login'); closeMobileMenu()">
+      🔐 <span data-hi="सदस्य लॉगिन" data-en="Member Login">सदस्य लॉगिन</span>
+    </a>
+
+  </div>
+
+
+  <!-- ================= MAIN APP ================= -->
+
+  <main id="app">
+
+
+    <!-- ================= HOME PAGE ================= -->
+
+    <section id="homePage" class="page active">
+
+      <!-- HERO SLIDESHOW -->
+
+      <div class="hero">
+
+        <div class="slides">
+
+          <div class="slide active-slide">
+            <div class="slide-image sample-family-one"></div>
+
+            <div class="hero-overlay">
+
+              <p
+                class="hero-small"
+                data-hi="हमारा परिवार • हमारी कहानी"
+                data-en="Our Family • Our Story">
+                हमारा परिवार • हमारी कहानी
+              </p>
+
+              <h1>
+                <span data-hi="घर परिवार" data-en="GHAR PARIVAR">
+                  घर परिवार
+                </span>
+              </h1>
+
+              <p
+                class="hero-description"
+                data-hi="हमारे परिवार, रिश्तों, उपलब्धियों और यादों का डिजिटल घर।"
+                data-en="A digital home for our family, relationships, achievements and memories.">
+                हमारे परिवार, रिश्तों, उपलब्धियों और यादों का डिजिटल घर।
+              </p>
+
+              <button
+                class="primary-btn"
+                onclick="showPage('family')">
+
+                <span
+                  data-hi="हमारा परिवार देखें →"
+                  data-en="Explore Our Family →">
+                  हमारा परिवार देखें →
+                </span>
+
+              </button>
+
+            </div>
+          </div>
+
+
+          <div class="slide">
+            <div class="slide-image sample-family-two"></div>
+
+            <div class="hero-overlay">
+
+              <p
+                class="hero-small"
+                data-hi="पीढ़ियों से जुड़ी कहानी"
+                data-en="A Story Across Generations">
+                पीढ़ियों से जुड़ी कहानी
+              </p>
+
+              <h1
+                data-hi="हमारी विरासत"
+                data-en="Our Legacy">
+                हमारी विरासत
+              </h1>
+
+              <p
+                class="hero-description"
+                data-hi="हर रिश्ता हमारी कहानी का एक महत्वपूर्ण हिस्सा है।"
+                data-en="Every relationship is an important part of our story.">
+                हर रिश्ता हमारी कहानी का एक महत्वपूर्ण हिस्सा है।
+              </p>
+
+              <button
+                class="primary-btn"
+                onclick="showPage('family')">
+
+                <span
+                  data-hi="पारिवारिक वृक्ष देखें →"
+                  data-en="View Family Trees →">
+                  पारिवारिक वृक्ष देखें →
+                </span>
+
+              </button>
+
+            </div>
+          </div>
+
+
+          <div class="slide">
+            <div class="slide-image sample-family-three"></div>
+
+            <div class="hero-overlay">
+
+              <p
+                class="hero-small"
+                data-hi="यादें हमेशा साथ रहती हैं"
+                data-en="Memories Stay Forever">
+                यादें हमेशा साथ रहती हैं
+              </p>
+
+              <h1
+                data-hi="हमारी यादें"
+                data-en="Our Memories">
+                हमारी यादें
+              </h1>
+
+              <p
+                class="hero-description"
+                data-hi="विशेष अवसरों और खूबसूरत पलों को हमेशा के लिए संजोएँ।"
+                data-en="Preserve special occasions and beautiful moments forever.">
+                विशेष अवसरों और खूबसूरत पलों को हमेशा के लिए संजोएँ।
+              </p>
+
+              <button
+                class="primary-btn"
+                onclick="showPage('events')">
+
+                <span
+                  data-hi="कार्यक्रम देखें →"
+                  data-en="Explore Events →">
+                  कार्यक्रम देखें →
+                </span>
+
+              </button>
+
+            </div>
+          </div>
+
+        </div>
+
+
+        <button class="slide-arrow previous" onclick="changeSlide(-1)">
+          ‹
+        </button>
+
+        <button class="slide-arrow next" onclick="changeSlide(1)">
+          ›
+        </button>
+
+
+        <div class="slide-dots">
+
+          <button class="dot active-dot" onclick="goToSlide(0)"></button>
+
+          <button class="dot" onclick="goToSlide(1)"></button>
+
+          <button class="dot" onclick="goToSlide(2)"></button>
+
+        </div>
+
+      </div>
+
+
+      <!-- WELCOME -->
+
+      <section class="content-section welcome-section">
+
+        <div class="section-heading">
+
+          <span class="eyebrow"
+            data-hi="स्वागत है"
+            data-en="WELCOME">
+            स्वागत है
+          </span>
+
+          <h2
+            data-hi="घर परिवार में आपका स्वागत है"
+            data-en="Welcome to Ghar Parivar">
+            घर परिवार में आपका स्वागत है
+          </h2>
+
+          <p
+            data-hi="हमारा परिवार • हमारी कहानी • हमारी विरासत"
+            data-en="Our Family • Our Story • Our Legacy">
+            हमारा परिवार • हमारी कहानी • हमारी विरासत
+          </p>
+
+        </div>
+
+        <div class="intro-text">
+
+          <p
+            data-hi="घर परिवार हमारे परिवार के सदस्यों, रिश्तों, उपलब्धियों, कार्यक्रमों और यादों को एक सुंदर डिजिटल स्थान पर संजोने का प्रयास है।"
+            data-en="Ghar Parivar is a beautiful digital place to preserve our family members, relationships, achievements, events and memories.">
+            घर परिवार हमारे परिवार के सदस्यों, रिश्तों, उपलब्धियों, कार्यक्रमों और यादों को एक सुंदर डिजिटल स्थान पर संजोने का प्रयास है।
+          </p>
+
+        </div>
+
+
+        <!-- MAIN CARDS -->
+
+        <div class="main-cards">
+
+          <div
+            class="main-card family-main-card"
+            onclick="showPage('family')">
+
+            <div class="card-icon">
+              👨‍👩‍👧‍👦
+            </div>
+
+            <h3
+              data-hi="परिवार"
+              data-en="Family">
+              परिवार
+            </h3>
+
+            <p
+              data-hi="हमारे परिवारों और पारिवारिक वृक्षों को देखें।"
+              data-en="Explore our families and family trees.">
+              हमारे परिवारों और पारिवारिक वृक्षों को देखें।
+            </p>
+
+            <span
+              data-hi="परिवार देखें →"
+              data-en="Explore Family →">
+              परिवार देखें →
+            </span>
+
+          </div>
+
+
+          <div
+            class="main-card events-main-card"
+            onclick="showPage('events')">
+
+            <div class="card-icon">
+              🎉
+            </div>
+
+            <h3
+              data-hi="कार्यक्रम"
+              data-en="Events">
+              कार्यक्रम
+            </h3>
+
+            <p
+              data-hi="हमारे खास अवसरों, तस्वीरों और यादों को देखें।"
+              data-en="Explore celebrations, photographs and memories.">
+              हमारे खास अवसरों, तस्वीरों और यादों को देखें।
+            </p>
+
+            <span
+              data-hi="कार्यक्रम देखें →"
+              data-en="Explore Events →">
+              कार्यक्रम देखें →
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- FAMILY STORY -->
+
+      <section class="story-section">
+
+        <div class="story-image sample-story-image"></div>
+
+        <div class="story-content">
+
+          <span class="eyebrow"
+            data-hi="हमारी कहानी"
+            data-en="OUR STORY">
+            हमारी कहानी
+          </span>
+
+          <h2
+            data-hi="हर परिवार की एक कहानी होती है।"
+            data-en="Every family has a story.">
+            हर परिवार की एक कहानी होती है।
+          </h2>
+
+          <p
+            data-hi="पीढ़ियों से चले आ रहे रिश्ते, उपलब्धियाँ, त्योहार, यात्राएँ और छोटी-बड़ी यादें हमारी विरासत बनाती हैं।"
+            data-en="Relationships, achievements, festivals, journeys and memories passed through generations become our legacy.">
+            पीढ़ियों से चले आ रहे रिश्ते, उपलब्धियाँ, त्योहार, यात्राएँ और छोटी-बड़ी यादें हमारी विरासत बनाती हैं।
+          </p>
+
+          <button
+            class="outline-btn"
+            onclick="showPage('family')">
+
+            <span
+              data-hi="हमारी कहानी देखें"
+              data-en="Discover Our Story">
+              हमारी कहानी देखें
+            </span>
+
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- FEATURED EVENTS -->
+
+      <section class="content-section">
+
+        <div class="section-heading">
+
+          <span class="eyebrow"
+            data-hi="खास यादें"
+            data-en="SPECIAL MEMORIES">
+            खास यादें
+          </span>
+
+          <h2
+            data-hi="हमारे खास कार्यक्रम"
+            data-en="Our Special Events">
+            हमारे खास कार्यक्रम
+          </h2>
+
+        </div>
+
+
+        <div class="event-preview-grid">
+
+          <div class="event-preview" onclick="openEvent('wedding')">
+
+            <div class="event-preview-image wedding-image"></div>
+
+            <div class="event-preview-content">
+
+              <span>💍</span>
+
+              <h3
+                data-hi="पारिवारिक विवाह"
+                data-en="Family Wedding">
+                पारिवारिक विवाह
+              </h3>
+
+              <p>December 2025</p>
+
+            </div>
+
+          </div>
+
+
+          <div class="event-preview" onclick="openEvent('trip')">
+
+            <div class="event-preview-image trip-image"></div>
+
+            <div class="event-preview-content">
+
+              <span>✈️</span>
+
+              <h3
+                data-hi="पारिवारिक यात्रा"
+                data-en="Family Trip">
+                पारिवारिक यात्रा
+              </h3>
+
+              <p>June 2026</p>
+
+            </div>
+
+          </div>
+
+
+          <div class="event-preview" onclick="openEvent('diwali')">
+
+            <div class="event-preview-image festival-image"></div>
+
+            <div class="event-preview-content">
+
+              <span>🪔</span>
+
+              <h3
+                data-hi="दीपावली मिलन"
+                data-en="Diwali Gathering">
+                दीपावली मिलन
+              </h3>
+
+              <p>October 2025</p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="center-button">
+
+          <button
+            class="outline-btn"
+            onclick="showPage('events')">
+
+            <span
+              data-hi="सभी कार्यक्रम देखें →"
+              data-en="View All Events →">
+              सभी कार्यक्रम देखें →
+            </span>
+
+          </button>
+
+        </div>
+
+      </section>
+
+    </section>
+
+
+    <!-- ================= FAMILY PAGE ================= -->
+
+    <section id="familyPage" class="page">
+
+      <div class="inner-page-header">
+
+        <span class="eyebrow"
+          data-hi="हमारा परिवार"
+          data-en="OUR FAMILY">
+          हमारा परिवार
+        </span>
+
+        <h1
+          data-hi="हमारे परिवार"
+          data-en="Our Families">
+          हमारे परिवार
+        </h1>
+
+        <p
+          data-hi="किसी परिवार को चुनें और उसकी पारिवारिक कहानी देखें।"
+          data-en="Choose a family and explore its family story.">
+          किसी परिवार को चुनें और उसकी पारिवारिक कहानी देखें।
+        </p>
+
+      </div>
+
+
+      <div class="family-grid">
+
+        <div class="family-card" onclick="openFamily('dawar')">
+
+          <div class="family-card-image family-image-one"></div>
+
+          <div class="family-card-content">
+
+            <span class="family-number">01</span>
+
+            <h2>Dawar Family</h2>
+
+            <p
+              data-hi="दावर परिवार"
+              data-en="Dawar Family">
+              दावर परिवार
+            </p>
+
+            <button>
+              <span
+                data-hi="परिवार देखें →"
+                data-en="View Family →">
+                परिवार देखें →
+              </span>
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="family-card" onclick="openFamily('sharma')">
+
+          <div class="family-card-image family-image-two"></div>
+
+          <div class="family-card-content">
+
+            <span class="family-number">02</span>
+
+            <h2>Sharma Family</h2>
+
+            <p
+              data-hi="शर्मा परिवार"
+              data-en="Sharma Family">
+              शर्मा परिवार
+            </p>
+
+            <button>
+              <span
+                data-hi="परिवार देखें →"
+                data-en="View Family →">
+                परिवार देखें →
+              </span>
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="family-card" onclick="openFamily('verma')">
+
+          <div class="family-card-image family-image-three"></div>
+
+          <div class="family-card-content">
+
+            <span class="family-number">03</span>
+
+            <h2>Verma Family</h2>
+
+            <p
+              data-hi="वर्मा परिवार"
+              data-en="Verma Family">
+              वर्मा परिवार
+            </p>
+
+            <button>
+              <span
+                data-hi="परिवार देखें →"
+                data-en="View Family →">
+                परिवार देखें →
+              </span>
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="family-card" onclick="openFamily('gupta')">
+
+          <div class="family-card-image family-image-four"></div>
+
+          <div class="family-card-content">
+
+            <span class="family-number">04</span>
+
+            <h2>Gupta Family</h2>
+
+            <p
+              data-hi="गुप्ता परिवार"
+              data-en="Gupta Family">
+              गुप्ता परिवार
+            </p>
+
+            <button>
+              <span
+                data-hi="परिवार देखें →"
+                data-en="View Family →">
+                परिवार देखें →
+              </span>
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= FAMILY TREE PAGE ================= -->
+
+    <section id="treePage" class="page">
+
+      <div class="inner-page-header">
+
+        <button class="back-btn" onclick="showPage('family')">
+          ← <span
+            data-hi="परिवारों पर वापस जाएँ"
+            data-en="Back to Families">
+            परिवारों पर वापस जाएँ
+          </span>
+        </button>
+
+        <span class="eyebrow"
+          data-hi="पारिवारिक वृक्ष"
+          data-en="FAMILY TREE">
+          पारिवारिक वृक्ष
+        </span>
+
+        <h1 id="treeTitle">
+          Dawar Family
+        </h1>
+
+        <p
+          data-hi="किसी सदस्य की प्रोफ़ाइल देखने के लिए उसके नाम पर क्लिक करें।"
+          data-en="Click a member to view their profile.">
+          किसी सदस्य की प्रोफ़ाइल देखने के लिए उसके नाम पर क्लिक करें।
+        </p>
+
+      </div>
+
+
+      <div class="tree-wrapper">
+
+        <div class="tree-generation">
+
+          <div class="member-card" onclick="openMember('rajendra')">
+
+            <div class="member-photo grandfather-photo"></div>
+
+            <h3>Rajendra Dawar</h3>
+
+            <span
+              data-hi="दादा • Grandfather"
+              data-en="Grandfather">
+              दादा • Grandfather
+            </span>
+
+          </div>
+
+
+          <div class="tree-line vertical"></div>
+
+
+          <div class="member-card" onclick="openMember('kamla')">
+
+            <div class="member-photo grandmother-photo"></div>
+
+            <h3>Kamla Dawar</h3>
+
+            <span
+              data-hi="दादी • Grandmother"
+              data-en="Grandmother">
+              दादी • Grandmother
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="tree-connector"></div>
+
+
+        <div class="tree-generation parents-generation">
+
+          <div class="member-card" onclick="openMember('rajesh')">
+
+            <div class="member-photo father-photo"></div>
+
+            <h3>Rajesh Dawar</h3>
+
+            <span
+              data-hi="पिता • Father"
+              data-en="Father">
+              पिता • Father
+            </span>
+
+          </div>
+
+
+          <div class="member-card" onclick="openMember('suresh')">
+
+            <div class="member-photo uncle-photo"></div>
+
+            <h3>Suresh Dawar</h3>
+
+            <span
+              data-hi="चाचा • Uncle"
+              data-en="Uncle">
+              चाचा • Uncle
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="tree-connector"></div>
+
+
+        <div class="member-card mother-card" onclick="openMember('priya')">
+
+          <div class="member-photo mother-photo"></div>
+
+          <h3>Priya Dawar</h3>
+
+          <span
+            data-hi="माता • Mother"
+            data-en="Mother">
+            माता • Mother
+          </span>
+
+        </div>
+
+
+        <div class="tree-connector"></div>
+
+
+        <div class="children-generation">
+
+          <div class="member-card" onclick="openMember('aarav')">
+
+            <div class="member-photo child-one-photo"></div>
+
+            <h3>Aarav Dawar</h3>
+
+            <span
+              data-hi="पुत्र • Son"
+              data-en="Son">
+              पुत्र • Son
+            </span>
+
+          </div>
+
+
+          <div class="member-card" onclick="openMember('anaya')">
+
+            <div class="member-photo child-two-photo"></div>
+
+            <h3>Anaya Dawar</h3>
+
+            <span
+              data-hi="पुत्री • Daughter"
+              data-en="Daughter">
+              पुत्री • Daughter
+            </span>
+
+          </div>
+
+
+          <div class="member-card" onclick="openMember('vihaan')">
+
+            <div class="member-photo child-three-photo"></div>
+
+            <h3>Vihaan Dawar</h3>
+
+            <span
+              data-hi="पुत्र • Son"
+              data-en="Son">
+              पुत्र • Son
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= MEMBER PROFILE PAGE ================= -->
+
+    <section id="profilePage" class="page">
+
+      <div class="profile-header">
+
+        <button class="back-btn" onclick="showPage('tree')">
+          ← <span
+            data-hi="पारिवारिक वृक्ष पर वापस जाएँ"
+            data-en="Back to Family Tree">
+            पारिवारिक वृक्ष पर वापस जाएँ
+          </span>
+        </button>
+
+
+        <div class="profile-main">
+
+          <div id="profilePhoto" class="profile-photo"></div>
+
+          <div class="profile-heading">
+
+            <span class="eyebrow"
+              data-hi="परिवार सदस्य"
+              data-en="FAMILY MEMBER">
+              परिवार सदस्य
+            </span>
+
+            <h1 id="profileName">
+              Rajesh Dawar
+            </h1>
+
+            <h3 id="profileDesignation">
+              पिता • Father
+            </h3>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="profile-content">
+
+        <div class="profile-section">
+
+          <h2>
+            👤
+            <span
+              data-hi="परिचय"
+              data-en="About">
+              परिचय
+            </span>
+          </h2>
+
+          <p id="profileAbout">
+            Rajesh is an important member of the Dawar family and has played a valuable role in supporting and bringing the family together.
+          </p>
+
+        </div>
+
+
+        <div class="profile-section">
+
+          <h2>
+            🎓
+            <span
+              data-hi="शिक्षा एवं कार्य"
+              data-en="Education & Career">
+              शिक्षा एवं कार्य
+            </span>
+          </h2>
+
+          <p id="profileCareer">
+            Education and professional information selected by the family for public display.
+          </p>
+
+        </div>
+
+
+        <div class="profile-section">
+
+          <h2>
+            🏆
+            <span
+              data-hi="उपलब्धियाँ"
+              data-en="Achievements">
+              उपलब्धियाँ
+            </span>
+          </h2>
+
+
+          <div id="achievementGrid" class="achievement-grid">
+
+            <div class="achievement-card">
+
+              <span>🏆</span>
+
+              <h3
+                data-hi="उपलब्धि 1"
+                data-en="Achievement 1">
+                उपलब्धि 1
+              </h3>
+
+              <p
+                data-hi="एक महत्वपूर्ण पारिवारिक या व्यावसायिक उपलब्धि।"
+                data-en="An important family or professional achievement.">
+                एक महत्वपूर्ण पारिवारिक या व्यावसायिक उपलब्धि।
+              </p>
+
+            </div>
+
+
+            <div class="achievement-card">
+
+              <span>⭐</span>
+
+              <h3
+                data-hi="उपलब्धि 2"
+                data-en="Achievement 2">
+                उपलब्धि 2
+              </h3>
+
+              <p
+                data-hi="एक और महत्वपूर्ण उपलब्धि या सम्मान।"
+                data-en="Another important achievement or recognition.">
+                एक और महत्वपूर्ण उपलब्धि या सम्मान।
+              </p>
+
+            </div>
+
+
+            <div class="achievement-card">
+
+              <span>🎓</span>
+
+              <h3
+                data-hi="उपलब्धि 3"
+                data-en="Achievement 3">
+                उपलब्धि 3
+              </h3>
+
+              <p
+                data-hi="शिक्षा, करियर या समाज में योगदान।"
+                data-en="An educational, career or community contribution.">
+                शिक्षा, करियर या समाज में योगदान।
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="profile-section">
+
+          <h2>
+            📸
+            <span
+              data-hi="यादें"
+              data-en="Memories">
+              यादें
+            </span>
+          </h2>
+
+          <div class="memory-placeholder">
+            📷
+            <p
+              data-hi="सदस्य की तस्वीरें यहाँ दिखाई देंगी।"
+              data-en="Member photographs will appear here.">
+              सदस्य की तस्वीरें यहाँ दिखाई देंगी।
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= EVENTS PAGE ================= -->
+
+    <section id="eventsPage" class="page">
+
+      <div class="inner-page-header">
+
+        <span class="eyebrow"
+          data-hi="हमारी यादें"
+          data-en="OUR MEMORIES">
+          हमारी यादें
+        </span>
+
+        <h1
+          data-hi="पारिवारिक कार्यक्रम"
+          data-en="Family Events">
+          पारिवारिक कार्यक्रम
+        </h1>
+
+        <p
+          data-hi="हमारे खास अवसरों और यादगार पलों को देखें।"
+          data-en="Explore our special occasions and memorable moments.">
+          हमारे खास अवसरों और यादगार पलों को देखें।
+        </p>
+
+      </div>
+
+
+      <div class="event-filters">
+
+        <button class="filter-btn active-filter" onclick="filterEvents('all')">
+          सभी | All
+        </button>
+
+        <button class="filter-btn" onclick="filterEvents('wedding')">
+          💍 विवाह | Weddings
+        </button>
+
+        <button class="filter-btn" onclick="filterEvents('birthday')">
+          🎂 जन्मदिन | Birthdays
+        </button>
+
+        <button class="filter-btn" onclick="filterEvents('festival')">
+          🪔 त्योहार | Festivals
+        </button>
+
+        <button class="filter-btn" onclick="filterEvents('trip')">
+          ✈️ यात्राएँ | Trips
+        </button>
+
+        <button class="filter-btn" onclick="filterEvents('gathering')">
+          👨‍👩‍👧‍👦 मिलन | Gatherings
+        </button>
+
+      </div>
+
+
+      <div class="events-grid">
+
+        <div class="large-event-card" data-event-type="wedding" onclick="openEvent('wedding')">
+
+          <div class="large-event-image wedding-image"></div>
+
+          <div class="large-event-content">
+
+            <span>💍 WEDDING</span>
+
+            <h2
+              data-hi="पारिवारिक विवाह"
+              data-en="Family Wedding">
+              पारिवारिक विवाह
+            </h2>
+
+            <p>December 2025</p>
+
+            <button>
+              <span
+                data-hi="यादें देखें →"
+                data-en="View Memories →">
+                यादें देखें →
+              </span>
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="large-event-card" data-event-type="trip" onclick="openEvent('trip')">
+
+          <div class="large-event-image trip-image"></div>
+
+          <div class="large-event-content">
+
+            <span>✈️ FAMILY TRIP</span>
+
+            <h2
+              data-hi="गोवा पारिवारिक यात्रा"
+              data-en="Goa Family Trip">
+              गोवा पारिवारिक यात्रा
+            </h2>
+
+            <p>June 2026</p>
+
+            <button>
+              <span
+                data-hi="यादें देखें →"
+                data-en="View Memories →">
+                यादें देखें →
+              </span>
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="large-event-card" data-event-type="festival" onclick="openEvent('diwali')">
+
+          <div class="large-event-image festival-image"></div>
+
+          <div class="large-event-content">
+
+            <span>🪔 FESTIVAL</span>
+
+            <h2
+              data-hi="दीपावली पारिवारिक मिलन"
+              data-en="Diwali Family Gathering">
+              दीपावली पारिवारिक मिलन
+            </h2>
+
+            <p>October 2025</p>
+
+            <button>
+              <span
+                data-hi="यादें देखें →"
+                data-en="View Memories →">
+                यादें देखें →
+              </span>
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="large-event-card" data-event-type="birthday" onclick="openEvent('birthday')">
+
+          <div class="large-event-image birthday-image"></div>
+
+          <div class="large-event-content">
+
+            <span>🎂 BIRTHDAY</span>
+
+            <h2
+              data-hi="आरव का जन्मदिन"
+              data-en="Aarav's Birthday">
+              आरव का जन्मदिन
+            </h2>
+
+            <p>August 2026</p>
+
+            <button>
+              <span
+                data-hi="यादें देखें →"
+                data-en="View Memories →">
+                यादें देखें →
+              </span>
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="large-event-card" data-event-type="gathering" onclick="openEvent('reunion')">
+
+          <div class="large-event-image gathering-image"></div>
+
+          <div class="large-event-content">
+
+            <span>👨‍👩‍👧‍👦 GATHERING</span>
+
+            <h2
+              data-hi="पारिवारिक पुनर्मिलन"
+              data-en="Family Reunion">
+              पारिवारिक पुनर्मिलन
+            </h2>
+
+            <p>July 2026</p>
+
+            <button>
+              <span
+                data-hi="यादें देखें →"
+                data-en="View Memories →">
+                यादें देखें →
+              </span>
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- TIMELINE -->
+
+      <section class="timeline-section">
+
+        <div class="section-heading">
+
+          <span class="eyebrow"
+            data-hi="समय के साथ"
+            data-en="THROUGH THE YEARS">
+            समय के साथ
+          </span>
+
+          <h2
+            data-hi="हमारी पारिवारिक यात्रा"
+            data-en="Our Family Timeline">
+            हमारी पारिवारिक यात्रा
+          </h2>
+
+        </div>
+
+
+        <div class="timeline">
+
+          <div class="timeline-item">
+
+            <div class="timeline-year">
+              2021
+            </div>
+
+            <div class="timeline-content">
+
+              <span>💍</span>
+
+              <h3
+                data-hi="पारिवारिक विवाह"
+                data-en="Family Wedding">
+                पारिवारिक विवाह
+              </h3>
+
+              <p
+                data-hi="परिवार के लिए एक विशेष अवसर।"
+                data-en="A special occasion for the family.">
+                परिवार के लिए एक विशेष अवसर।
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="timeline-item">
+
+            <div class="timeline-year">
+              2024
+            </div>
+
+            <div class="timeline-content">
+
+              <span>✈️</span>
+
+              <h3
+                data-hi="पारिवारिक यात्रा"
+                data-en="Family Trip">
+                पारिवारिक यात्रा
+              </h3>
+
+              <p
+                data-hi="एक यादगार पारिवारिक यात्रा।"
+                data-en="A memorable family journey.">
+                एक यादगार पारिवारिक यात्रा।
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="timeline-item">
+
+            <div class="timeline-year">
+              2025
+            </div>
+
+            <div class="timeline-content">
+
+              <span>🪔</span>
+
+              <h3
+                data-hi="दीपावली मिलन"
+                data-en="Diwali Gathering">
+                दीपावली मिलन
+              </h3>
+
+              <p
+                data-hi="परिवार के साथ त्योहार मनाने का खूबसूरत अवसर।"
+                data-en="A beautiful festival celebration with the family.">
+                परिवार के साथ त्योहार मनाने का खूबसूरत अवसर।
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="timeline-item">
+
+            <div class="timeline-year">
+              2026
+            </div>
+
+            <div class="timeline-content">
+
+              <span>👨‍👩‍👧‍👦</span>
+
+              <h3
+                data-hi="पारिवारिक पुनर्मिलन"
+                data-en="Family Reunion">
+                पारिवारिक पुनर्मिलन
+              </h3>
+
+              <p
+                data-hi="नई यादें बनाने के लिए परिवार का एक साथ आना।"
+                data-en="The family coming together to create new memories.">
+                नई यादें बनाने के लिए परिवार का एक साथ आना।
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </section>
+
+
+    <!-- ================= EVENT DETAIL PAGE ================= -->
+
+    <section id="eventDetailPage" class="page">
+
+      <div class="event-detail-hero">
+
+        <button class="back-btn" onclick="showPage('events')">
+          ← <span
+            data-hi="कार्यक्रमों पर वापस जाएँ"
+            data-en="Back to Events">
+            कार्यक्रमों पर वापस जाएँ
+          </span>
+        </button>
+
+        <div id="eventDetailImage" class="event-detail-image"></div>
+
+        <div class="event-detail-heading">
+
+          <span id="eventDetailCategory">
+            FAMILY EVENT
+          </span>
+
+          <h1 id="eventDetailTitle">
+            Goa Family Trip
+          </h1>
+
+          <p id="eventDetailDate">
+            June 2026
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="event-detail-content">
+
+        <div class="profile-section">
+
+          <h2>
+            📖
+            <span
+              data-hi="कार्यक्रम के बारे में"
+              data-en="About the Event">
+              कार्यक्रम के बारे में
+            </span>
+          </h2>
+
+          <p id="eventDetailDescription">
+            A memorable family event where everyone came together and created wonderful memories.
+          </p>
+
+        </div>
+
+
+        <div class="profile-section">
+
+          <h2>
+            👨‍👩‍👧‍👦
+            <span
+              data-hi="शामिल परिवार के सदस्य"
+              data-en="Family Members">
+              शामिल परिवार के सदस्य
+            </span>
+          </h2>
+
+          <div class="event-members">
+
+            <span>Rajesh Dawar</span>
+            <span>Priya Dawar</span>
+            <span>Aarav Dawar</span>
+            <span>Anaya Dawar</span>
+
+          </div>
+
+        </div>
+
+
+        <div class="profile-section">
+
+          <h2>
+            📸
+            <span
+              data-hi="तस्वीरें"
+              data-en="Photos">
+              तस्वीरें
+            </span>
+          </h2>
+
+          <div class="event-gallery">
+
+            <div class="gallery-placeholder">📷</div>
+            <div class="gallery-placeholder">📷</div>
+            <div class="gallery-placeholder">📷</div>
+            <div class="gallery-placeholder">📷</div>
+            <div class="gallery-placeholder">📷</div>
+            <div class="gallery-placeholder">📷</div>
+
+          </div>
+
+        </div>
+
+
+        <div class="profile-section">
+
+          <h2>
+            ❤️
+            <span
+              data-hi="परिवार की यादें"
+              data-en="Family Memories">
+              परिवार की यादें
+            </span>
+          </h2>
+
+          <div class="memory-story">
+
+            <p>
+              <strong>Aarav:</strong>
+              <span
+                data-hi="यह हमारे परिवार के लिए एक बहुत यादगार अवसर था।"
+                data-en="This was a very memorable occasion for our family.">
+                यह हमारे परिवार के लिए एक बहुत यादगार अवसर था।
+              </span>
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= SEARCH PAGE ================= -->
+
+    <section id="searchPage" class="page">
+
+      <div class="inner-page-header">
+
+        <span class="eyebrow"
+          data-hi="खोजें"
+          data-en="SEARCH">
+          खोजें
+        </span>
+
+        <h1
+          data-hi="परिवार खोजें"
+          data-en="Search Ghar Parivar">
+          परिवार खोजें
+        </h1>
+
+        <p
+          data-hi="परिवार या सदस्य का नाम खोजें।"
+          data-en="Search for a family or member.">
+          परिवार या सदस्य का नाम खोजें।
+        </p>
+
+      </div>
+
+
+      <div class="search-box-wrapper">
+
+        <div class="search-box">
+
+          <span>🔎</span>
+
+          <input
+            id="searchInput"
+            type="text"
+            oninput="searchMembers()"
+            placeholder="परिवार या सदस्य का नाम खोजें...">
+
+        </div>
+
+      </div>
+
+
+      <div id="searchResults" class="search-results">
+
+        <div class="search-result">
+
+          <div class="search-result-avatar">👨</div>
+
+          <div>
+
+            <h3>Rajesh Dawar</h3>
+
+            <p
+              data-hi="पिता • Dawar Family"
+              data-en="Father • Dawar Family">
+              पिता • Dawar Family
+            </p>
+
+          </div>
+
+          <button onclick="openMember('rajesh')">
+            →
+          </button>
+
+        </div>
+
+
+        <div class="search-result">
+
+          <div class="search-result-avatar">👩</div>
+
+          <div>
+
+            <h3>Priya Dawar</h3>
+
+            <p
+              data-hi="माता • Dawar Family"
+              data-en="Mother • Dawar Family">
+              माता • Dawar Family
+            </p>
+
+          </div>
+
+          <button onclick="openMember('priya')">
+            →
+          </button>
+
+        </div>
+
+
+        <div class="search-result">
+
+          <div class="search-result-avatar">👦</div>
+
+          <div>
+
+            <h3>Aarav Dawar</h3>
+
+            <p
+              data-hi="पुत्र • Dawar Family"
+              data-en="Son • Dawar Family">
+              पुत्र • Dawar Family
+            </p>
+
+          </div>
+
+          <button onclick="openMember('aarav')">
+            →
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= LOGIN PAGE ================= -->
+
+    <section id="loginPage" class="page">
+
+      <div class="login-container">
+
+        <div class="login-card">
+
+          <div class="login-icon">
+            🏡
+          </div>
+
+          <span class="eyebrow"
+            data-hi="निजी परिवार क्षेत्र"
+            data-en="PRIVATE FAMILY AREA">
+            निजी परिवार क्षेत्र
+          </span>
+
+          <h1
+            data-hi="परिवार सदस्य लॉगिन"
+            data-en="Family Member Login">
+            परिवार सदस्य लॉगिन
+          </h1>
+
+          <p
+            data-hi="केवल अधिकृत परिवार सदस्य ही लॉगिन कर सकते हैं।"
+            data-en="Only authorized family members can log in.">
+            केवल अधिकृत परिवार सदस्य ही लॉगिन कर सकते हैं।
+          </p>
+
+
+          <form onsubmit="demoLogin(event)">
+
+            <label>
+              <span
+                data-hi="उपयोगकर्ता नाम"
+                data-en="Username">
+                उपयोगकर्ता नाम
+              </span>
+            </label>
+
+            <input
+              id="username"
+              type="text"
+              placeholder="Username"
+              required>
+
+
+            <label>
+              <span
+                data-hi="पासवर्ड"
+                data-en="Password">
+                पासवर्ड
+              </span>
+            </label>
+
+            <input
+              id="password"
+              type="password"
+              placeholder="Password"
+              required>
+
+
+            <button
+              class="primary-btn login-btn"
+              type="submit">
+
+              <span
+                data-hi="लॉगिन करें"
+                data-en="Login">
+                लॉगिन करें
+              </span>
+
+            </button>
+
+          </form>
+
+
+          <p class="login-note">
+
+            🔒
+            <span
+              data-hi="यह केवल डेमो लॉगिन है। वास्तविक निजी जानकारी सुरक्षित बैकएंड से जोड़ी जाएगी।"
+              data-en="This is a demo login. Real private information will be connected through a secure backend.">
+              यह केवल डेमो लॉगिन है। वास्तविक निजी जानकारी सुरक्षित बैकएंड से जोड़ी जाएगी।
+            </span>
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= PRIVATE AREA DEMO ================= -->
+
+    <section id="dashboardPage" class="page">
+
+      <div class="dashboard">
+
+        <div class="dashboard-header">
+
+          <div>
+
+            <span class="eyebrow"
+              data-hi="परिवार क्षेत्र"
+              data-en="FAMILY AREA">
+              परिवार क्षेत्र
+            </span>
+
+            <h1
+              data-hi="स्वागत है, परिवार सदस्य"
+              data-en="Welcome, Family Member">
+              स्वागत है, परिवार सदस्य
+            </h1>
+
+          </div>
+
+          <button
+            class="outline-btn"
+            onclick="showPage('home')">
+
+            <span
+              data-hi="लॉगआउट"
+              data-en="Logout">
+              लॉगआउट
+            </span>
+
+          </button>
+
+        </div>
+
+
+        <div class="dashboard-grid">
+
+          <div class="dashboard-card">
+
+            <span>👤</span>
+
+            <h3
+              data-hi="मेरी प्रोफ़ाइल"
+              data-en="My Profile">
+              मेरी प्रोफ़ाइल
+            </h3>
+
+            <p
+              data-hi="अपनी सार्वजनिक जानकारी प्रबंधित करें।"
+              data-en="Manage your public information.">
+              अपनी सार्वजनिक जानकारी प्रबंधित करें।
+            </p>
+
+          </div>
+
+
+          <div class="dashboard-card">
+
+            <span>📸</span>
+
+            <h3
+              data-hi="तस्वीरें जोड़ें"
+              data-en="Add Photos">
+              तस्वीरें जोड़ें
+            </h3>
+
+            <p
+              data-hi="परिवार की यादों में योगदान दें।"
+              data-en="Contribute to family memories.">
+              परिवार की यादों में योगदान दें।
+            </p>
+
+          </div>
+
+
+          <div class="dashboard-card">
+
+            <span>❤️</span>
+
+            <h3
+              data-hi="यादें साझा करें"
+              data-en="Share Memories">
+              यादें साझा करें
+            </h3>
+
+            <p
+              data-hi="अपनी पारिवारिक यादें साझा करें।"
+              data-en="Share your family memories.">
+              अपनी पारिवारिक यादें साझा करें।
+            </p>
+
+          </div>
+
+
+          <div class="dashboard-card">
+
+            <span>🔒</span>
+
+            <h3
+              data-hi="निजी जानकारी"
+              data-en="Private Information">
+              निजी जानकारी
+            </h3>
+
+            <p
+              data-hi="केवल अधिकृत सदस्यों के लिए।"
+              data-en="For authorized members only.">
+              केवल अधिकृत सदस्यों के लिए।
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer class="footer">
+
+    <div class="footer-brand">
+
+      <div class="footer-logo">
+        🏡
+      </div>
+
+      <h2>
+        घर परिवार
+      </h2>
+
+      <p>
+        GHAR PARIVAR
+      </p>
+
+      <span
+        data-hi="हमारा परिवार • हमारी कहानी • हमारी विरासत"
+        data-en="Our Family • Our Story • Our Legacy">
+        हमारा परिवार • हमारी कहानी • हमारी विरासत
+      </span>
+
+    </div>
+
+
+    <div class="footer-links">
+
+      <h3
+        data-hi="त्वरित लिंक"
+        data-en="Quick Links">
+        त्वरित लिंक
+      </h3>
+
+      <a href="#" onclick="showPage('home')">
+        Home / होम
+      </a>
+
+      <a href="#" onclick="showPage('family')">
+        Family / परिवार
+      </a>
+
+      <a href="#" onclick="showPage('events')">
+        Events / कार्यक्रम
+      </a>
+
+      <a href="#" onclick="showPage('login')">
+        Login / लॉगिन
+      </a>
+
+    </div>
+
+
+    <div class="footer-note">
+
+      <h3
+        data-hi="हमारी विरासत"
+        data-en="Our Legacy">
+        हमारी विरासत
+      </h3>
+
+      <p
+        data-hi="परिवार की यादों को आने वाली पीढ़ियों तक पहुँचाने के लिए।"
+        data-en="Preserving family memories for generations to come.">
+        परिवार की यादों को आने वाली पीढ़ियों तक पहुँचाने के लिए।
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script src="script.js"></script>
+
+</body>
+</html>
