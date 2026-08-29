@@ -1564,7 +1564,7 @@
 </section>
 
 <section
-  id="family-dashboard"
+  id="member-dashboard"
   class="page"
 >
 
@@ -1580,9 +1580,13 @@
           PRIVATE AREA
         </span>
 
-        <h1>
+        <h1 id="member-welcome-title">
           परिवार डैशबोर्ड
         </h1>
+
+        <p id="member-welcome-subtitle" style="color:var(--muted); margin-top:8px;">
+          लॉगिन सफल रहा। Welcome to your family area.
+        </p>
 
       </div>
 
@@ -1812,6 +1816,23 @@
 <script
   src="script.js"
 ></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const title = document.getElementById("member-welcome-title");
+    const subtitle = document.getElementById("member-welcome-subtitle");
+
+    window.updateMemberDashboard = function(user) {
+      if (!user) return;
+      if (title) title.textContent = `नमस्ते, ${user.username} 👋`;
+      if (subtitle) {
+        subtitle.textContent = user.family_id
+          ? `Family: ${user.family_id} • Family Member / परिवार सदस्य`
+          : "Family Member / परिवार सदस्य";
+      }
+    };
+  });
+</script>
 
 
 <!-- =====================================================
