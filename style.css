@@ -1,4 +1,6 @@
-body { outline: 12px solid red !important; }
+body {
+  background: red !important;
+}
 /* =========================================================
    GHAR PARIVAR — NEW PREMIUM DESIGN
    ========================================================= */
