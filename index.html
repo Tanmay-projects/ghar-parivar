@@ -1,62 +1,90 @@
 <!doctype html>
 <html lang="hi">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Ghar Parivar — परिवार, रिश्ते, यादें और विरासत।">
-  <title>घर परिवार | Ghar Parivar</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="gharp.css">
-  <style>
-    /* Real Dawar family photo uploaded to the repository as image.png */
-    .hero-art.art-one{background-image:linear-gradient(90deg,rgba(247,244,239,.9),rgba(247,244,239,.15)),url('image.png');background-size:cover;background-position:center;background-repeat:no-repeat;}
-    .hero-art.art-one span{display:none;}
-    @media(max-width:900px){.hero-art.art-one{background-position:center;opacity:.72;}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Ghar Parivar — परिवार, रिश्ते, यादें और विरासत।">
+<title>घर परिवार | Ghar Parivar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="gharp.css">
+<style>
+/* The uploaded Dawar family photo is shown in its full 4:3 frame so nobody is cropped out. */
+.hero{aspect-ratio:4/3;min-height:0;margin:24px 5vw 32px;}
+.hero-slides,.hero-slide{height:100%;min-height:0;}
+.hero-slide{padding:0;display:none;}
+.hero-slide.active{display:block;}
+.hero-art.art-one{position:absolute;inset:0;background-image:url('image.png');background-size:cover;background-position:center;background-repeat:no-repeat;}
+.hero-art.art-one:before{display:none;}
+.hero-art.art-one span,.hero-slide:first-child .hero-copy{display:none;}
+.hero-slide:not(:first-child) .hero-art{inset:0;opacity:1;}
+.hero-slide:not(:first-child) .hero-copy{padding:70px 7%;}
+.home-blocks{max-width:1100px;margin:0 auto 55px;padding:0 5vw;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.home-block{min-height:190px;border:1px solid #e6e0d7;border-radius:24px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px;box-shadow:0 12px 35px rgba(23,35,31,.06);cursor:pointer;transition:.2s;}
+.home-block:hover{transform:translateY(-4px);box-shadow:0 18px 45px rgba(23,35,31,.10);}
+.home-block.family{background:linear-gradient(135deg,#fff8f7,#fff);}
+.home-block.events{background:linear-gradient(135deg,#f6fbf7,#fff);}
+.home-block-icon{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:28px;margin-bottom:12px;background:#6d0d12;color:#fff;}
+.events .home-block-icon{background:#1f6a3d;}
+.home-block h2{margin:0 0 6px;font-size:26px;color:#6d0d12;}
+.events h2{color:#1f6a3d;}
+.home-block p{margin:0;color:#68736e;line-height:1.6;}
+.home-block .btn{margin-top:16px;}
+.family-back{margin:28px 5vw 0;display:inline-flex;}
+.page-head{padding-top:28px;}
+@media(max-width:700px){.hero{margin:12px 3vw 22px;aspect-ratio:4/3}.home-blocks{grid-template-columns:1fr;padding:0 3vw;gap:16px}.home-block{min-height:165px}.family-back{margin-left:3vw}.hero-slide:not(:first-child) .hero-copy{padding:45px 8%;}}
+</style>
 </head>
 <body>
-  <div id="toast" class="toast" role="status"></div>
-  <header class="topbar">
-    <a class="brand" href="#home" data-page="home"><span class="brand-mark">⌂</span><span><b>घर परिवार</b><small>GHAR PARIVAR</small></span></a>
-    <nav class="desktop-nav">
-      <a href="#home" data-page="home">होम</a><a href="#families" data-page="families">परिवार</a><a href="#events" data-page="events">कार्यक्रम</a><a href="#search" data-page="search">खोजें</a><a href="#login" data-page="login" id="login-link">🔐 लॉगिन</a>
-    </nav>
-    <div class="lang"><button data-lang="hi" class="active">हिन्दी</button><button data-lang="en">English</button></div>
-    <button id="menu-btn" class="menu-btn" aria-label="Menu">☰</button>
-  </header>
-  <div id="mobile-nav" class="mobile-nav"><a data-page="home">होम</a><a data-page="families">परिवार</a><a data-page="events">कार्यक्रम</a><a data-page="search">खोजें</a><a data-page="login">🔐 लॉगिन</a></div>
+<div id="toast" class="toast" role="status"></div>
+<header class="topbar">
+<a class="brand" href="#home" data-page="home"><span class="brand-mark">⌂</span><span><b>घर परिवार</b><small>GHAR PARIVAR</small></span></a>
+<nav class="desktop-nav">
+<a href="#home" data-page="home">होम</a>
+<a href="#families" data-page="families">परिवार</a>
+<a href="#events" data-page="events">कार्यक्रम</a>
+<a href="#search" data-page="search">खोजें</a>
+<a href="#login" data-page="login" id="login-link">🔐 लॉगिन</a>
+</nav>
+<button id="menu-btn" class="menu-btn" aria-label="Menu">☰</button>
+</header>
+<div id="mobile-nav" class="mobile-nav"><a data-page="home">होम</a><a data-page="families">परिवार</a><a data-page="events">कार्यक्रम</a><a data-page="search">खोजें</a><a data-page="login">🔐 लॉगिन</a></div>
 
-  <main>
-    <section id="home" class="page active">
-      <div class="hero">
-        <div class="hero-slides">
-          <article class="hero-slide active"><div class="hero-art art-one"><span>👨‍👩‍👧‍👦</span></div><div class="hero-copy"><small>OUR FAMILY • हमारी कहानी</small><h1>जहाँ रिश्ते<br><em>हमेशा जुड़े रहें।</em></h1><p>परिवार की कहानियां, पीढ़ियां, उपलब्धियां और खास यादें — एक खूबसूरत डिजिटल घर में।</p><button class="btn primary" data-page="families">परिवार देखें <span>→</span></button></div></article>
-          <article class="hero-slide"><div class="hero-art art-two"><span>🌳</span></div><div class="hero-copy"><small>RELATIONSHIPS • रिश्ते</small><h1>हमारी जड़ें,<br><em>हमारी पहचान।</em></h1><p>परिवार वृक्ष के जरिए पीढ़ियों और रिश्तों को सरल तरीके से जानें।</p><button class="btn primary" data-page="families">परिवार वृक्ष <span>→</span></button></div></article>
-          <article class="hero-slide"><div class="hero-art art-three"><span>✨</span></div><div class="hero-copy"><small>MEMORIES • यादें</small><h1>हर पल की<br><em>एक कहानी।</em></h1><p>त्योहार, मिलन, यात्राएं और वे पल जिन्हें हम आने वाली पीढ़ियों तक रखना चाहते हैं।</p><button class="btn primary" data-page="events">यादें देखें <span>→</span></button></div></article>
-        </div>
-        <button class="slide-arrow prev" aria-label="Previous">‹</button><button class="slide-arrow next" aria-label="Next">›</button>
-        <div class="dots"><button class="dot active"></button><button class="dot"></button><button class="dot"></button></div>
-      </div>
-      <section class="section intro"><div class="section-label">GHAR PARIVAR</div><h2>एक डिजिटल घर, <span>पूरे परिवार के लिए।</span></h2><p class="lead">Ghar Parivar का उद्देश्य परिवार की सार्वजनिक कहानी को सुंदर तरीके से साझा करना और निजी जानकारी को सुरक्षित रखना है।</p><div class="feature-grid"><button class="feature-card" data-page="families"><span>👨‍👩‍👧‍👦</span><div><b>परिवार</b><p>परिवार, पीढ़ियां और रिश्ते देखें।</p></div><strong>→</strong></button><button class="feature-card" data-page="events"><span>🎉</span><div><b>कार्यक्रम</b><p>खास अवसर और यादगार पल।</p></div><strong>→</strong></button><button class="feature-card" data-page="search"><span>🔎</span><div><b>परिवार में खोजें</b><p>सार्वजनिक सदस्य और designation खोजें।</p></div><strong>→</strong></button></div></section>
-      <section class="section privacy-strip"><div><span>🔒</span><div><b>Privacy first</b><p>फोन, ईमेल, पता और अन्य निजी जानकारी सार्वजनिक पेज पर नहीं दिखाई जाती।</p></div></div><button class="btn ghost" data-page="login">परिवार सदस्य लॉगिन →</button></section>
-    </section>
+<main>
+<section id="home" class="page active">
+<div class="hero">
+<div class="hero-slides">
+<article class="hero-slide active"><div class="hero-art art-one"><span>👨‍👩‍👧‍👦</span></div></article>
+<article class="hero-slide"><div class="hero-art art-two"><span>🌳</span></div><div class="hero-copy"><small>RELATIONSHIPS • रिश्ते</small><h1>हमारी जड़ें,<br><em>हमारी पहचान।</em></h1><p>परिवार वृक्ष के जरिए पीढ़ियों और रिश्तों को जानें।</p><button class="btn primary" data-page="families">परिवार देखें →</button></div></article>
+<article class="hero-slide"><div class="hero-art art-three"><span>✨</span></div><div class="hero-copy"><small>MEMORIES • यादें</small><h1>हर पल की<br><em>एक कहानी।</em></h1><p>परिवार के खास अवसर और यादें।</p><button class="btn primary" data-page="events">कार्यक्रम देखें →</button></div></article>
+</div>
+<button class="slide-arrow prev" aria-label="Previous">‹</button><button class="slide-arrow next" aria-label="Next">›</button>
+<div class="dots"><button class="dot active"></button><button class="dot"></button><button class="dot"></button></div>
+</div>
+<div class="home-blocks">
+<button class="home-block family" data-page="families"><span class="home-block-icon">👨‍👩‍👧‍👦</span><h2>परिवार</h2><p>हमारे परिवार, पीढ़ियां और रिश्ते देखें।</p><span class="btn primary">परिवार देखें →</span></button>
+<button class="home-block events" data-page="events"><span class="home-block-icon">📅</span><h2>इवेंट्स</h2><p>पारिवारिक कार्यक्रम और खास यादें देखें।</p><span class="btn primary">इवेंट्स देखें →</span></button>
+</div>
+</section>
 
-    <section id="families" class="page"><div class="page-head"><div><div class="section-label">FAMILIES • परिवार</div><h1>हमारे परिवार</h1><p>सार्वजनिक जानकारी सभी के लिए। निजी जानकारी केवल अधिकृत परिवार सदस्यों के लिए।</p></div></div><div id="family-grid" class="family-grid"></div><div id="family-detail" class="family-detail"></div></section>
+<section id="families" class="page">
+<button class="btn ghost family-back" data-page="home">← वापस होम</button>
+<div class="page-head"><div><div class="section-label">FAMILIES • परिवार</div><h1>हमारे परिवार</h1><p>जिस परिवार के बारे में आप जानकारी देखना चाहते हैं, उसे चुनें।</p></div></div>
+<div id="family-grid" class="family-grid"></div><div id="family-detail" class="family-detail"></div>
+</section>
 
-    <section id="events" class="page"><div class="page-head"><div><div class="section-label">EVENTS • कार्यक्रम</div><h1>पारिवारिक यादें</h1><p>खास अवसर, मिलन और साथ बिताए पलों का संग्रह।</p></div><button class="btn primary" data-page="login">🔐 निजी क्षेत्र</button></div><div class="event-grid"><article class="event-card featured"><div class="event-art wedding">💍</div><div><small>CELEBRATION</small><h2>पारिवारिक समारोह</h2><p>परिवार के खास अवसर और यादें।</p></div></article><article class="event-card"><div class="event-art travel">✈️</div><div><small>TRAVEL</small><h2>परिवार यात्रा</h2><p>एक साथ बिताए यादगार दिन।</p></div></article><article class="event-card"><div class="event-art birthday">🎂</div><div><small>BIRTHDAY</small><h2>पारिवारिक जन्मदिन</h2><p>परिवार के साथ एक खास दिन।</p></div></article><article class="event-card"><div class="event-art gathering">🫶</div><div><small>GATHERING</small><h2>परिवार मिलन</h2><p>सभी के साथ एक यादगार मुलाकात।</p></div></article></div></section>
+<section id="events" class="page"><div class="page-head"><div><div class="section-label">EVENTS • कार्यक्रम</div><h1>पारिवारिक यादें</h1><p>खास अवसर, मिलन और साथ बिताए पलों का संग्रह।</p></div><button class="btn primary" data-page="login">🔐 निजी क्षेत्र</button></div><div class="event-grid"><article class="event-card featured"><div class="event-art wedding">💍</div><div><small>CELEBRATION</small><h2>पारिवारिक समारोह</h2><p>परिवार के खास अवसर और यादें।</p></div></article><article class="event-card"><div class="event-art travel">✈️</div><div><small>TRAVEL</small><h2>परिवार यात्रा</h2><p>एक साथ बिताए यादगार दिन।</p></div></article><article class="event-card"><div class="event-art birthday">🎂</div><div><small>BIRTHDAY</small><h2>पारिवारिक जन्मदिन</h2><p>परिवार के साथ एक खास दिन।</p></div></article><article class="event-card"><div class="event-art gathering">🫶</div><div><small>GATHERING</small><h2>परिवार मिलन</h2><p>सभी के साथ एक यादगार मुलाकात।</p></div></article></div></section>
 
-    <section id="search" class="page"><div class="page-head"><div><div class="section-label">SEARCH • खोजें</div><h1>परिवार में खोजें</h1><p>सिर्फ सार्वजनिक नाम, designation और family से खोजें।</p></div></div><div class="search-wrap"><span>⌕</span><input id="search-input" type="search" placeholder="नाम या designation लिखें…"></div><div id="search-results" class="search-results"></div></section>
+<section id="search" class="page"><div class="page-head"><div><div class="section-label">SEARCH • खोजें</div><h1>परिवार में खोजें</h1><p>सिर्फ सार्वजनिक नाम, designation और family से खोजें।</p></div></div><div class="search-wrap"><span>⌕</span><input id="search-input" type="search" placeholder="नाम या designation लिखें…"></div><div id="search-results" class="search-results"></div></section>
 
-    <section id="login" class="page"><div class="auth-shell"><div class="auth-card"><div class="auth-logo">🔐</div><div class="section-label">PRIVATE FAMILY AREA</div><h1>परिवार सदस्य लॉिन</h1><p>अधिकृत सदस्य ही निजी परिवार क्षेत्र देख सकते हैं।</p><form id="login-form"><label>Username<input id="username" autocomplete="username" required></label><label>Password<input id="password" type="password" autocomplete="current-password" required></label><button class="btn primary full" type="submit">सुरक्षित लॉगिन →</button><div id="login-message" class="form-message"></div></form></div></div></section>
+<section id="login" class="page"><div class="auth-shell"><div class="auth-card"><div class="auth-logo">🔐</div><div class="section-label">PRIVATE FAMILY AREA</div><h1>परिवार सदस्य लॉगिन</h1><p>अधिकृत सदस्य ही निजी परिवार क्षेत्र देख सकते हैं।</p><form id="login-form"><label>Username<input id="username" autocomplete="username" required></label><label>Password<input id="password" type="password" autocomplete="current-password" required></label><button class="btn primary full" type="submit">सुरक्षित लॉगिन →</button><div id="login-message" class="form-message"></div></form></div></div></section>
 
-    <section id="dashboard" class="page"><div class="page-head"><div><div class="section-label">PRIVATE FAMILY PORTAL</div><h1 id="dash-title">परिवार पोर्टल</h1><p id="dash-subtitle">अधिकृत परिवार जानकारी।</p></div><button id="logout" class="btn ghost">लॉग आउट</button></div><div class="private-banner"><span>🔒</span><div><b id="welcome-user">Welcome</b><p>यह जानकारी authenticated session के पीछे सुरक्षित है।</p></div></div><div id="private-grid" class="private-grid"></div><div id="private-detail" class="private-detail"></div></section>
+<section id="dashboard" class="page"><div class="page-head"><div><div class="section-label">PRIVATE FAMILY PORTAL</div><h1 id="dash-title">परिवार पोर्टल</h1><p id="dash-subtitle">अधिकृत परिवार जानकारी।</p></div><button id="logout" class="btn ghost">लॉग आउट</button></div><div class="private-banner"><span>🔒</span><div><b id="welcome-user">Welcome</b><p>यह जानकारी authenticated session के पीछे सुरक्षित है।</p></div></div><div id="private-grid" class="private-grid"></div><div id="private-detail" class="private-detail"></div></section>
 
-    <section id="admin" class="page"><div class="page-head"><div><div class="section-label">ADMIN CONTROL CENTER</div><h1>परिवार प्रबंधन</h1><p>सिर्फ administrator के लिए।</p></div><button id="admin-logout" class="btn ghost">लॉग आउट</button></div><div class="admin-grid"><div class="admin-card"><h2>Family accounts</h2><p>अधिकृत परिवार लॉगिन बनाएं और accounts देखें।</p><form id="create-user-form"><input id="new-user" placeholder="Username" required><input id="new-pass" type="password" placeholder="Password (8+ chars)" required><input id="new-family" placeholder="Family ID e.g. dawar" required><button class="btn primary">Account बनाएं</button></form><div id="users-list"></div></div><div class="admin-card"><h2>Family members</h2><p>निजी member records backend में सुरक्षित रखें।</p><form id="member-form"><input id="m-family" placeholder="Family ID" required><input id="m-name" placeholder="Full name" required><input id="m-designation" placeholder="Designation"><input id="m-relation" placeholder="Relation"><textarea id="m-bio" placeholder="Biography"></textarea><textarea id="m-achievements" placeholder="Achievements"></textarea><button class="btn primary">Member जोड़ें</button></form><div id="members-list"></div></div></div></section>
-  </main>
-
-  <footer><div><span class="brand-mark">⌂</span><b>GHAR PARIVAR</b><p>रिश्ते • यादें • विरासत</p></div><div class="footer-links"><a data-page="home">होम</a><a data-page="families">परिवार</a><a data-page="events">कार्यक्रम</a><a data-page="login">लॉगिन</a></div><small>© 2026 Ghar Parivar</small></div></footer>
-  <script src="script.js"></script>
+<section id="admin" class="page"><div class="page-head"><div><div class="section-label">ADMIN CONTROL CENTER</div><h1>परिवार प्रबंधन</h1><p>सिर्फ administrator के लिए।</p></div><button id="admin-logout" class="btn ghost">लॉग आउट</button></div><div class="admin-grid"><div class="admin-card"><h2>Family accounts</h2><p>अधिकृत परिवार लॉगिन बनाएं और accounts देखें।</p><form id="create-user-form"><input id="new-user" placeholder="Username" required><input id="new-pass" type="password" placeholder="Password (8+ chars)" required><input id="new-family" placeholder="Family ID e.g. dawar" required><button class="btn primary">Account बनाएं</button></form><div id="users-list"></div></div><div class="admin-card"><h2>Family members</h2><p>निजी member records backend में सुरक्षित रखें।</p><form id="member-form"><input id="m-family" placeholder="Family ID" required><input id="m-name" placeholder="Full name" required><input id="m-designation" placeholder="Designation"><input id="m-relation" placeholder="Relation"><textarea id="m-bio" placeholder="Biography"></textarea><textarea id="m-achievements" placeholder="Achievements"></textarea><button class="btn primary">Member जोड़ें</button></form><div id="members-list"></div></div></div></section>
+</main>
+<footer><div><span class="brand-mark">⌂</span><b>GHAR PARIVAR</b><p>रिश्ते • यादें • विरासत</p></div><div class="footer-links"><a data-page="home">होम</a><a data-page="families">परिवार</a><a data-page="events">कार्यक्रम</a><a data-page="login">लॉगिन</a></div><small>© 2026 Ghar Parivar</small></footer>
+<script src="script.js"></script>
 </body>
 </html>
