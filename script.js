@@ -71,3 +71,19 @@ window.privateMember=id=>{const m=state.privateData?.members?.find(x=>x.id===id)
 async function loadAdmin(){try{if(!state.user)state.user=await api("/me");if(state.user.role!=="admin")return;const users=await api("/admin/users"),members=await api("/admin/members");$("users-list").innerHTML=users.map(u=>`<div class="user-row"><b>${u.username}</b><small>${u.role} • ${u.family_id||"No family"} • ${u.active?"Active":"Disabled"}</small></div>`).join("");$("members-list").innerHTML=members.map(m=>`<div class="member-row"><b>${m.name}</b><small>${m.family_id} • ${m.designation||""}</small></div>`).join("")}catch(err){toast(err.message);showPage("login")}}
 $("create-user-form")?.addEventListener("submit",async e=>{e.preventDefault();try{await api("/admin/users",{method:"POST",body:JSON.stringify({username:$("new-user").value,password:$("new-pass").value,family_id:$("new-family").value})});e.target.reset();toast("Family account बनाया गया ✓");loadAdmin()}catch(err){toast(err.message)}});
 $("member-form")?.addEventListener("submit",async e=>{e.preventDefault();try{await api("/admin/members",{method:"POST",body:JSON.stringify({family_id:$("m-family").value,name:$("m-name").value,designation:$("m-designation").value,relation:$("m-relation").value,biography:$("m-bio").value,achievements:$("m-achievements").value})});e.target.reset();toast("Member सुरक्षित रूप से जोड़ा गया ✓");loadAdmin()}catch(err){toast(err.message)}});
+
+/* Robust navigation: works for every header, footer, mobile and dynamically-created button. */
+document.addEventListener("click",function(e){
+ const link=e.target.closest("[data-page]");
+ if(!link)return;
+ const target=link.getAttribute("data-page");
+ if(!target)return;
+ e.preventDefault();
+ e.stopPropagation();
+ showPage(target);
+ if(window.history&&window.history.replaceState) history.replaceState(null,"",`#${target}`);
+},true);
+window.addEventListener("DOMContentLoaded",()=>{
+ const initial=(location.hash||"#home").slice(1);
+ if($(initial))showPage(initial);
+});
