@@ -27,6 +27,13 @@
 .home-block-icon{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:28px;margin-bottom:12px;background:#6d0d12;color:#fff;}.events .home-block-icon{background:#1f6a3d;}
 .home-block h2{margin:0 0 6px;font-size:26px;color:#6d0d12;}.events h2{color:#1f6a3d;}.home-block p{margin:0;color:#68736e;line-height:1.6;}.home-block .btn{margin-top:16px;}
 .family-back{margin:28px 5vw 0;display:inline-flex;}.page-head{padding-top:28px;}
+/* Homepage order: photo → quote → family/events blocks → member login. */
+#home{display:flex;flex-direction:column;}
+#home .family-welcome{display:contents;}
+#home .family-welcome-quote{order:2;}
+#home .home-blocks{order:3;}
+#home .family-member-login{order:4;}
+#home .hero{order:1;}
 @media(max-width:700px){.hero{height:220px;min-height:220px;margin:12px 3vw 22px}.home-blocks{grid-template-columns:1fr;padding:0 3vw;gap:16px}.home-block{min-height:165px}.family-back{margin-left:3vw}.hero-slide:not(:first-child) .hero-copy{padding:45px 8%;}}
 </style>
 </head>
