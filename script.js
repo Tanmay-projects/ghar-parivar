@@ -47,6 +47,17 @@ window.openFamily=id=>{const f=publicFamilies.find(x=>x.id===id);if(!f)return;wi
 window.showPublicMember=(familyId,name)=>{const f=publicFamilies.find(x=>x.id===familyId),m=f?.members.find(x=>x.name===name);if(!m)return;toast(`${m.name} — ${m.designation}`)};
 renderFamilies();
 
+/* Homepage family quote + members/login panel. Inserted by JS so the existing page structure stays intact. */
+(function addHomeWelcome(){
+ const home=document.getElementById("home");
+ const blocks=home?.querySelector(".home-blocks");
+ if(!home||!blocks||document.getElementById("family-welcome"))return;
+ const wrap=document.createElement("div");
+ wrap.id="family-welcome";
+ wrap.innerHTML=`<section class="family-welcome-quote" aria-label="परिवार संदेश"><div class="quote-mark">❝</div><div class="quote-kicker">हमारा परिवार</div><blockquote>परिवार ही सब कुछ हे...<br>हिम्मत हे, होसला हे, सम्बल हे, ताक़त हे,<br>ओर हर आपदा को जितने का विश्वास हे.</blockquote><div class="quote-line">✦ ───────── ✦</div></section><section class="family-member-login"><div class="member-login-icon">♙</div><div class="member-login-copy"><span>FAMILY MEMBERS • परिवार के सदस्य</span><h2>परिवार के सदस्य</h2><p>परिवार के अधिकृत सदस्य अपनी निजी पारिवारिक जानकारी सुरक्षित रूप से देख सकते हैं।</p></div><button class="member-login-btn" data-page="login">🔐 सदस्य लॉगिन</button></section>`;
+ blocks.parentNode.insertBefore(wrap,blocks);
+})();
+
 $("search-input")?.addEventListener("input",e=>{const q=e.target.value.trim().toLowerCase(),box=$("search-results");if(!q){box.innerHTML="";return}const r=publicMembers.filter(m=>(m.name+m.family+m.designation).toLowerCase().includes(q));box.innerHTML=r.length?r.map(m=>`<div class="search-result"><div class="avatar">${m.icon||"👤"}</div><div><h3>${m.name}</h3><p><strong>${m.designation}</strong> • ${m.family}</p></div></div>`).join(""):"<p>कोई सार्वजनिक सदस्य नहीं मिला।</p>"});
 
 async function api(path,options={}){const res=await fetch(API_BASE+path,{credentials:"include",headers:{"Content-Type":"application/json",...(options.headers||{})},...options});let data={};try{data=await res.json()}catch{}if(!res.ok)throw new Error(data.detail||data.message||`Request failed (${res.status})`);return data}
