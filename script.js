@@ -1,15 +1,17 @@
-/* GHAR PARIVAR — clean rebuild */
+/* GHAR PARIVAR — family data restored */
 const API_BASE="https://ghar-parivar-backend.onrender.com";
 const $=id=>document.getElementById(id);
 const state={slide:0,user:null,privateData:null};
 
-/* Example data is intentionally kept minimal until real family data is entered. */
-const families=[{id:"dawar",name:"दावर परिवार",description:"परिवार की पीढ़ियां और रिश्ते।",icon:"👨‍👩‍👧‍👦",members:[
- {name:"शंकरलाल",designation:"परिवार के वरिष्ठ सदस्य",role:"grandparent",icon:"👴"},
- {name:"मुकेश",designation:"पुत्र",role:"parent",icon:"👨"},
- {name:"गजेन्द्र",designation:"पुत्र • मुकेश के भाई",role:"parent",icon:"👨"},
- {name:"तनमय",designation:"पुत्र • विद्यार्थी",role:"child",icon:"👦"},
- {name:"हर्षिता",designation:"पुत्री • विद्यार्थी",role:"child",icon:"👧"}
+/* Dawar family — real information supplied by Tanmay */
+const families=[{id:"dawar",name:"डावर परिवार",description:"डावर परिवार की पीढ़ियां और रिश्ते।",icon:"👨‍👩‍👧‍👦",members:[
+ {name:"शंकरलाल डावर",designation:"दादा",role:"grandparent",icon:"👴"},
+ {name:"कंचन बाई",designation:"दादी",role:"grandparent",icon:"👵"},
+ {name:"मुकेश डावर",designation:"पिता",occupation:"Ex-service man (Army)",role:"parent",icon:"👨"},
+ {name:"माया",designation:"माता",occupation:"Inspector (Agriculture Department)",role:"parent",icon:"👩"},
+ {name:"गजेन्द्र डावर",designation:"पुत्र • मुकेश के भाई",role:"parent",icon:"👨"},
+ {name:"तनमय डावर",designation:"पुत्र • विद्यार्थी",occupation:"Student",role:"child",icon:"👦"},
+ {name:"हर्षिता डावर",designation:"पुत्री • विद्यार्थी",occupation:"Student",role:"child",icon:"👧"}
 ]}];
 
 function showPage(id){
@@ -32,8 +34,8 @@ function setSlide(n){if(!slides.length)return;state.slide=(n+slides.length)%slid
 $(".prev")?.addEventListener("click",()=>setSlide(state.slide-1));$(".next")?.addEventListener("click",()=>setSlide(state.slide+1));dots.forEach((d,i)=>d.addEventListener("click",()=>setSlide(i)));setInterval(()=>setSlide(state.slide+1),7000);
 
 function renderFamilies(){const box=$("family-grid");if(!box)return;box.innerHTML=families.map(f=>`<article class="family-card"><div class="family-visual">${f.icon}</div><div class="family-content"><div class="section-label">FAMILY • परिवार</div><h2>${f.name}</h2><p>${f.description}</p><button onclick="openFamily('${f.id}')">परिवार वृक्ष देखें →</button></div></article>`).join("")}
-function node(m){return `<div class="tree-node ${m.role}"><div class="tree-avatar">${m.icon}</div><div class="tree-name">${m.name}</div><div class="tree-designation">${m.designation}</div></div>`}
-window.openFamily=id=>{const f=families.find(x=>x.id===id);if(!f)return;const g=f.members.filter(m=>m.role==="grandparent"),p=f.members.filter(m=>m.role==="parent"),c=f.members.filter(m=>m.role==="child");$("family-detail").innerHTML=`<div class="detail-panel"><div class="section-label">FAMILY TREE • परिवार वृक्ष</div><h2>${f.icon} ${f.name}</h2><p>${f.description}</p><div class="family-tree"><div class="tree-level">${g.map(node).join("")}</div><div class="tree-connector"></div><div class="tree-level">${p.map(node).join("")}</div><div class="tree-connector"></div><div class="tree-level">${c.map(node).join("")}</div></div><h3>सभी सदस्य</h3><div class="member-public-grid">${f.members.map(m=>`<div class="member-chip"><div class="member-name">${m.icon} ${m.name}</div><div class="member-designation">${m.designation}</div></div>`).join("")}</div><div class="tree-private-note">🔒 निजी फोन, ईमेल, पता और अन्य जानकारी केवल अधिकृत लॉगिन के बाद उपलब्ध होगी।</div><button class="btn primary" data-page="login">🔐 निजी जानकारी के लिए लॉगिन</button></div>`;$("family-detail").scrollIntoView({behavior:"smooth"})};
+function node(m){return `<div class="tree-node ${m.role}"><div class="tree-avatar">${m.icon}</div><div class="tree-name">${m.name}</div><div class="tree-designation">${m.designation}</div>${m.occupation?`<div class="tree-occupation">${m.occupation}</div>`:""}</div>`}
+window.openFamily=id=>{const f=families.find(x=>x.id===id);if(!f)return;const g=f.members.filter(m=>m.role==="grandparent"),p=f.members.filter(m=>m.role==="parent"),c=f.members.filter(m=>m.role==="child");$("family-detail").innerHTML=`<div class="detail-panel"><div class="section-label">FAMILY TREE • परिवार वृक्ष</div><h2>${f.icon} ${f.name}</h2><p>${f.description}</p><div class="family-tree"><div class="tree-level">${g.map(node).join("")}</div><div class="tree-connector"></div><div class="tree-level">${p.map(node).join("")}</div><div class="tree-connector"></div><div class="tree-level">${c.map(node).join("")}</div></div><h3>सभी सदस्य</h3><div class="member-public-grid">${f.members.map(m=>`<div class="member-chip"><div class="member-name">${m.icon} ${m.name}</div><div class="member-designation">${m.designation}</div>${m.occupation?`<div class="member-occupation">${m.occupation}</div>`:""}</div>`).join("")}</div><div class="tree-private-note">🔒 निजी फोन, ईमेल, पता और अन्य जानकारी केवल अधिकृत लॉगिन के बाद उपलब्ध होगी।</div><button class="btn primary" data-page="login">🔐 निजी जानकारी के लिए लॉगिन</button></div>`;$("family-detail").scrollIntoView({behavior:"smooth"})};
 renderFamilies();
 
 $("search-input")?.addEventListener("input",e=>{const q=e.target.value.toLowerCase().trim(),box=$("search-results");if(!q){box.innerHTML="";return}const r=families.flatMap(f=>f.members.map(m=>({...m,family:f.name}))).filter(m=>(m.name+m.designation+m.family).toLowerCase().includes(q));box.innerHTML=r.length?r.map(m=>`<div class="search-result"><b>${m.icon} ${m.name}</b><span>${m.designation} • ${m.family}</span></div>`).join(""):"<p>कोई सदस्य नहीं मिला।</p>"});
