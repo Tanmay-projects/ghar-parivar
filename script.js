@@ -1,4 +1,4 @@
-/* GHAR PARIVAR — family data + Dindod form */
+/* GHAR PARIVAR — family data */
 const API_BASE="https://ghar-parivar-backend.onrender.com";
 const $=id=>document.getElementById(id);
 const state={slide:0,user:null,privateData:null};
@@ -7,7 +7,6 @@ const families=[{id:"dawar",name:"डावर परिवार",description:"
  {name:"कंचन बाई",designation:"दादी",role:"grandparent",icon:"👵"},
  {name:"मुकेश डावर",designation:"पिता",occupation:"Ex-service man (Army)",role:"parent",icon:"👨"},
  {name:"माया",designation:"माता",occupation:"Inspector (Agriculture Department)",role:"parent",icon:"👩"},
- {name:"गजेन्द्र डावर",designation:"पुत्र • मुकेश के भाई",role:"parent",icon:"👨"},
  {name:"तनमय डावर",designation:"पुत्र • विद्यार्थी",occupation:"Student",role:"child",icon:"👦"},
  {name:"हर्षिता डावर",designation:"पुत्री • विद्यार्थी",occupation:"Student",role:"child",icon:"👧"}
 ]}];
@@ -23,7 +22,4 @@ $("search-input")?.addEventListener("input",e=>{const q=e.target.value.toLowerCa
 async function api(path,options={}){const res=await fetch(API_BASE+path,{credentials:"include",headers:{"Content-Type":"application/json",...(options.headers||{})},...options});let data={};try{data=await res.json()}catch{}if(!res.ok)throw new Error(data.detail||data.message||`Request failed (${res.status})`);return data}async function checkSession(){try{state.user=await api("/me")}catch{state.user=null}}checkSession();
 $("login-form")?.addEventListener("submit",async e=>{e.preventDefault();const msg=$("login-message");msg.textContent="लॉगिन हो रहा है…";try{await api("/login",{method:"POST",body:JSON.stringify({username:$("username").value.trim(),password:$("password").value})});state.user=await api("/me");e.target.reset();msg.textContent="";showPage("dashboard")}catch(err){msg.textContent=err.message}});
 async function loadPrivate(){const box=$("private-grid");if(!box)return;try{if(!state.user)throw new Error("Not logged in");$("welcome-user").textContent=`स्वागत है, ${state.user.username}`;state.privateData=await api("/family/private");const members=state.privateData.members||[];box.innerHTML=members.map(m=>`<article class="private-card"><h3>${m.name}</h3><p class="private-designation">${m.designation||"परिवार सदस्य"}</p></article>`).join("")||"<p>अभी निजी सदस्य जानकारी उपलब्ध नहीं है।</p>"}catch(err){box.innerHTML=`<p>${err.message}</p>`}}$("logout")?.addEventListener("click",async()=>{try{await api("/logout",{method:"POST"})}catch{}state.user=null;showPage("home")});
-
-const dindod=[];function renderDindod(){const list=$("dindod-list"),out=$("dindod-output"),copy=$("dindod-copy");if(!list)return;list.innerHTML=dindod.map((m,i)=>`<div class="dindod-row"><div><b>${i+1}. ${m.name}</b><span>${m.designation||"Designation नहीं दिया"}${m.occupation?` • ${m.occupation}`:""}</span></div><button type="button" onclick="removeDindod(${i})">हटाएं</button></div>`).join("");if(dindod.length){out.hidden=false;copy.value=dindod.map((m,i)=>`${i+1}. Name: ${m.name}\n   Designation: ${m.designation||""}\n   Occupation: ${m.occupation||""}\n   Spouse: ${m.spouse||""}\n   Parent: ${m.parent||""}\n   Branch: ${m.branch||""}\n   Additional information: ${m.extra||""}`).join("\n\n")}else out.hidden=true}
-window.removeDindod=i=>{dindod.splice(i,1);renderDindod()};$("dindod-form")?.addEventListener("submit",e=>{e.preventDefault();const f=new FormData(e.target);dindod.push(Object.fromEntries(f.entries()));e.target.reset();renderDindod()});$("dindod-clear")?.addEventListener("click",()=>{dindod.length=0;$("dindod-form")?.reset();renderDindod()});$("dindod-copy-btn")?.addEventListener("click",async()=>{try{await navigator.clipboard.writeText($("dindod-copy").value);alert("जानकारी कॉपी हो गई।") }catch{$("dindod-copy").select();document.execCommand("copy")}});
 const initial=(location.hash||"#home").slice(1);if($(initial))showPage(initial);
