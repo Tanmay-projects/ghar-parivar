@@ -129,7 +129,7 @@
     .pf-dash{font-weight:700;color:#52606d}
     .pf-main-line,.pf-children-line{height:24px;width:2px;background:#aebdca;margin:0 auto}
     .pf-branches{display:flex;gap:18px;justify-content:center;align-items:flex-start;position:relative;padding-top:10px}
-    .pf-branches:before{content:"";position:absolute;top:10px;left:calc(10%);right:calc(10%);height:2px;background:#aebdca}
+    .pf-branches:before{content:"";position:absolute;top:10px;left:10%;right:10%;height:2px;background:#aebdca}
     .pf-branch-block{position:relative;flex:1 1 220px;min-width:220px;border:1px solid #d9e2ec;border-radius:18px;padding:18px;background:#fbfcfd}
     .pf-branch-block:before{content:"";position:absolute;top:-11px;left:50%;width:2px;height:11px;background:#aebdca}
     .pf-children{display:flex;gap:14px;justify-content:center;align-items:flex-start;position:relative;flex-wrap:wrap}
@@ -144,4 +144,8 @@
   `;
   document.head.appendChild(style);
   render();
+  setTimeout(() => {
+    const grid = document.getElementById('family-grid');
+    if (grid && (!grid.children.length || grid.textContent.includes('अभी कोई परिवार उपलब्ध नहीं है'))) render();
+  }, 1200);
 })();
