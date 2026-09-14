@@ -6,7 +6,7 @@
     { name: "बद्रीलाल कोरिया", nameEn: "Badrilal Koriya", occupation: "Ret. HOD (Education Department)", family: "कोरिया परिवार", avatar: "👨", photo: "bardilal%20mamaji.jpeg" },
     { name: "मेवालाल कोरिया", nameEn: "Mewalal Koriya", occupation: "Ret. केंद्रीय संग्रहालय, इंदौर", family: "कोरिया परिवार", avatar: "👨" },
     { name: "मदनलाल डिंडोड", nameEn: "Madanlal Dindod", occupation: "Ret. HOD (Education Department)", family: "डिंडोर परिवार", avatar: "👨" },
-    { name: "राकेश सुमरा", nameEn: "Rakesh Sumra", occupation: "Establishment Assistant (Custom Department)", family: "सुमरा परिवार", avatar: "👨", photo: "rakesh%20mamaji.jpeg" },
+    { name: "राकेश सुमरा", nameEn: "Rakesh Sumra", occupation: "Office Administrator (Custom)", family: "सुमरा परिवार", avatar: "👨", photo: "rakesh%20mamaji.jpeg" },
     { name: "आनंद कोरिया", nameEn: "Anand Koriya", occupation: "Inspector (Agriculture Department)", family: "कोरिया परिवार", avatar: "👨", photo: "anand-koriya.jpg" },
     { name: "महेश सुमरा", nameEn: "Mahesh Sumra", occupation: "Teacher (Education Department)", family: "सुमरा परिवार", avatar: "👨", photo: "DSC_9612%20(1).JPG" },
     { name: "कविता सुमरा", nameEn: "Kavita Sumra", occupation: "Teacher (Education Department)", family: "सुमरा परिवार", avatar: "👩", photo: "DSC_9612.JPG" },
