@@ -1,8 +1,20 @@
 /* GHAR PARIVAR — public home occupation spotlight. No Render dependency. */
 (() => {
   const members = [
-    { name: "मुकेश डावर", nameEn: "Mukesh Dawar", occupation: "Ex-service man (Army)", family: "डावर परिवार", avatar: "👨" },
-    { name: "माया", nameEn: "Maya", occupation: "Inspector (Agriculture Department)", family: "डावर परिवार", avatar: "👩" }
+    { name: "बद्रीलाल कोरिया", nameEn: "Badrilal Koriya", occupation: "Ret. HOD (Education Department)", family: "कोरिया परिवार", avatar: "👨" },
+    { name: "मेवालाल कोरिया", nameEn: "Mewalal Koriya", occupation: "Ret. केंद्रीय संग्रहालय, इंदौर", family: "कोरिया परिवार", avatar: "👨" },
+    { name: "मदनलाल डिंडोड", nameEn: "Madanlal Dindod", occupation: "Ret. HOD (Education Department)", family: "डिंडोर परिवार", avatar: "👨" },
+    { name: "राकेश सुमरा", nameEn: "Rakesh Sumra", occupation: "Establishment Assistant (Custom Department)", family: "सुमरा परिवार", avatar: "👨" },
+    { name: "आनंद कोरिया", nameEn: "Anand Koriya", occupation: "Inspector (Agriculture Department)", family: "कोरिया परिवार", avatar: "👨" },
+    { name: "महेश सुमरा", nameEn: "Mahesh Sumra", occupation: "Teacher (Education Department)", family: "सुमरा परिवार", avatar: "👨" },
+    { name: "कविता सुमरा", nameEn: "Kavita Sumra", occupation: "Teacher (Education Department)", family: "सुमरा परिवार", avatar: "👩" },
+    { name: "दिनेश सुमरा", nameEn: "Dinesh Sumra", occupation: "Infantry School, Mhow", family: "सुमरा परिवार", avatar: "👨" },
+    { name: "भगत कोरिया", nameEn: "Bhagat Koriya", occupation: "Police", family: "कोरिया परिवार", avatar: "👨" },
+    { name: "सुभाष डिंडोड", nameEn: "Subhash Dindod", occupation: "AG3 (Nagar Palika)", family: "डिंडोर परिवार", avatar: "👨" },
+    { name: "मंगला डिंडोड", nameEn: "Mangla Dindod", occupation: "Teacher (Tribal Department)", family: "डिंडोर परिवार", avatar: "👩" },
+    { name: "दीपक डिंडोड", nameEn: "Deepak Dindod", occupation: "Assistant (DGGCI)", family: "डिंडोर परिवार", avatar: "👨" },
+    { name: "रिया सुमरा", nameEn: "Riya Sumra", occupation: "Doctor (Specialist Gynecologist)", family: "सुमरा परिवार", avatar: "👩" },
+    { name: "राहुल सुमरा", nameEn: "Rahul Sumra", occupation: "MBA", family: "सुमरा परिवार", avatar: "👨" }
   ];
   let index = 0;
   const $ = id => document.getElementById(id);
