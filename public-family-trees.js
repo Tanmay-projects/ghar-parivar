@@ -10,7 +10,7 @@
       ]
     },
     {
-      id: 'dindor', name: 'दिंडोर परिवार', description: 'सुखराम दिंडोड और संपत बाई से आगे बढ़ता दिंडोर परिवार।',
+      id: 'dindor', name: 'डिंडोर परिवार', description: 'सुखराम दिंडोड और संपत बाई से आगे बढ़ता डिंडोर परिवार।',
       root: ['Sukhram Dindod', 'Sampat Bai'],
       branches: [
         { couple: ['Madanlal', 'Basantibai'], children: [
@@ -115,7 +115,7 @@
 
   document.addEventListener('click', event => {
     const button = event.target.closest('[data-pf-open]');
-    if (button) openFamily(button.dataset.pfOpen);
+    if (button) openFamily(button.dataset.pf-open);
   });
 
   const style = document.createElement('style');
