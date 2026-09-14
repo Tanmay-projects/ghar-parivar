@@ -143,9 +143,23 @@
     @media(max-width:560px){.pf-branches{grid-template-columns:1fr}.pf-branch-block{min-width:0}.pf-tree{overflow-x:hidden}.pf-couple{max-width:100%;font-size:14px}.pf-person{white-space:normal}.pf-children{display:grid;grid-template-columns:1fr}.pf-branch{min-width:0}}
   `;
   document.head.appendChild(style);
-  render();
-  setTimeout(() => {
+
+  // The public family tree is authoritative. If any backend/Render script
+  // replaces it with an empty state, immediately restore the static families.
+  const protectFamilyGrid = () => {
     const grid = document.getElementById('family-grid');
-    if (grid && (!grid.children.length || grid.textContent.includes('अभी कोई परिवार उपलब्ध नहीं है'))) render();
-  }, 1200);
+    if (!grid) return;
+    const text = grid.textContent.trim();
+    if (!grid.children.length || text.includes('अभी कोई परिवार उपलब्ध नहीं है')) render();
+  };
+  const observer = new MutationObserver(protectFamilyGrid);
+  const startObserver = () => {
+    const grid = document.getElementById('family-grid');
+    if (grid) observer.observe(grid, { childList: true, subtree: true });
+  };
+
+  render();
+  startObserver();
+  setTimeout(protectFamilyGrid, 1500);
+  setTimeout(protectFamilyGrid, 3000);
 })();
