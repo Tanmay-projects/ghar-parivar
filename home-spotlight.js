@@ -2,21 +2,21 @@
 (() => {
   const members = [
     { name: "मुकेश डावर", nameEn: "Mukesh Dawar", occupation: "Ex-service man (Army)", family: "डावर परिवार", avatar: "👨" },
-    { name: "माया", nameEn: "Maya", occupation: "Inspector (Agriculture Department)", family: "डावर परिवार", avatar: "👩" },
-    { name: "बद्रीलाल कोरिया", nameEn: "Badrilal Koriya", occupation: "Ret. HOD (Education Department)", family: "कोरिया परिवार", avatar: "👨" },
+    { name: "माया", nameEn: "Maya", occupation: "Inspector (Agriculture Department)", family: "डावर परिवार", avatar: "👩", photo: "maya-dawar.jpg" },
+    { name: "बद्रीलाल कोरिया", nameEn: "Badrilal Koriya", occupation: "Ret. HOD (Education Department)", family: "कोरिया परिवार", avatar: "👨", photo: "bardilal mamaji.jpeg" },
     { name: "मेवालाल कोरिया", nameEn: "Mewalal Koriya", occupation: "Ret. केंद्रीय संग्रहालय, इंदौर", family: "कोरिया परिवार", avatar: "👨" },
     { name: "मदनलाल डिंडोड", nameEn: "Madanlal Dindod", occupation: "Ret. HOD (Education Department)", family: "डिंडोर परिवार", avatar: "👨" },
-    { name: "राकेश सुमरा", nameEn: "Rakesh Sumra", occupation: "Establishment Assistant (Custom Department)", family: "सुमरा परिवार", avatar: "👨" },
-    { name: "आनंद कोरिया", nameEn: "Anand Koriya", occupation: "Inspector (Agriculture Department)", family: "कोरिया परिवार", avatar: "👨" },
-    { name: "महेश सुमरा", nameEn: "Mahesh Sumra", occupation: "Teacher (Education Department)", family: "सुमरा परिवार", avatar: "👨" },
-    { name: "कविता सुमरा", nameEn: "Kavita Sumra", occupation: "Teacher (Education Department)", family: "सुमरा परिवार", avatar: "👩" },
-    { name: "दिनेश सुमरा", nameEn: "Dinesh Sumra", occupation: "Infantry School, Mhow", family: "सुमरा परिवार", avatar: "👨" },
-    { name: "भगत कोरिया", nameEn: "Bhagat Koriya", occupation: "Police", family: "कोरिया परिवार", avatar: "👨" },
-    { name: "सुभाष डिंडोड", nameEn: "Subhash Dindod", occupation: "AG3 (Nagar Palika)", family: "डिंडोर परिवार", avatar: "👨" },
-    { name: "मंगला डिंडोड", nameEn: "Mangla Dindod", occupation: "Teacher (Tribal Department)", family: "डिंडोर परिवार", avatar: "👩" },
+    { name: "राकेश सुमरा", nameEn: "Rakesh Sumra", occupation: "Establishment Assistant (Custom Department)", family: "सुमरा परिवार", avatar: "👨", photo: "rakesh mamaji.jpeg" },
+    { name: "आनंद कोरिया", nameEn: "Anand Koriya", occupation: "Inspector (Agriculture Department)", family: "कोरिया परिवार", avatar: "👨", photo: "anand-koriya.jpg" },
+    { name: "महेश सुमरा", nameEn: "Mahesh Sumra", occupation: "Teacher (Education Department)", family: "सुमरा परिवार", avatar: "👨", photo: "mahesh.jpeg" },
+    { name: "कविता सुमरा", nameEn: "Kavita Sumra", occupation: "Teacher (Education Department)", family: "सुमरा परिवार", avatar: "👩", photo: "kavita mami.jpeg" },
+    { name: "दिनेश सुमरा", nameEn: "Dinesh Sumra", occupation: "Infantry School, Mhow", family: "सुमरा परिवार", avatar: "👨", photo: "dinesh.jpeg" },
+    { name: "भगत कोरिया", nameEn: "Bhagat Koriya", occupation: "Police", family: "कोरिया परिवार", avatar: "👨", photo: "bhagat.jpeg" },
+    { name: "सुभाष डिंडोड", nameEn: "Subhash Dindod", occupation: "AG3 (Nagar Palika)", family: "डिंडोर परिवार", avatar: "👨", photo: "subhash-dindod.jpg" },
+    { name: "मंगला डिंडोड", nameEn: "Mangla Dindod", occupation: "Teacher (Tribal Department)", family: "डिंडोर परिवार", avatar: "👩", photo: "mangla.jpeg" },
     { name: "दीपक डिंडोड", nameEn: "Deepak Dindod", occupation: "Assistant (DGGCI)", family: "डिंडोर परिवार", avatar: "👨" },
     { name: "रिया सुमरा", nameEn: "Riya Sumra", occupation: "Doctor (Specialist Gynecologist)", family: "सुमरा परिवार", avatar: "👩" },
-    { name: "राहुल सुमरा", nameEn: "Rahul Sumra", occupation: "MBA", family: "सुमरा परिवार", avatar: "👨" },
+    { name: "राहुल सुमरा", nameEn: "Rahul Sumra", occupation: "MBA", family: "सुमरा परिवार", avatar: "👨", photo: "rahul.jpeg" },
     { name: "सोनाली सुमरा", nameEn: "Sonali Sumra", occupation: "B. Pharma", family: "सुमरा परिवार", avatar: "👩" }
   ];
   let index = 0;
@@ -39,7 +39,11 @@
     }
     occupation.textContent = m.occupation;
     family.textContent = m.family;
-    avatar.textContent = m.avatar;
+    if (m.photo) {
+      avatar.innerHTML = `<img src="${encodeURI(m.photo)}" alt="${m.nameEn}" loading="lazy" onerror="this.remove();this.parentElement.textContent='${m.avatar}'">`;
+    } else {
+      avatar.textContent = m.avatar;
+    }
     dots.forEach((d, i) => d.classList.toggle("active", i === index));
   }
   function move(step) {
