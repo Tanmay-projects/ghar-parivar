@@ -1,8 +1,8 @@
 /* GHAR PARIVAR — public home occupation spotlight. No Render dependency. */
 (() => {
   const members = [
-    { name: "मुकेश डावर", nameEn: "Mukesh Dawar", designation: "पिता • Parent", occupation: "Ex-service man (Army)", family: "डावर परिवार", avatar: "👨" },
-    { name: "माया", nameEn: "Maya", designation: "माता • Mother", occupation: "Inspector (Agriculture Department)", family: "डावर परिवार", avatar: "👩" }
+    { name: "मुकेश डावर", nameEn: "Mukesh Dawar", occupation: "Ex-service man (Army)", family: "डावर परिवार", avatar: "👨" },
+    { name: "माया", nameEn: "Maya", occupation: "Inspector (Agriculture Department)", family: "डावर परिवार", avatar: "👩" }
   ];
   let index = 0;
   const $ = id => document.getElementById(id);
@@ -18,7 +18,10 @@
     if (!name) return;
     name.textContent = m.name;
     nameEn.textContent = m.nameEn;
-    designation.textContent = m.designation;
+    if (designation) {
+      designation.textContent = "";
+      designation.style.display = "none";
+    }
     occupation.textContent = m.occupation;
     family.textContent = m.family;
     avatar.textContent = m.avatar;
